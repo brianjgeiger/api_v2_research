@@ -1,0 +1,282 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Verdana;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red109\green109\blue109;\red213\green213\blue213;\red193\green71\blue5;
+\red184\green73\blue12;\red234\green234\blue231;\red29\green111\blue63;\red83\green83\blue83;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://restful-api-design.readthedocs.org/en/latest/"}}{\fldrslt 
+\f0\fs24 \cf0 https://restful-api-design.readthedocs.org/en/latest/}}
+\f0\fs24 \
+\
+The easiest way to think about the application state, is to assume that it is is described by an application data model, which can be described by an Entity-Relationship diagram.\
+\
+When transforming objects from the application data model to RESTful resources, you may find it useful to define two utility functions:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 to_resource()
+\b0 \
+This function is assumed to take an object from the application data model, and convert it into a resource.\
+
+\b from_resource()
+\b0 \
+This function is assumed to take a resource, and translate it into an object in the application data model.\
+\
+JSON has the right balance between expressiveness, and broad availability. [\'85] the XML data model is a bad choice for a RESTful API. On one side, it is too rich, and on the other side, it lacks features.\
+\
+We define the data that can be associated with a resource in terms of the JSON data model, using the following mapping rules:\
+	1.	Resources are modeled as a JSON object. The type of the resource is stored under the special key:value pair \'93_type\'94.\
+	2.	Data associated with a resource is modeled as key:value pairs on the JSON object. To prevent naming conflicts with internal key:value pairs, keys must not start with \'93_\'94.\
+	3.	The values of key:value pairs use any of the native JSON data types of string, number, true, false, null, or arrays thereof. Values can also be objects, in which case they are modeling nested resources.\
+	4.	Collections are modeled as an array of objects.\
+We will also refer to key:value pairs as attributes of the JSON object, and we will be sloppy and use that same term for data items associated with resources, too. This use of attributes is not to be confused with XML attributes.\
+\
+The following table lists generic attributes that are defined and have a specific meaning on all resources. They should not be used for mapping application model attributes.
+\f1\fs32 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalb \clshdrawnil \clwWidth2400\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth1480\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth11160\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\b\fs18 \cf0 Attribute\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Meaning\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth2400\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1480\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11160\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\b0 \cf0 id\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 String\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Identifies the unique ID of a resource.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth2400\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1480\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11160\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 href\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 String\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Identifies the URL of the current resource.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth2400\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1480\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11160\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 link\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Object\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Identifies a relationship for a resource. This attribute is itself an object and has \'93rel\'94 \'93href\'94 attributes\cell \lastrow\row
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf0 \
+Before they can be communicated to a client over an HTTP connection, they need to be serialized to a textual representation. This representation can then be included as an entity in an HTTP message body.\
+The following representations are common for resources. The table also lists the appropriate content-type to use:
+\f1\fs32 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalb \clshdrawnil \clwWidth1260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth5420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\b\fs18 \cf0 Type\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Content-Type\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth1260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth5420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\b0 \cf0 JSON\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 application/x-resource+json\
+application/x-collection+json\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth1260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth5420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 YAML\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 application/x-resource+yaml\
+application/x-collection+yaml\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth1260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth5420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 XML\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 application/x-resource+xml\
+application/x-collection+xml\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth1260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth5420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 HTML
+\fs32 \cell 
+\pard\intbl\itap1\pardeftab720\qj
+
+\fs18 \cf0 text/html
+\f0\fs24 \cell \lastrow\row
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+A RESTful API needs to have one and exactly one entry point. The URL of the entry point needs to be communicated to API clients so that they can find the API.\
+\
+Even though sub-collections may be arbitrarily nested, in my experience, you want to keep the depth limited to 2, if possible. \
+\
+It is strongly recommended that the URLs generated by the API should be absolute URLs.\
+\
+Sometimes you need to work on a variant of a resource. In our RHEV-M API for example, some attributes on a virtual machine can be updated while a virtual machine is running. This amounts to a hot plug/unplug of the resource, which is a different operation altogether from changing the saved representation. A nice way to implement this is using \'94;variant\'94 identifier in a URL. For example:\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalb \clshdrawnil \clwWidth3420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth6960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\f1\b\fs18 \cf0 URL\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Description\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth3420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\b0 \cf0 /api/:coll/:id;saved\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Identifies the saved variant of a resource.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth3420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth6960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 /api/:coll/:id;current\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Identifies the current variant of a resource.
+\f0 \cell \lastrow\row
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\fs24 \cf0 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalb \clshdrawnil \clwWidth920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth4700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\f1\b\fs18 \cf0 Method\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Scope\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Semantics
+\f0\b0 \cell \lastrow\row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1020\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\f1 \cf0 HEAD\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 collection\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Retrieve all resources in a collection (header only)\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth940\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1020\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 HEAD\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 resource\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Retrieve a single resource (header only)
+\f0 \cell \lastrow\row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrs\brdrw20\brdrcf2 \trbrdrl\brdrs\brdrw20\brdrcf2 \trbrdrb\brdrs\brdrw20\brdrcf2 \trbrdrr\brdrs\brdrw20\brdrcf2 
+\clvertalt \clshdrawnil \clwWidth960\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth4660\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qj
+
+\f1 \cf0 OPTIONS\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 any\cell 
+\pard\intbl\itap1\pardeftab720\qj
+\cf0 Return available HTTP methods and other options
+\f0\fs24 \cell \lastrow\row
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+I believe that there are two sensible ways to define the patch format.\
+	1.	An informal approach where you accept a dict with a partial representation of the object. Only attributes that are present are updated. Attributes that are not present are left alone. This approach is simple, but it has the drawback that if the resource has a complex internal structure e.g. containing a big list of dicts, then that entire list of dicts need to be given in the entity. Effectively PATCH becomes similar to PUT again.\
+	2.	A more formal approach would be to accept a list of modifications. Each modification can be a dict specifying the JSON path of the node to modify, the modification (\'91add\'92, \'91remove\'92, \'91change\'92) and the new value.\
+\
+Sometimes an action takes too long to be completed in the context of a single HTTP request. In that case, a \'93202 Accepted\'94 status can be returned to the client.\
+\
+\pard\pardeftab720\sa160\qj
+
+\f1\fs18 \cf0 Two types of hyperlinks are normally used:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj
+\ls1\ilvl0\cf0 {\listtext	1.	}Using \'93link\'94 objects. This is a special object of type \'93link\'94 with \'93href\'94 and a \'93rel\'94 attributes. The \'93rel\'94 attribute value identifies the semantics of the relationship. The link object is borrowed from {\field{\*\fldinst{HYPERLINK "http://www.w3.org/TR/html4/struct/links.html"}}{\fldrslt \cf4 \ul \ulc4 HTML}}.\
+{\listtext	2.	}Using any object with a \'93href\'94 attribute. The object type defines the semantics of the relationship. I\'92ll call these \'93object links,\'94 not to be confused with the \'93link objects\'94 above.\
+\pard\pardeftab720\sa160\qj
+\cf0 Below is an example of a virtual machine representation in YAML that illustrates the two different ways in which a relationship can be expressed:\
+\pard\pardeftab720\qj
+
+\f2 \cf5 \cb6 !vm\cf0 \
+id: \cf7 123\cf0 \
+href: \cf8 /\cf0 api\cf8 /\cf0 vms\cf8 /\cf7 123\cf0 \
+link:\
+  rel: collection\cf8 /\cf0 nics\
+  href: \cf8 /\cf0 api\cf8 /\cf0 vms\cf8 /\cf7 123\cf8 /\cf0 nics\
+cluster:\
+  href: \cf8 /\cf0 api\cf8 /\cf0 clusters\cf8 /\cf7 456\cf0 \
+\pard\pardeftab720\sa160\qj
+
+\f1 \cf0 \cb1 The \'93link\'94 object is used with rel=\'94collection/nics\'94 to refer to a sub-collection to the VM holding the virtual network interfaces. The cluster link instead points to the cluster containing this VM by means of a \'93cluster\'94 object.
+\f0\fs24 \
+\
+
+\f1\fs18 Semantic relationships can be modeled either by an object link, or by a sub-collection. I believe that choosing the right way to represent a sub-collection is important to get a consistent API experience for the client. I would advocate using the following rules:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj
+\ls2\ilvl0\cf0 {\listtext	1.	}In case of a 1:N relationship, where the target object is 
+\b existentially dependent
+\b0  on the source object, I\'92d recommend to use a sub-collection. By \'93existentially dependent\'94 I mean that a target object cannot exist without its source. In database parlance, this would be a FOREIGN KEY relationship with an ON DELETE CASCADE. An example of such a relationship are the NICs that are associated with a VM.\
+{\listtext	2.	}In case of a 1:N relationship, where there is data that is associated with the link, I\'92d recommend to use a sub-collection. Note that we are talking about data here that is neither part of the source object, nor the target object. The resources in the sub-collection can hold the extra data. In this case, the data in the sub-resource would therefore be a merge of the data from the mapped object from the application data model, and link data.\
+{\listtext	3.	}In case of any other 1:N relationship, I\'92d recommend to use an object link.\
+{\listtext	4.	}In case of a N:M relationship, I\'92d recommend to use a sub-collection. The sub-collection can be defined initially to support the lookup direction that you most often need to follow. If you need to query both sides of the relationship often, then two sub-collections can be defined, one on each linked object.
+\f0\fs24 \
+\pard\pardeftab720\sa160\qj
+\cf0 \
+
+\f1\fs18 In my view, forms need to specify three pieces of information:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj
+\ls3\ilvl0\cf0 {\listtext	1.	}How to contact the target and format the input.\
+{\listtext	2.	}A list of all available input fields.\
+{\listtext	3.	}A list of constraints which which the input fields must comply.
+\f0\fs24 \
+\pard\tx560\pardeftab720\qj
+\cf0 \
+\
+\
+}

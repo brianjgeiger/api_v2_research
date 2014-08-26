@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fnil\fcharset0 HelveticaNeue-Light;\f2\fnil\fcharset0 HelveticaNeue-Medium;
+}
+{\colortbl;\red255\green255\blue255;\red83\green83\blue83;\red67\green67\blue67;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\deftab720
+\pard\pardeftab720\sa428
+{\field{\*\fldinst{HYPERLINK "http://bryanhelmig.com/your-api-consumers-arent-who-you-think-they-are/"}}{\fldrslt 
+\f0\b\fs64 \cf2 Your API Consumers Aren\'92t Who You Think They Are}}
+\f0\b\fs64 \cf3 \
+\pard\pardeftab720\sa320\qj
+
+\f1\i\b0\fs32 \cf3 This post is adapted from a talk I gave at APIdays SF, {\field{\*\fldinst{HYPERLINK "http://www.slideshare.net/bryanhelmig/your-api-consumers-arent-who-you-think-they-are"}}{\fldrslt \cf2 \ul \ulc2 view slides here.}}
+\i0 \
+At {\field{\*\fldinst{HYPERLINK "https://zapier.com/"}}{\fldrslt \cf2 \ul \ulc2 Zapier}}, we sit at a unique crossroads between APIs and lots of users. Because of our position, we\'92re noticing a shift in API consumption. While many of our users have no idea that everything they do on Zapier is powered by an API, many of them are becoming more aware of that fact. Consequently, they\'92re asking us for API advice, they\'92re pinging their vendors about API related limitations, and they\'92re starting to get comfortable with the idea that an API can be a powerful tool for their toolbox.\
+Traditionally, you\'92d expect most inquiries about APIs to be very technical: 
+\f2 How can I upload bulk attachments with multipart POST bodies?
+\f1  Increasingly, questions are becoming more like amateur Stack Overflow questions: 
+\f2 How do I hook the Microsoft Access into the REST?
+\f1  The users behind such questions aren\'92t tech-illiterate, they simply have no idea how to code and aren\'92t familiar with the lingo. They don\'92t really know where to start, but they want to know about your API.\
+
+\f2 This is awesome.
+\f1 \
+So who exactly are these users and what are their skill-sets? They defy universal categorization, but here are a handful of examples:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0\cf3 {\listtext	\'95	}The lone IT worker who has only ever replaced PC hardware and installed software before. Now they are tasked with setting up and migrating to their first cloud app.\
+{\listtext	\'95	}The tech-savvy blogger who knows how to install WordPress on shared hosting. They can, after much trial and error, tweak the HTML and CSS of their blog to suit their style.\
+{\listtext	\'95	}The small business owner who has cobbled together a powerful Excel spreadsheet to organize their business, but realizes it can\'92t scale past one or two employees.\
+\pard\pardeftab720\sa320\qj
+\cf3 The reason why non-coders are becoming interested in your API is actually quite simple: 
+\f2 APIs are the only means by which they could possibly implement some vital but missing feature.
+\f1  It is worth noting that these missing features are also very long-tail, which means that you, as the vendor, probably won\'92t add that functionality in the native app. While you\'92ve got the 90% use case nailed down, they require that last 10%.\
+All of these users are tech-savvy, but don\'92t code. All of these users are DIY\'92ers that invested a lot of time into getting your SaaS set up and working 
+\i almost
+\i0  perfectly. But they hit a wall, they started researching and without fail, they\'92ll find your API. Then what? The first thing they do is look at your docs just like any developer would, but then they suddenly feel one of two things: 
+\f2 empowered
+\f1  or 
+\f2 overwhelmed
+\f1 .\
+Before we can start addressing the issue of making APIs more accessible to those who cannot code, we need one more piece of information: what are the goals of these non-coders? What features are they missing? Unfortunately, because they are inherently long-tail features, there isn\'92t a single answer. But we can categorize them. Consider these common requests:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf3 {\listtext	\'95	}Can we copy records to another project?\
+{\listtext	\'95	}Can we import/export/backup our records via 
+\i insert format
+\i0 ?\
+{\listtext	\'95	}Can we move or modify a record after we apply a special tag?\
+{\listtext	\'95	}Can we get an overview email every night/week/month?\
+{\listtext	\'95	}etc\'85\
+\pard\pardeftab720\sa320\qj
+\cf3 In the absence of these features, the only other option is to perform this work by hand. That means wasted hours on work that could easily be automated. The features aren\'92t usually that complicated either, a slight remixing of basic CRUD operations usually does the trick.\
+We\'92ll call these sorts of features 
+\f2 CRUD automation
+\f1 .\
+So now that we\'92ve identified these non-coders and figured out what sorts of things they want do do, we\'92re left with two quintessential questions:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0\cf3 {\listtext	1.	}What can we do to help non-coders consume APIs?\
+{\listtext	2.	}What can we do to improve APIs for CRUD automation?\
+\pard\pardeftab720\sa320\qj
+\cf3 Just to set your mind in the direction: The answer to the first question addresses the 
+\f2 empowerment
+\f1  issue and revolves mostly around your API experience. The answer to the second question mostly revolves around reducing complexity and common API \'93gotchas\'94.\
+
+\i Also, these ideas can make your API more joyful to user for even the most seasoned of neck-beards.
+\i0 \
+Let\'92s get started.\
+\pard\pardeftab720\sa398
+
+\f0\b\fs48 \cf3 What can we do to help non-coders consume APIs?\
+\pard\pardeftab720\sa320\qj
+
+\f1\b0\fs32 \cf3 First up is 
+\f2 easier documentation
+\f1 . Note I didn\'92t say 
+\i better
+\i0  documentation, because that can be highly subjective and varies with the audience. The best documentation for an extremely talented developer might just give them the facts as fast as possible: 
+\i here\'92s how to auth, here are the endpoints
+\i0 . We\'92re not suggesting that here.\
+Instead, 
+\f2 focus on the introduction
+\f1  that your landing page gives to your API. This is the point where you need to be very encouraging and talk about use cases, individual success stories and other humanizing bits. Skip the jargon. Again, you want to 
+\f2 empower
+\f1  the user and open their eyes to the possibilities that lay before them.\
+Next, 
+\f2 provide a wedge
+\f1  by spoon feeding some great \'93hello world!\'94 examples to the user as soon as possible. These sorts of DIYers are the kind that take chances on tech: jailbreaking their smart phone, editing their WordPress theme\'92s HTML & CSS, and creating crazy spreadsheet formulas. If you can get them to upload your simple PHP example to their shared hosting, they can iterate from there. With enough wind at their back, they\'92ll even brute force a solution. So, give them a good wedge and they\'92ll surprise you every time.\
+Finally, 
+\f2 provide live data
+\f1  right in the docs. Their experience with your app so far is via the standard web UI which doesn\'92t always map cleanly to your API resources or endpoints. As soon as you inline some examples of real data they\'92ll recognize, they can make that connection 
+\i much
+\i0  faster.\
+Second up is 
+\f2 multiple auth mechanisms
+\f1 . This will almost always be the first thing a user has to grok and implement before they can even get started. So it might be the most vital of technical details. If they can get past this, things are looking good!\
+The best thing you can do is 
+\f2 skip OAuth
+\f1  and provide API key or basic authentication. Don\'92t get me wrong, OAuth is wonderful for platforms, and if you are doing a platform where users can publish apps you need to do OAuth. But for your average lone wolf, access tokens and refresh tokens are rather annoying and confusing, especially when they expire! At the very least generate access tokens and don\'92t expire them, but you\'92d be better served to just do API keys or basic authentication too.\
+Additionally, make your example code snippets 
+\f2 live code
+\f1 . That means you hand them a loaded gun in the form of code that will do something on their account when ran. Insert the real tokens right into the the code.\
+Third up is 
+\f2 useful error messages
+\f1 , which is 
+\i not
+\i0  the same as 
+\i descriptive error messages
+\i0 . This just means you shouldn\'92t just tell the user what went wrong, but what they should do to fix it.\
+Consider a 
+\i 401: Not Authenticated
+\i0  error, that alone doesn\'92t really help a really green user move forward. Instead, 
+\i 401: Could not authenticate this request. Try adding an API key to the URL like this: https://:current-url:?api_key=123abc
+\i0  gives a much better next step for the users. Of course, if they just paste in the example (and invalid) key, tell them where to get the key next!\
+Also, always 
+\f2 serialize your errors the same way
+\f1 . This may seem like common sense, but I\'92ve seen these three errors more than I\'92d like to admit:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls4\ilvl0\cf3 {\listtext	1.	}Sometimes a list of errors, sometimes a single string message.\
+{\listtext	2.	}No matching URL routes giving HTML 404s instead of JSON/XML.\
+{\listtext	3.	}500 errors giving HTML error pages instead of JSON/XML.\
+\pard\pardeftab720\sa320\qj
+\cf3 The final piece of advice to help non-coders with APIs is a little out there: 
+\f2 don\'92t do what I say, do what I mean
+\f1 . Basically, if you can write a sufficiently intelligent and prescriptive error message, you could have probably just done what the user had meant to do in the first place. It can get tricky, but as you write the really nice error messages, just think: 
+\i could I just do this for them?
+\i0  You can only do this in some special cases; you can\'92t bend the rules for something like authentication.\
+\pard\pardeftab720\sa398
+
+\f0\b\fs48 \cf3 What can we do to improve APIs for CRUD automation?\
+\pard\pardeftab720\sa320\qj
+
+\f1\b0\fs32 \cf3 A common theme here will be 
+\f2 complexity reduction
+\f1 . Any non-coder is going to have a hard time managing complexity, especially around data manipulation and traversing. Remember, even syntax is going to trip them up quite a bit, so the more your API can abstract away, the more they can skip coding and continue playing.\
+First up are 
+\f2 flexible endpoints
+\f1  which are a must for enabling efficient automation. The reasoning is fairly straight forward: filtering, paging, and merging data from an API in code is a cumbersome and error prone process even in the best of situations.\
+Also, the long-tail nature of these automation opportunities mean they won\'92t be easily predicted. So if you can provide a slew of query-string arguments that help a user only get at the data they want, you\'92ll make their lives much easier. Besides, an extra 
+\f2 WHERE
+\f1  (for filter) or 
+\f2 JOIN
+\f1  (for inlining) is much more efficient than paging through every page of results or merging extra resources from extra API calls. Your servers will thank you.\
+As a final point around flexibility: a majority of users won\'92t know a lot about big O notation. That means they are a few nested for-loops away from attempting to make more API calls than there are atoms in the known universe. Just inline the related resources.\
+Second up are 
+\f2 real time
+\f1  endpoints. At first glance, a real time enabled API seems to 
+\i add
+\i0  complexity, but that is only because you are looking at it through your own lens. Real time (if done correctly) is 
+\i vastly
+\i0  simpler for API consumers. The complexity is all on your side.\
+The reason for all the complexity is because naive read operations involve 
+\f2 polling
+\f1  if you want to identify new data. Polling means infrastructure (via crons or queues) and deduplication logic of some sort. Worse, it is basically hidden complexity; a user will get started and be suddenly blindsided when they realize they need to filter out data they\'92ve already seen.\
+
+\f2 No matter how you slice it, polling sucks
+\f1 . It wastes resources, adds complexity, and is slow. Let\'92s just agree to kill polling once and for all.\
+The solution has been with us for a long time: 
+\f2 webhooks
+\f1 . Not only should you be able to create them in the GUI (and as many as you want, not just one), you should be able to create them via the API too. Plus webhooks are dead simple: point them at some PHP script and capture the POST body. They make for very nice \'93Hello world!\'94 examples.\
+Just 
+\f2 skip long-polling and websockets
+\f1  for now, they just add complexity and infrastructure on both sides. And until node.js or event based programming is de-facto on shared hosting it is unlikely to change.\
+Third up and final point for making APIs easier to automate, 
+\f2 provide PATCH and upsert
+\f1  capabilities.\
+
+\f2 PATCH
+\f1  simply removes the null value gotcha if you forget to include an original value during a PUT update. The particularly nasty bit about a PUT nulling values is that the discovery is often delayed and the rogue PUT is hard to identify as the source. Lots of APIs already do this with PUT, but it is nice to be explicit about it no matter what you decide on.\
+
+\f2 Upsert
+\f1  removes the complexity around managing uniqueness in an API. It sort of wraps the whole 
+\i get or create
+\i0  pattern that is fairly common in ORMs: it will either insert or update a record based on some included unique field (often email).\
+Again, we want to handle the complexity of insert or updating records so the user doesn\'92t have to.\
+\pard\pardeftab720\sa398
+
+\f0\b\fs48 \cf3 Who is at the end of your API requests?\
+\pard\pardeftab720\sa320\qj
+
+\f1\b0\fs32 \cf3 Before we wrap up, its worth considering that even if a brilliant coder did the grunt work of building a feature based on an API, it is possible a less skilled coder will attempt to expand on or will inherit that body of work.\
+Also, it is unlikely that the end-user of said API enabled feature is a coder either, so when things break, the above tips can be the difference between \'93it doesn\'92t work\'94 and \'93ah, I think I can fix that\'94.\
+As a parting thought, there are a 
+\i lot
+\i0  more non-coding but tech-savvy users out there than there are coders. This deviation towards the mean is something to celebrate and embrace.\
+Remember, your API consumers aren\'92t always who you think they are.}

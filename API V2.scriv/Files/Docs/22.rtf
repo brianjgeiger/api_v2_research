@@ -1,0 +1,600 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red49\green49\blue49;\red77\green77\blue77;\red28\green89\blue175;
+\red234\green234\blue234;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid701\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid8}
+{\list\listtemplateid9\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid801\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid9}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}{\listoverride\listid9\listoverridecount0\ls9}}
+\deftab720
+\pard\pardeftab720\sa428
+
+\f0\b\fs64 \cf2 Best Practices for Designing a Pragmatic RESTful API\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Your data model has started to stabilize and you're in a position to create a public API for your web app. You realize it's hard to make significant changes to your API once it's released and want to get as much right as possible up front. Now, the internet has no shortage on opinions on API design. But, since there's no one widely adopted standard that works in all cases, you're left with a bunch of choices: What formats should you accept? How should you authenticate? Should your API be versioned?\
+In designing an API for {\field{\*\fldinst{HYPERLINK "http://www.supportfu.com/"}}{\fldrslt \cf4 \ul \ulc4 SupportFu}} (a {\field{\*\fldinst{HYPERLINK "http://www.supportfu.com/zendesk-alternative"}}{\fldrslt \cf4 \ul \ulc4 Zendesk Alternative}}), I've tried to come up with pragmatic answers to these questions. My goal is for the {\field{\*\fldinst{HYPERLINK "http://dev.supportfu.com/api/v1"}}{\fldrslt \cf4 \ul \ulc4 SupportFu API}} to be easy to use, easy to adopt and flexible enough to {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Eating_your_own_dog_food"}}{\fldrslt \cf4 \ul \ulc4 dogfood}} for our own user interfaces.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 TL;DR\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf4 \ul \ulc4 An API is a user interface for a developer - so put some effort into making it pleasant\cf3 \ulnone \uc0\u8232 \cf4 \ul Use RESTful URLs and actions\cf3 \ulnone \uc0\u8232 \cf4 \ul Use SSL everywhere, no exceptions\cf3 \ulnone \uc0\u8232 \cf4 \ul An API is only as good as its documentation - so have great documentation\cf3 \ulnone \uc0\u8232 \cf4 \ul Version via the URL, not via headers\cf3 \ulnone \uc0\u8232 \cf4 \ul Use query parameters for advanced filtering, sorting & searching\cf3 \ulnone \uc0\u8232 \cf4 \ul Provide a way to limit which fields are returned from the API\cf3 \ulnone \uc0\u8232 \cf4 \ul Return something useful from POST, PATCH & PUT requests\cf3 \ulnone \uc0\u8232 \cf4 \ul HATEOAS isn't practical just yet\cf3 \ulnone \uc0\u8232 \cf4 \ul Use JSON where possible, XML only if you have to\cf3 \ulnone \uc0\u8232 \cf4 \ul You should use camelCase with JSON, but snake_case is 20% easier to read\cf3 \ulnone \uc0\u8232 \cf4 \ul Pretty print by default & ensure gzip is supported\cf3 \ulnone \uc0\u8232 \cf4 \ul Don't use response envelopes by default\cf3 \ulnone \uc0\u8232 \cf4 \ul Consider using JSON for POST, PUT and PATCH request bodies\cf3 \ulnone \uc0\u8232 \cf4 \ul Paginate using Link headers\cf3 \ulnone \uc0\u8232 \cf4 \ul Provide a way to autoload related resource representations\cf3 \ulnone \uc0\u8232 \cf4 \ul Provide a way to override the HTTP method\cf3 \ulnone \uc0\u8232 \cf4 \ul Provide useful response headers for rate limiting\cf3 \ulnone \uc0\u8232 \cf4 \ul Use token based authentication, transported over OAuth2 where delegation is needed\cf3 \ulnone \uc0\u8232 \cf4 \ul Include response headers that facilitate caching\cf3 \ulnone \uc0\u8232 \cf4 \ul Define a consumable error payload\cf3 \ulnone \uc0\u8232 \cf4 \ul Effectively use HTTP Status codes\cf3 \ulnone \uc0\u8232 \u8232 ... or just skip to the bottom and 
+\b \cf4 signup for updates
+\b0 \cf3 \
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Key requirements for the API\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Many of the API design opinions found on the web are academic discussions revolving around subjective interpretations of fuzzy standards as opposed to what makes sense in the real world. My goal with this post is to describe best practices for a pragmatic API designed for today's web applications. I make no attempt to satisfy a standard if it doesn't feel right. To help guide the decision making process, I've written down some requirements that the API must strive for:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls1\ilvl0\cf3 {\listtext	\'95	}It should use web standards where they 
+\i make sense
+\i0 \
+{\listtext	\'95	}It should be friendly to the developer and be explorable via a browser address bar\
+{\listtext	\'95	}It should be simple, intuitive and consistent to make adoption not only easy but pleasant\
+{\listtext	\'95	}It should provide enough flexibility to power majority of the {\field{\*\fldinst{HYPERLINK "http://www.supportfu.com/"}}{\fldrslt \cf4 \ul SupportFu}} UI\
+{\listtext	\'95	}It should be efficient, while maintaining balance with the other requirements\
+\pard\pardeftab720\sa384
+\cf3 An API is a developer's UI - just like any UI, it's important to ensure the user's experience is thought out carefully!\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Use RESTful URLs and actions\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 If there's one thing that has gained wide adoption, it's RESTful principles. These were first introduced by {\field{\*\fldinst{HYPERLINK "http://roy.gbiv.com/"}}{\fldrslt \cf4 \ul Roy Felding}} in {\field{\*\fldinst{HYPERLINK "http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"}}{\fldrslt \cf4 \ul Chapter 5}} of his dissertation on {\field{\*\fldinst{HYPERLINK "http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm"}}{\fldrslt \cf4 \ul network based software architectures}}.\
+The key principles of {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Representational_state_transfer"}}{\fldrslt \cf4 \ul REST}} involve separating your API into logical resources. These resources are manipulated using HTTP requests where the method (GET, POST, PUT, PATCH, DELETE) has specific meaning.\
+\pard\pardeftab720\sa384
+
+\b \cf3 But what can I make a resource?
+\b0  Well, these should be {\field{\*\fldinst{HYPERLINK "https://blog.apigee.com/detail/restful_api_design_nouns_are_good_verbs_are_bad"}}{\fldrslt \cf4 \ul nouns (not verbs!)}} that make sense from the perspective of the API consumer. Although your internal models may map neatly to resources, it isn't necessarily a one-to-one mapping. The key here is to not leak irrelevant implementation details out to your API! Some of SupportFu's nouns would be 
+\i ticket
+\i0 , 
+\i user
+\i0  and 
+\i group
+\i0 .\
+Once you have your resources defined, you need to identify what actions apply to them and how those would map to your API. RESTful principles provide strategies to handle {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Create,_read,_update_and_delete"}}{\fldrslt \cf4 \ul CRUD}} actions using HTTP methods mapped as follows:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls2\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}GET /tickets
+\f0\fs38 \cb1  - Retrieves a list of tickets\
+\ls2\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}GET /tickets/12
+\f0\fs38 \cb1  - Retrieves a specific ticket\
+\ls2\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}POST /tickets
+\f0\fs38 \cb1  - Creates a new ticket\
+\ls2\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}PUT /tickets/12
+\f0\fs38 \cb1  - Updates ticket #12\
+\ls2\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}PATCH /tickets/12
+\f0\fs38 \cb1  - Partially updates ticket #12\
+\ls2\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}DELETE /tickets/12
+\f0\fs38 \cb1  - Deletes ticket #12\
+\pard\pardeftab720\sa384
+\cf3 The great thing about REST is that you're leveraging existing HTTP methods to implement significant functionality on just a single 
+\f1\fs34 \cb5 /tickets
+\f0\fs38 \cb1  endpoint. There are no method naming conventions to follow and the URL structure is clean & clear. 
+\i REST FTW!
+\i0 \
+\pard\pardeftab720\sa384
+
+\b \cf3 Should the endpoint name be singular or plural?
+\b0  The keep-it-simple rule applies here. Although your inner-grammatician will tell you it's wrong to describe a single instance of a resource using a plural, the pragmatic answer is to keep the URL format consistent and always use a plural. Not having to deal with odd pluralization (person/people, goose/geese) makes the life of the API consumer better and is easier for the API provider to implement (as most modern frameworks will natively handle 
+\f1\fs34 \cb5 /tickets
+\f0\fs38 \cb1  and 
+\f1\fs34 \cb5 /tickets/12
+\f0\fs38 \cb1  under a common controller).\
+
+\b But how do you deal with relations?
+\b0  If a relation can only exist within another resource, RESTful principles provide useful guidance. Let's look at this with an example. A ticket in {\field{\*\fldinst{HYPERLINK "http://www.supportfu.com/"}}{\fldrslt \cf4 \ul SupportFu}} consists of a number of messages. These messages can be logically mapped to the 
+\f1\fs34 \cb5 /tickets
+\f0\fs38 \cb1  endpoint as follows:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls3\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}GET /tickets/12/messages
+\f0\fs38 \cb1  - Retrieves list of messages for ticket #12\
+\ls3\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}GET /tickets/12/messages/5
+\f0\fs38 \cb1  - Retrieves message #5 for ticket #12\
+\ls3\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}POST /tickets/12/messages
+\f0\fs38 \cb1  - Creates a new message in ticket #12\
+\ls3\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}PUT /tickets/12/messages/5
+\f0\fs38 \cb1  - Updates message #5 for ticket #12\
+\ls3\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}PATCH /tickets/12/messages/5
+\f0\fs38 \cb1  - Partially updates message #5 for ticket #12\
+\ls3\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}DELETE /tickets/12/messages/5
+\f0\fs38 \cb1  - Deletes message #5 for ticket #12\
+\pard\pardeftab720\sa384
+\cf3 Alternatively, if a relation can exist independently of the resource, it makes sense to just include an identifier for it within the output representation of the resource. The API consumer would then have to hit the relation's endpoint. However, if the relation is commonly requested alongside the resource, the API could offer functionality to automatically embed the relation's representation and avoid the second hit to the API.\
+\pard\pardeftab720\sa384
+
+\b \cf3 What about actions that don't fit into the world of CRUD operations?
+\b0 \
+This is where things can get fuzzy. There are a number of approaches:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls4\ilvl0\cf3 {\listtext	1.	}Restructure the action to appear like a field of a resource. This works if the action doesn't take parameters. For example an 
+\i activate
+\i0  action could be mapped to a boolean 
+\f1\fs34 \cb5 activated
+\f0\fs38 \cb1  field and updated via a PATCH to the resource.\
+{\listtext	2.	}Treat it like a sub-resource with RESTful principles. For example, GitHub's API lets you {\field{\*\fldinst{HYPERLINK "http://developer.github.com/v3/gists/#star-a-gist"}}{\fldrslt \cf4 \ul star a gist}} with 
+\f1\fs34 \cb5 PUT /gists/:id/star
+\f0\fs38 \cb1  and {\field{\*\fldinst{HYPERLINK "http://developer.github.com/v3/gists/#unstar-a-gist"}}{\fldrslt \cf4 \ul unstar}} with 
+\f1\fs34 \cb5 DELETE /gists/:id/star
+\f0\fs38 \cb1 .\
+{\listtext	3.	}Sometimes you really have no way to map the action to a sensible RESTful structure. For example, a multi-resource search doesn't really make sense to be applied to a specific resource's endpoint. In this case, 
+\f1\fs34 \cb5 /search
+\f0\fs38 \cb1  would make the most sense even though it isn't a resource. This is OK - just do what's right from the perspective of the API consumer and make sure it's documented clearly to avoid confusion.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 SSL everywhere - all the time\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Always use SSL. No exceptions. Today, your web APIs can get accessed from anywhere there is internet (like libraries, coffee shops, airports among others). Not all of these are secure. Many don't encrypt communications at all, allowing for easy eavesdropping or impersonation if authentication credentials are hijacked.\
+Another advantage of always using SSL is that guaranteed encrypted communications simplifies authentication efforts - you can get away with simple access tokens instead of having to sign each API request.\
+One thing to watch out for is non-SSL access to API URLs. Do 
+\b not
+\b0  redirect these to their SSL counterparts. Throw a hard error instead! The last thing you want is for poorly configured clients to send requests to an unencrypted endpoint, just to be silently redirected to the actual encrypted endpoint.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Documentation\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 An API is only as good as its documentation. The docs should be easy to find and publically accessible. Most developers will check out the docs before attempting any integration effort. When the docs are hidden inside a PDF file or require signing in, they're not only difficult to find but also not easy to search.\
+\
+The docs should show examples of complete request/response cycles. Preferably, the requests should be pastable examples - either links that can be pasted into a browser or curl examples that can be pasted into a terminal. {\field{\*\fldinst{HYPERLINK "http://developer.github.com/v3/gists/#list-gists"}}{\fldrslt \cf4 \ul GitHub}} and {\field{\*\fldinst{HYPERLINK "https://stripe.com/docs/api"}}{\fldrslt \cf4 \ul Stripe}} do a great job with this.\
+Once you release a public API, you've committed to not breaking things without notice. The documentation must include any deprecation schedules and details surrounding externally visible API updates. Updates should be delivered via a blog (i.e. a changelog) or a mailing list (preferably both!).\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Versioning\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Always version your API. Versioning helps you iterate faster and prevents invalid requests from hitting updated endpoints. It also helps smooth over any major API version transitions as you can continue to offer old API versions for a period of time.\
+There are mixed opinions around whether an {\field{\*\fldinst{HYPERLINK "http://stackoverflow.com/questions/389169/best-practices-for-api-versioning"}}{\fldrslt \cf4 \ul API version should be included in the URL or in a header}}. Academically speaking, it should probably be in a header. However, the version needs to be in the URL to ensure browser explorability of the resources across versions (remember the API requirements specified at the top of this post?).\
+I'm a big fan of the {\field{\*\fldinst{HYPERLINK "https://stripe.com/docs/api#versioning"}}{\fldrslt \cf4 \ul approach that Stripe has taken to API versioning}} - the URL has a major version number (v1), but the API has date based sub-versions which can be chosen using a custom HTTP request header. In this case, the major version provides structural stability of the API as a whole while the sub-versions accounts for smaller changes (field deprecations, endpoint changes, etc).\
+An API is never going to be completely stable. Change is inevitable. What's important is how that change is managed. Well documented and announced multi-month deprecation schedules can be an acceptable practice for many APIs. It comes down to what is reasonable given the industry and possible consumers of the API.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Result filtering, sorting & searching\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 It's best to keep the base resource URLs as lean as possible. Complex result filters, sorting requirements and advanced searching (when restricted to a single type of resource) can all be easily implemented as query parameters on top of the base URL. Let's look at these in more detail:\
+\pard\pardeftab720\sa384
+
+\b \cf3 Filtering
+\b0 : Use a unique query parameter for each field that implements filtering. For example, when requesting a list of tickets from the 
+\f1\fs34 \cb5 /tickets
+\f0\fs38 \cb1  endpoint, you may want to limit these to only those in the open state. This could be accomplished with a request like 
+\f1\fs34 \cb5 GET /tickets?state=open
+\f0\fs38 \cb1 . Here, 
+\f1\fs34 \cb5 state
+\f0\fs38 \cb1  is a query parameter that implements a filter.\
+
+\b Sorting
+\b0 : Similar to filtering, a generic parameter 
+\f1\fs34 \cb5 sort
+\f0\fs38 \cb1  can be used to describe sorting rules. Accommodate complex sorting requirements by letting the sort parameter take in list of comma separated fields, each with a possible unary negative to imply descending sort order. Let's look at some examples:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls5\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}GET /tickets?sort=-priority
+\f0\fs38 \cb1  - Retrieves a list of tickets in descending order of priority\
+\ls5\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}GET /tickets?sort=-priority,created_at
+\f0\fs38 \cb1  - Retrieves a list of tickets in descending order of priority. Within a specific priority, older tickets are ordered first\
+\pard\pardeftab720\sa384
+
+\b \cf3 Searching
+\b0 : Sometimes basic filters aren't enough and you need the power of full text search. Perhaps you're already using {\field{\*\fldinst{HYPERLINK "http://www.elasticsearch.org/"}}{\fldrslt \cf4 \ul ElasticSearch}} or another {\field{\*\fldinst{HYPERLINK "http://lucene.apache.org/"}}{\fldrslt \cf4 \ul Lucene}} based search technology. When full text search is used as a mechanism of retrieving resource instances for a specific type of resource, it can be exposed on the API as a query parameter on the resource's endpoint. Let's say 
+\f1\fs34 \cb5 q
+\f0\fs38 \cb1 . Search queries should be passed straight to the search engine and API output should be in the same format as a normal list result.\
+Combining these together, we can build queries like:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls6\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}GET /tickets?sort=-updated_at
+\f0\fs38 \cb1  - Retrieve recently updated tickets\
+\ls6\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}GET /tickets?state=closed&sort=-updated_at
+\f0\fs38 \cb1  - Retrieve recently closed tickets\
+\ls6\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}GET /tickets?q=return&state=open&sort=-priority,created_at
+\f0\fs38 \cb1  - Retrieve the highest priority open tickets mentioning the word 'return'\
+\pard\pardeftab720\sa384
+
+\b \cf3 Aliases for common queries
+\b0 \
+To make the API experience more pleasant for the average consumer, consider packaging up sets of conditions into easily accessible RESTful paths. For example, the recently closed tickets query above could be packaged up as 
+\f1\fs34 \cb5 GET /tickets/recently_closed
+\f0\fs38 \cb1 \
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Limiting which fields are returned by the API\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 The API consumer doesn't always need the full representation of a resource. The ability select and chose returned fields goes a long way in letting the API consumer minimize network traffic and speed up their own usage of the API.\
+Use a 
+\f1\fs34 \cb5 fields
+\f0\fs38 \cb1  query parameter that takes a comma separated list of fields to include. For example, the following request would retrieve just enough information to display a sorted listing of open tickets:\
+\pard\pardeftab720\sa384
+
+\f1\fs34 \cf3 \cb5 GET /tickets?fields=id,subject,customer_name,updated_at&state=open&sort=-updated_at
+\f0\fs38 \cb1 \
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Updates & creation should return a resource representation\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 A PUT, POST or PATCH call may make modifications to fields of the underlying resource that weren't part of the provided parameters (for example: created_at or updated_at timestamps). To prevent an API consumer from having to hit the API again for an updated representation, have the API return the updated (or created) representation as part of the response.\
+In case of a POST that resulted in a creation, use a {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5"}}{\fldrslt \cf4 \ul HTTP 201 status code}} and include a {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30"}}{\fldrslt \cf4 \ul Location header}} that points to the URL of the new resource.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Should you HATEOAS?\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 There are a lot of mixed opinions as to whether the API consumer should create links or whether links should be provided to the API. RESTful design principles specify {\field{\*\fldinst{HYPERLINK "https://blog.apigee.com/detail/hateoas_101_introduction_to_a_rest_api_style_video_slides"}}{\fldrslt \cf4 \ul HATEOAS}} which roughly states that interaction with an endpoint should be defined within metadata that comes with the output representation and not based on out-of-band information.\
+Although the web generally works on HATEOAS type principles (where we go to a website's front page and follow links based on what we see on the page), I don't think we're ready for HATEOAS on APIs just yet. When browsing a website, decisions on what links will be clicked are made at run time. However, with an API, decisions as to what requests will be sent are made when the API integration code is written, not at run time. Could the decisions be deferred to run time? Sure, however, there isn't much to gain going down that route as code would still not be able to handle significant API changes without breaking. That said, I think HATEOAS is promising but not ready for prime time just yet. Some more effort has to be put in to define standards and tooling around these principles for its potential to be fully realized.\
+For now, it's best to assume the user has access to the documentation & include resource identifiers in the output representation which the API consumer will use when crafting links. There are a couple of advantages of sticking to identifiers - data flowing over the network is minimized and the data stored by API consumers is also minimized (as they are storing small identifiers as opposed to URLs that contain identifiers).\
+Also, given this post advocates version numbers in the URL, it makes more sense in the long term for the API consumer to store resource identifiers as opposed to URLs. After all, the identifier is stable across versions but the URL representing it is not!\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 JSON only responses\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 It's time to leave XML behind in APIs. It's verbose, it's hard to parse, it's hard to read, its data model isn't compatible with how most programming languages model data and its extendibility advantages are irrelevant when your output representation's primary needs are serialization from an internal representation.\
+I'm not going to put much effort into explaining the above breathful as it looks like others ({\field{\*\fldinst{HYPERLINK "http://apiblog.youtube.com/2012/12/the-simpler-yet-more-powerful-new.html"}}{\fldrslt \cf4 \ul YouTube}}, {\field{\*\fldinst{HYPERLINK "https://dev.twitter.com/docs/api/1.1/overview#JSON_support_only"}}{\fldrslt \cf4 \ul Twitter}} & {\field{\*\fldinst{HYPERLINK "http://developers.blog.box.com/2012/12/14/v2_api/"}}{\fldrslt \cf4 \ul Box}}) have already started the XML exodus.\
+I'll just leave you the following Google Trends chart ({\field{\*\fldinst{HYPERLINK "http://www.google.com/trends/explore?q=xml+api#q=xml%20api%2C%20json%20api&cmpt=q"}}{\fldrslt \cf4 \ul XML API vs JSON API}}) as food for thought:\
+\pard\pardeftab720\sa384\qc
+
+\f2\fs24 \cf0 {\*\shppict {\pict {\*\nisusfilename 201305-xml-vs-json-api} \picw817 \pich237 \picwgoal12255 \pichgoal3555 \pngblip 89504e470d0a1a0a0000000d4948445200000331000000ed08060000008f82fb490000000467414d410000b18f0bfc610500000a41694343504943432050726f66696c650000480d9d96775453d91687cfbd37bdd012222025f41a7a0920d23b48150451894980500286842676440546141129566454c0014787226345140b838262d709f21050c6c1514445e5dd8c6b09efad35f3de9afdc759dfd9e7b7d7d967ef7dd7ba0050fc8204c27458018034a15814eeebc15c1213cbc4f7021810010e5801c0e166660447f84402d4fcbd3d9999a848c6b3f6ee2e8064bbdb2cbf502673d6ff7f912237432406000a45d5363c7e2617e5029453b3c51932ff04caf495293286313216a109a2ac22e3c4af6cf6a7e62bbbc9989726e4a11a59ce19bc349e8cbb50de9a25e1a38c04a15c9825e067a37c0765bd54499a00e5f728d3d3f89c4c003014995fcce726a16c8932451419ee89f202000894c439bc720e8bf939689e0078a667e48a04894962a611d79869e5e8c866faf1b353f962312b94c34de188784ccff4b40c8e301780af6f96450125596d996891edad1ceded59d6e668f9bfd9df1e7e53fd3dc87afb55f126eccf9e418c9e59df6cecac2fbd1600f6245a9b1db3be955500b46d0640e5e1ac4fef2000f20500b4de9cf31e866c5e92c4e20c270b8becec6c73019f6b2e2be837fb9f826fcabf8639f799cbeefb563ba6173f81234915336545e5a6a7a64b44cccc0c0e97cf64fdf710ffe3c03969cdc9c32c9c9fc017f185e85551e89409848968bb853c8158902e640a847fd5e17f18362707197e9d6b1468755f007d853950b84907c86f3d00432303246e3f7a027deb5b10310ac8bebc68ad91af738f327afee7fa1f0b5c8a6ee14c412253e6f60c8f647225a22c19a3df846cc10212900774a00a34812e30022c600d1c80337003de2000848048100396032e4802694004b2413ed8000a4131d80176836a7000d4817ad0044e823670065c0457c00d700b0c8047400a86c14b3001de81690882f01015a241aa9016a40f9942d6101b5a0879434150381403c5438990109240f9d026a8182a83aaa143503df423741aba085d83faa007d0203406fd017d84119802d3610dd800b680d9b03b1c0847c2cbe04478159c0717c0dbe14ab8163e0eb7c217e11bf0002c855fc2930840c80803d14658081bf144429058240111216b9122a402a9459a900ea41bb98d489171e4030687a161981816c619e387598ce1625661d6624a30d5986398564c17e63666103381f982a562d5b1a65827ac3f760936119b8d2dc456608f605bb097b103d861ec3b1c0ec7c019e21c707eb8185c326e35ae04b70fd78cbb80ebc30de126f178bc2ade14ef820fc173f0627c21be0a7f1c7f1edf8f1fc6bf2790095a046b820f219620246c2454101a08e708fd8411c2345181a84f7422861079c45c6229b18ed841bc491c264e93144986241752242999b48154496a225d263d26bd2193c93a6447721859405e4fae249f205f250f923f50942826144f4a1c4542d94e394ab94079407943a5520da86ed458aa98ba9d5a4fbd447d4a7d2f47933397f397e3c9ad93ab916b95eb977b254f94d79777975f2e9f275f217f4afea6fcb80251c140c15381a3b056a146e1b4c23d8549459aa2956288629a62896283e235c55125bc928192b7124fa940e9b0d225a5211a42d3a579d2b8b44db43ada65da301d4737a4fbd393e9c5f41fe8bdf4096525655be528e51ce51ae5b3ca5206c23060f8335219a58c938cbb8c8ff334e6b9cfe3cfdb36af695effbc2995f92a6e2a7c952295669501958faa4c556fd514d59daa6daa4fd4306a266a616ad96afbd52eab8dcfa7cf779ecf9d5f34ffe4fc87eab0ba897ab8fa6af5c3ea3dea931a9a1abe1a191a551a9734c635199a6e9ac99ae59ae734c7b4685a0bb5045ae55ae7b55e309599eecc546625b38b39a1adaeeda72dd13ea4ddab3dad63a8b35867a34eb3ce135d922e5b3741b75cb75377424f4b2f582f5faf51efa13e519fad9fa4bf47bf5b7fcac0d020da608b419bc1a8a18aa1bf619e61a3e16323aa91abd12aa35aa33bc63863b6718af13ee35b26b0899d4992498dc94d53d8d4de5460bacfb4cf0c6be6682634ab35bbc7a2b0dc5959ac46d6a039c33cc87ca3799bf92b0b3d8b588b9d16dd165f2ced2c532deb2c1f59295905586db4eab0fac3dac49a6b5d637dc7866ae363b3cea6dde6b5ada92ddf76bfed7d3b9a5db0dd16bb4ebbcff60ef622fb26fb31073d877887bd0ef7d8747628bb847dd511ebe8e1b8cef18ce307277b27b1d349a7df9d59ce29ce0dcea30b0c17f017d42d1872d171e1b81c72912e642e8c5f7870a1d455db95e35aebfacc4dd78de776c46dc4ddd83dd9fdb8fb2b0f4b0f91478bc794a793e71acf0b5e8897af579157afb792f762ef6aefa73e3a3e893e8d3e13be76beab7d2ff861fd02fd76faddf3d7f0e7fad7fb4f043804ac09e80aa404460456073e0b320912057504c3c101c1bb821f2fd25f245cd4160242fc4376853c09350c5d15fa73182e2c34ac26ec79b855787e7877042d62454443c4bb488fc8d2c8478b8d164b167746c947c545d5474d457b4597454b97582c59b3e4468c5a8c20a63d161f1b157b247672a9f7d2dd4b87e3ece20ae3ee2e335c96b3ecda72b5e5a9cbcfae905fc159712a1e1b1f1ddf10ff8913c2a9e54caef45fb977e504d793bb87fb92e7c62be78df15df865fc91049784b284d14497c45d896349ae491549e3024f41b5e075b25ff281e4a9949094a32933a9d1a9cd6984b4f8b4d34225618ab02b5d333d27bd2fc334a33043baca69d5ee5513a240d1914c28735966bb988efe4cf5488c249b2583590bb36ab2de6747659fca51cc11e6f4e49ae46ecb1dc9f3c9fb7e356635777567be76fe86fcc135ee6b0ead85d6ae5cdbb94e775dc1bae1f5beeb8f6d206d48d9f0cb46cb8d651bdf6e8aded451a051b0be6068b3efe6c642b94251e1bd2dce5b0e6cc56c156ceddd66b3ad6adb97225ed1f562cbe28ae24f25dc92ebdf597d57f9ddccf684edbda5f6a5fb77e0760877dcdde9baf3589962595ed9d0aee05dade5ccf2a2f2b7bb57ecbe56615b71600f698f648fb432a8b2bd4aaf6a47d5a7eaa4ea811a8f9ae6bdea7bb7ed9ddac7dbd7bfdf6d7fd3018d03c5073e1e141cbc7fc8f7506bad416dc561dce1acc3cfeba2eababf677f5f7f44ed48f191cf478547a5c7c28f75d53bd4d737a8379436c28d92c6b1e371c76ffde0f5437b13abe95033a3b9f804382139f1e2c7f81fef9e0c3cd9798a7daae927fd9ff6b6d05a8a5aa1d6dcd689b6a436697b4c7bdfe980d39d1dce1d2d3f9bff7cf48cf6999ab3ca674bcf91ce159c9b399f777ef242c685f18b8917873a57743ebab4e4d29daeb0aedecb8197af5ef1b972a9dbbdfbfc5597ab67ae395d3b7d9d7dbded86fd8dd61ebb9e965fec7e69e9b5ef6dbde970b3fd96e3ad8ebe057de7fa5dfb2fdef6ba7de58eff9d1b038b06faee2ebe7bff5edc3de97ddefdd107a90f5e3fcc7a38fd68fd63ece3a2270a4f2a9eaa3fadfdd5f8d766a9bdf4eca0d760cfb388678f86b8432fff95f9af4fc305cfa9cf2b46b446ea47ad47cf8cf98cdd7ab1f4c5f0cb8c97d3e385bf29feb6f795d1ab9f7e77fbbd6762c9c4f06bd1eb993f4adea8be39fad6f66de764e8e4d37769efa6a78adeabbe3ff681fda1fb63f4c791e9ec4ff84f959f8d3f777c09fcf278266d66e6dff784f3fb323a597e000000097048597300000ec400000ec401952b0e1b00004000494441547801ed9d099814d5b9fe3ff66d0610866151160121a32c41728d1a016f16af0b24b9e08afe15a29944306e8980bb06174013b70b18dcf3082a2e8901d4c72446c088d118a2206410907d190618d661957fbda7e7f49ca9a9eaaeeaaeeeaeee7ecff38cdd5d75ea2cbf3ab4f5f6b79c7ac7ac222c24400224400224400224400224400224902504ea67c938394c1220011220011220011220011220011250042862b810488004488004488004488004488004b28a00454c56dd2e0e9604488004488004488004488004488022866b80044880044880044880044880044820ab0850c464d5ede2604980044880044880044880044880042862b806488004488004488004488004488004b28a00454c56dd2e0e960448800448800448800448800448a0613c046f7f5219af4a9df3679e5c20ad5ac46dbace75b97ce0d086b57278c33a5f536c705c5b69dafb645fd7b03209900009900009900009900009e43a817af136bb6c73f1a7be19fcf5c16fc8801e2d7c5f97cb17ec78f129a97cf9395f536cf6ad33a5e33d0ffbba86954980044880044880044880044820d70964a73bd9b6d765748f89b238c8bb938a36831c5fadb6b6c9eba37bc8c44001d4ea20980f59c5349829b315122001122001122001122081d413a0cf9766dc6e843cb76a84fe14f2d77632e2b95512fad16615d390df720e8f0448800448800448800448204a203b2d31d1e1f30d099000099000099000099000099040be1148ab88d9f6fa68e9d163b4bcbead1ab37237ea21a3d5816a17a9d7e12ad6c3aa67fdc15faaba4ef4b3973bb47862e47ab31d751dfab0fa7fdd38af7db2b2caf5c9e64e566bbe065fccd9e45787fd448b05ee498477e43eb800aed547f5bdc929a62ef3e661122001122001122001122081d01148ab886937e239796dd40219f764249863f193e344a67c24cf8d681705f3fc5cebd0aa55b26ad56b32eaf90ba507aae0f3475364f0f38fd708a0e815f6378b65e285cfcba8d7d086f5f7da28915ad759fd5b6dbe66f411f3e1ddde7ce83e63beab2d8c7abeddadf9bd2e119d689d3b7d9c748fb2b0ce9d6ec6123d2f73654a94d382714fbac419e51bd3d0dd640e880448800448800448800448c020905611837e07dcf9914c597da14c9c38512e5c3d45a6180206e7475d3f422292e6043979b0f1b9dd60193a78812cdb805ab1ca00b9d31228770ea8ae3360a88cb2551ff5da9d12393d407e3e65b02c88dfa8ad85b07d34b80cb853563d57cd70db6a596dcd7e682d16d6316d091330ad1690279c6c7d722bf9c8d48d058f930009900009900009900009649a40da458c581265c4f5a3e4f9e72d6b4954b0048ca1960bd585f27c8ce6db75ef2eb27a75b5e52246c5d09e82c0784de4c2884b185cc3b4879c6c58260b069f2c2744c70e6168081ee92edd6b8c60d15a8e6ff28aa923011e2401122001122001122001120809810c88986af7a7d7a6c8ea0b4dd7a68088e061fbf4b93254bb57c12d2d46d3db2c01239690f1fa2c1fa3a90c9e8a584ab4fbdcf39a2bac2b0b96498df16a832c5b30584eae5135dec69c974cbda1612d122001122001122001122081f41348b3884140fa85b27aca14193160844c99b25a2e1cade337029a3cac0f868561f1c4ba9698e71fd77d2e9627c72d9051517fab80c690ce669485c416ccaffb6f67595a2c3bd45cbd9fcce2b9d6271fd617dd4ebe31d5f3e62b0990000990000990000990402809a4759f98c5134f97715620f947d57130ed465c2fa3c65d28a74fec2eabeef46b1e70e139e0e73265f0e99677d5f3aac2e029af599f2f54b1343afc6654f765723a3206586530120b2066241a27a20e67cf7fb017cb6bcba4c7e93d2cb62883ad20ffe7a2313f775a0911465be77ad439a70e78fb4fbe31f54685b54880044880044880044880043244a0de31abc4eabbcdc59fc63aed78eeaf0f7e4306f468e1782eb30761093a5d965d6f04fea769403b5e7c4a2a5f7ece576fcdbe75a674bce761876b32378fba8309d358ea8e8e47488004488004488004488004728f405c4b4c71abb855ea5069dcb05e9d63f97ea07eb3e652bf751b5f18eab76ce952bf3ab6658acb691e26011220011220011220011220811c261057a1fce7a9fe393cfdf44dadf588cb057fc9166c187aba15c763f9c1c947d99d8d205914bc9e0448800448800448800448204f09c47527cb532e9c360990000990000990000990000990404809a4393b594829705824400224400224400224400224400259438022266b6e15074a0224400224400224400224400224000214315c072440022440022440022440022440025945802226ab6e17074b02244002244002244002244002244011c3354002244002244002244002244002249055042862b2ea7671b024400224400224400224400224400214315c032440022440022440022440022440025945802226ab6e17074b02244002244002244002244002244011c3354002244002244002244002244002249055042862b2ea7671b02440022440022440022440022440020dbd20a8acacf4522da575d66f3b2c436e5fa7fa987c553bb9e83b2d53da1f1b270112200112200112200112200112c82c81d6ad5b3b0ec09388292c2c947af5ea393690ae832fbeb13edad57db3b7cbf74f6d275ddb37891e0bfb9b63c78ea921669a63d839717ce120c0f51a8efbc0517823c0f5ea8d136b858300d76b38ee0347e19d00d66c189f5feb59038b3c5dc7984ba6075fb9f788f41fbb44f6547d1d1de599250532f7deded1cf617fa331877111849d1dc7977e025cafe967ce1e1327c0f59a383b5e997e025cafe967ce1e932380351bc6e7d7ac8889993e6fab123085cdeacb9b779da4eec487cbf7cab4b95b93bb2bbc9a044880044880044880044880044820eb086485887969fe7605f6e7e717cba03e2de596111dd4e73b7ebf413eff6a7fd641e780498004488004488004488004488004122790a03b5999cc99b1427a950e13edd055366786ccdf8c811448c9f09132a8283228b7e35e873cf36f15f28be96b55f5d5cff697d60591309eb37ef5852c5b77404ee9da54163e748ad7e632568fe6e38ca167c70910e07a4d001a2fc91801aed78ca167c70910e07a4d001a2fc92801acd9dc70272b9b233366cc17a5573452ebd8fc3d2532bcb4544a8714caf277174a05ceb91dd7d779787df2ad88cbd82583db44050c2e9b36f644817bd9176b0fc884e72259cb3c34c72a244002244002244002244002244002594ec0a73b59852c2cef25a5a5c3c58aab8f968af23d52d0b94494f1a5772fe9b8b752e000e6763c7a619c370b97ee562205d5265cd4a956ed7e273697f1d5c766bcbd4d509785044880044880044880044880044820f709f81431453268907620ab0da7b0b8da7f4cda5a16939a736ec76b6ab8bf9b3eaf5c9d3ca3a485633ae53143db0bcea18c9db64690c58c85044880044880044880044880044820b709f81431ee30f6942b0732abc2764b4cd4d4733b5e53c3f9dddaad07e59d4f77a993762b8c79c5b43111b7b20d1587e5b6176af69231ebf03d099000099000099000099000099040ee100844c4141517cadef5cbabe36056c8e682d6963d46c4edb8177c935edda4aa9ddca5a9ca48e6760d36bc9c3aa69b3afdf2fc1d32f71f3bddaaf2380990000990000990000990000990400e100844c448ef6132a470b9bc316386cc98bf474ace19541d1fe3723c0e38b885bdb26087aa75ed05ede3d41619faede3e4dc81ad54bd59ef47d231c7bd8815488004488004488004488004488004b292408229966be67ae4e83169d8a05ecd8100de3df8ca4679e8f52d727cdb46b2647a3f4f2dc20273e56f56abba662a664f17a7a112532aa60132bb088c00d76b6028d9501a0870bda60132bb088c00d76b6028d9509a0860cde6468a650bd8d1af4536541c527febadd7b7ff5929070e5907032a4fbe1509e81f79369cd2bc15586390721965de2795de2e622d122001122001122001122001122081ac2310d939d2e7b05f9e1fd980129612948ddb0f0bf671997edd893e5baa5b1d9b5beea9fa5a09122fae64660be7ff576be58636efe34ab9fcbf75b634b306df930009900009900009900009900009643b818444cc075fec51f33eeb9442c1df2fa6af55e20159c410681fab20eb18d221bb95256bf6ab5397595698d605fe8607cb0d626990d50c71357eaf771b138f9300099000099000099000099000098487404281fd7f5f56236260f1d016199d51cc6d7a1016573cbc523e5cbed7f50f5618946bcf8f1fd06fef67509f96d1b130c0df4e879f49800448800448800448800448203708f833755873fefcabfd562ccc6135fbb34e2e54af132eeee4c91a837d5cbe587b40b98afdfcfc6257825d8a9bc4b5e8b85d7cc169ad65c6dbdbe425cbe50d9b61b2900009900009900009900009900009e41601df2246bb92c1faa25dc7608d99347b938a8d8135c629360619c7b08f0bca03a33aa72c6665e4d9454ac4402cc1754d8f31b76e1b674302244002244002244002244002f94bc0b73b9916318885310bac312888498178300bd21f2365324ae979ed522660d07ebf139b475dca98a50c44584880044880044880044880044820b708f81631663c8c89c22d3606ee673a90ff8c921632697417f3b294bc874b190a5cca58488004488004488004488004488004728b802f110341a203ef753c8c89c36e8d4120ffd8695fa96b4eeed25466ded2d3ac9eb2f7702943d12e6529eb880d930009900009900009900009900009a49d802f11a35dc9cc781873c4766b0c2c303a907fdad813d396f2182e65104d28d3dfda6a0e91ef498004488004488004488004488004b29c404222c61e0f633230ad316fff73973a35754c3715ab62d64bf57b6d8d79eb93caa4bb82058a850448800448800448800448800448201c047c89181d0f73c17f45624e9ca6605a6370fe96111d64e8b78f73aa9ad2637a8c4807ed5784c0e2846c6b43ef2e9336177f2ac3ee29539b67a674c06c9c0448800448800448800448800448c01301cf29966bc5c3d83293d97bd2fbc69c3bb095dc7ac9f1f6d369f98cd4ca70295bb6ee80cc7abfc2b204b9271498f7f14e817059b2a64a6dc2691f20e28090e90c028d85044880044880044880044880044820b3043c5b62743c0c8441eb82d8da070ffb1030d3c676cbe8ece2b99421f1c0e55356caff7b78b5fcceda20f3c3e57ba3e345263558912e19dc461d9b6ced7fc3420224400224400224400224400224907902b1d588313e2d6262c5c318d565d6f8f4642233fbb4bf874bd91dbfdf20daa50c01ffbac0b274c5432bd5391c836841c635cc6f509f96ba9adaf3067bdfa08d997faba035264a866f488004488004488004488004482033043c5b62743c8c536ae5cc0c3d7eaf702983450865fabc9a2c65787ff6f8e54a981436ab2fbfff65779977ef3794eb9b2960701ddad0d69897dedf8e432c2440022440022440022440022440021924e049c4f88987c9e05c1cbbd61b5f224b99761fbbfd850daa2e5ce3164c39396ee2816b2f68afeac3dd6ce1d2dd8efdf0200990000990000990000990000990407a08781231da95cc4b3c4c7a86edbd179da50cc1f9fdc72e119df6b9f4bc76f2c1c3a7284b4bbcd6e0860677339459b4c6c4c3c5f3244002244002244002244002249052029e44ccdf974502debdc6c3a474c43e1b471202ed520621a3ddc7268d76cf56e6d4c5848b3aa9c3888f59bbf5a053151ecb3302b0ec41e0fb4de19d6798385d12200112200112200112089c804711b347759c4df1302629ed52066bca6753fbc6751f33afd5ef112b737cdb46eae3f4b76ae26bf479bee61f0158e57e78ef0a155f957fb3e78c49800448800448800448207304e28a986c8e87d158e1528674c908de8f971e5a5fe3f48afd6f5010e08f5fe159f29bc09235fba300182b1545c1372440022440022440022490720271454c36c7c3687a102e416cba89fd6fe08e06b73433db99ee27d5af70631b74cb1709b92fddfadc3a79f0958da91e625eb5bf746d8d88d1ff4ef20a00274b02244002244002244002192210779f18fd7076da494d64f76e66e61afdbd56f2f8dc9d56807f858c3daf30adb7ede74f6c902fd61e9061f794c99d9714c9c56745d247c71ac4baf243f2b3e99b65f9fa43aa5a8f62b16284d23bee58e3cbe673b817ba2c5eb987ff3e340cbe920009900009900009904040045ab6acd9bfd16c32ae88d1fbc30ceed34a9a366d6a5e9b97efc70ceda044ccc6ed47e40fffd82f970d69e389c3b163c754bd7af5ea79aa6faf0431f98f1555ea302c41e39e2f977fae3a24bfbebca3ab8bdc4bf377c85d2f6e569623ddde2dd6753d8e2f90bedd9ae9437c4d808016f7fa52dc9b5cfaf791ec7ad55cf84a02e920c0f59a0ecaec2328025caf4191643be92280359be8f36b2ac71857c4e08119e5ecfec749e3c671aba772aca168bbb84d63b5f925b2943dfdee76b9ea071d3c8d2bd92fad1b9f8ab88221d35aab160d04fdcf5e58295fac3b2053c79c284803ad0be275c64e5b134d278dd4d80f8eea2c63a6ae918ddb0fcb8d4f6d903977f776153fba1dfd0ad739bd578e3e96efafffd918898942b20730c5bf93cd3b8f794ad99d0dec925dafd930478e31770870bde6cebdcc879970bde6c35dcead3962cd8651c4c48d89c16dc8c6fd6152b97c74ba65b813a523a07bdadcadb2a1e2b09a12c4c8f4eb4e9427aeedaae2733086b3c72f8fc6e8603c83c72d8b0a18ec8733f79ede82ec6a33c7f58c5e039113afe8181c6c0eca34c2b569e9a07ea41dd759eb3e5816c9e257bb263f910009900009900009900009044d20ae88d9317ba0f54b7fb7a0fbcdeaf6bab66f12dd7b66f2ab9b533a17585526bfba49f5810c6be81b054906e658e2040213054263e8dd65f2a35f7fa9048fb91f8ecec8066b8dbe97d8f43356a0ffdc7fec546248c77d200688a586800eeaefdbadb9e59a17b182696153538bef488004488004488004488004524120ae8841a7fdbb4776abc7fbb2393364c60cfccd9285c673addb715c938be5da0bac0879ab7cb87cafe0813f55e5d6e7d72b57258812bb4b1744c9070f9f22b0b6a0602c28d80f67c194931df7c319faede354ba69d47be8f52d75c60ed13466ea5772e56f5647fb455da49566a921a0c51d628bf426b03a7eaca616df910009900009900009900009a48280271113edb86c8eccdf5322c34b4ba57448a12c7f77a1281de3763c7a61eebd817b16c4020a5cb352e16e853611fb82f280e546a62d2aea80f19f49a3bbc8ef7fd95db98ae9fd70b4c5c6a8167d8b74d388ad4131c78efee08af6b2951000e592c16d9418c27bc47ca452aca18f6c29a60b21d6814e92a0854db6cc83e324011220011220011220816c25e04fc4b46d2d05e64c0b8ba5c8fa5c51be470a3a97a8f7d2bb9774dc5b29f9f0bbfdcc5b7a2a772e3ce05ff1d0cac037c0bccdb2c2a0402cc17d2c56818565ed0b033cef87336d6cb75a639f347b938aad41ec0dac3e88b941ec8de93a37ef93ca5843c89b734bd644b2c469573e08195d4c81a38ff1950448800448800448800448205802fe444cd1201939b052de803bd9a7ad65f8b0ded1d11416eb87ecb696c5207a38a7dfc032326dec89eaa11f0fffc3ee2d0b6cbeb07a68f7309d4820b0c6ad86ec639ff25a24b6070fe670453345d305a7b5565dbf4511a338e8d8171d0b8383da2a674fbdac2ee07f4880044880044880044880040225e04bc4542c9c253356f49252b8939d23f2ee8c39a21fdbf794eb0099ed964522d03186ba31c4a5bc784b0f3546b813219e248872db0b112b0c5cbacc5ffa83685bb76106fae3185cd11063637745bbe0bf2222862e6511726650bf66a9058db6d2e8e37c250112200112200112200112089e802f1183ee0b5ab78d8ca2a858f4beef45c585b277fdf2eaf89815b2b9a0b554d70a7ec4216c112203ee57288827414ae4640ab28669b7ae545861ccb1c10d0d637ff3ae935c5dd160b5819842c9669732242d08a2e8d8171d0b8336cf3a39f2af81c1fd4110661b24400224400224400224109b802f115334e81ce9bcfe8deaec64f345860c13e550d67b980c295c1e71339bbf474ace1914898f89dd774e9d85fb957ed0bfe3f71b120e82c783f6936f952b363f3fbfb88e552415d030f678d61e6d8d41a2012f6200752e9f127c9c50a2f3c79e3770f7f332f6587d98312f26336d8981b50a7db1900009900009900009900009a48e40432f4dd7ecd4693dec8e2c95410e17f51e561a11340ee7f2e51002e1d76d3b288b96ef5359bfba143711b86cf9293aa5323650b4a754f6d34ed07561b141c03f1ed2618d3163669cfa9a3e6fabda7013c261ceddbd5d33ab395d9b8a63c8c2060b0ac685ec6c8916ed2ea683fa753b70c1c33ddbb8fdb060d34bbb4b9eaec757122001122001122001122081e409f8b2c424df5deeb7904cc632fc82af532a4fb8b853c61ffced77ebfcead898791fc7ce528679686b128443101610fb58fc7c867b9f4e928071256329710aead763d1d61806f76b227c2501122001122001122081d410a0880998ab3deb172c2b5ecba45737a9aaf8453f9ea5c36b9b41d6d32e65ef7cba2ba65b169212c0628379c07aa3854c32e221d179a0cfc9d55cd106c6a53927d2a65350bf6e476f7aa9ebe8e37c250112200112200112200112089600454cb03c556b66d62f5856cc380ab7eef0b06d5a61dcea65f2b87629c318dc02fc31d7b7ffb94b0d137bd1ccb9a77754c86023cd546c0a1a8b09dcc8b4a0d2c917bcde13a7769d82fa753d2d625027d9d81bdd265f498004488004488004488004ea12a088a9cb24902378e0d77b87e874c9b11a9ef57e24457558ad307aec979d1dc93bf7d2fbcedb99eab962ee087c87a0d342066262d83d65691332e65e3b1054b06ee97b32f9d5c8be387a5e5e5e4d316a06f5eb6bcdf827ed76a6cff19504488004488004488004482038021431c1b1acd3d2b43127aa63f8653e56da65fc6aaf6348100b13e632f2ecc8a6a68831b1bb87cdfc5b85721dc3f8f5dcf13e1342064c618541293daf5d34fbda83a3baa863183fc6eba7b805f59b6d6891c4b818930adf9300099000099000099040b004286282e559ab3564a8c2069228535edbecea62848c59dae5298cb130e6a42048602d42315dca201a6eab8eff8168b067e74ab790d16e6488c931f7dac138742a6cc4caf871fbd2d6151dc06f72d1eff57e31c850c6420224400224400224400224901a021431a9e11a6d156992f1d00f9172db0b1ba2c7f59b6cb2c2e8315f705a6bf5f6a5f935960c2dc4eca2415f83570888cfa6f615a427068fb3c72f973153bfaa63d131af49e43ddcc8745cced431ddea64797b70546715a7830d45316eaf4507ecc71231fadcd235555e9b65bd3412b05b0fd3d835bb220112200112200112089000454c80309d9a42b6323c34a33805949b0fff3afb97533b613aa65dcae026878742fc3df4fa1635c4f117c54e0d0d1e73ad607fed76f5f2fc1d32e0174b031333a61bd9b9035b096293ec0563c03851306eaf0fb6b182fa751f3ab81f222ddd490cf418f8ea4c00e216c925fc58df9c5be2511220011220011220814c13a08849c31d700bf237ad303f3fbfb88ec5200d434ba80bbb4b998e3d818565ccd0f671db84889877ef37e4cdbb4eaa23662e9fb2d2533637b74e903e190202162104f3bb158c53bbc5e964046e75713c5e50bfbe1673d3ed6af7337d8eafde09f88d578ad73204a576314c26c576bc7e789e0448800448800448203d042862d2c3591eb82a628d3183fc4d2b0cdcceb2a98cacce5286b812bd91a4b638799d07327cd9c50cdcc07ef4eb2f65d02d5fc8a4d99bc44b803c2c29b3ac207db8a6cd787b9beadec98dcc3e2e2d72d0a72952ecf5f079ddb643ea30845abca2ad315ec61eafad7c3c8f7bf18be96b7d275e7063851f0bae7868a512b7a88335e2d5fae6d6268f930009900009900009649640c3cc769f3fbdc37a8180773c40e1c11fae633a2359365961f41d834b195cb160f54081eb9653da615d3fd62baec31f1e5ef12bf9a2e5fb5496b32fd66e56091170ed992505d2b75b33814068d9bc812c5d5b25b074402820b6c52c705573722333ebe03dfa445df4076bccc2874eb157897ed656151df3123de1f00675e03aa863681caaf0500c023a6104840c4ab2c92e86dd5ba6d608ac739ddb359665eb0e28abccdc7b7bc718054f910009900009900009849900454c1aefcef80b3b0af657c1833f1eacb4db53b65961800cd9c76095c003218a5f2b8cbac8f61f2d66e0fa33efe39d820c5f101828b0f6e0ef77d59616dba5ca850b020702425b89ec759c3e2315346272b485cccd1dce8f88d19618b4092b005ccc58bc1378eb93ca68e564850cac733a96e9c55b7aa87661e9c35a8268c69a4bb6e01ec352871f2a58488004488004488004d243804f57e9e1ac7ac1c3ec0356903f1eccb4f5201bad301a19ac3177fc7e834a236d4fa9aceb24f28a8741f381100f9bb0b840d420eb17c41fe24e2016d4dfc98575523a7bed17e3d61632cc05d61ea7075b2da6703e5e31c70ef1e3d45ebc36f2f53cdcbcf4bf0d58f7def97497faf7021e7e2d32d89b098923509eb8b66bf43ee8761123f3f9b47eea7c32ff81150fd6c17e2746f6204aa62d5e4b0224400224400224e08d006362bc710aac96b96b3cdc5bb2d10aa361c0252e1d738008b8f592e355fcccda1706c88ed90365c9f47e32fdba13d5836db2026ad2e82ecaaa84795df1d0aa3af112669631af8244675fcbf5b8185821822cda950c2275d6f89ed13d7dfcc6c820131944290af6053205909962fbc1573626357c2d94fece7d8192e2c88b49800448800448c02f018a18bfc402a8af778dcf662b0c30403cccb1d225e782bb14d23e4390c1ca73c5c32b6ba5e1d5ae645e82faf5f2c8974d2f11c3848c72418999799fec5408f55e4410aa7a73520819247b8857742632d48398441b66c1bac5bf3d14c4a5253a76532869d741b31fbe270112200112200112481d018a98d4b1756d19ee46b78ce890d556183d39d3754a1fcbc6570831083208193c909a6997b588f112d4afe7aee362e08616e443be6e3f2caf885f417637ecbf625aac12191fc48476db33f74c3285cc94d736ab2c746eeda30d9d890ca273e62d3d1dab9a9bd0defafc7ac73ab10e9a4249d7cb75ab9b9e275f49800448800448200c042862327417e01e950b168c0ce14b49b71064885942412c055c8550b488e96265b6f25a2078b40521a8877caf7da7ab1e2c113a7e05af678f5f2e481b9e68d1ae64109276b73d53c8e0de2005f7d0bbcbeafc414c612c6863dad8135dff8de1dfde848b231b9e22939c1f0106a13476da57d1d8aca8eb205dca12bdf5bc8e044880044880047c13a088f18d8c17e43201c44e20d01f053115482aa0ad03dabae265fe7848c683f7ef7fd95d3d50eb877c2fee505eda0f431d2d3af010af5ded6e7f6143c296276dc938df8ab5722aa69081b54c67ac335fb5a84226b2785642333eed361fd618240440ff104a33c7f5b4d2a51fa7866b6655731a7fba8e61cdb29000099000099040ae13a877cc2af126892af5ead58b578de76310d098c93106a4109dbae0eeff28f1820755c4c9a0ac7eb6bfeb2ffbb1868e8c5b63ac5feeb518c29e37d88cd34c48004b0082c3f1200fcb0f1ec64f28aacec066655ffb4e1219d8628dcded9c97f5daf5aac58a0d327f41104c786e5d74b3518cfd45cb952b9e9030fbb7b7679e33dfc77b486fd5a2a1e77ed116522ea34070c6db5f088900b03f92591ff70e562894c54ff4a9755fd5c134fe478f0f6b6cfc451deb58b4d23894b476e565bda67540ec8c046210e07a8d0187a74249006b368ccfaf1431695a2efcd24a13e880ba81cbd0a05b96c9c6ed918d34912d0b19d19229fa01136d401c212e038205c2450ba558ed9ba206d68a54ba23c65baf7025bbf237abd5704d7187e3b054e8f98cb3f646d26e5bb1e6660a01b3bd58d70475eedafffb4a6d4e0abe73eeeeed2a42cc3923a60d2ea1ba781560ba7e2a5e4d86bafd7c1133f1d6abe6c15712080301aed730dc058ec10f01acd9308a9806f758c5cb44c238782fe30e5b1d720cdb1d711e4fd3c6f5d51e34afff7d871c3a724c5942469cd5c6b9b2c7a388f3c043e5c2a57ba462f751cbf2b257566e3aa8da471370c9fa6eff962a7316b267f5e9da5c1a37ac275587be56a260f7feaf65e9da2a79cb0aa45fb1f1808cf88ebff14098e1baf6c735f2386271fdd2ba67e64659b9f9a08afbb9f0acb6d1f67a9dd04c869fd9463e5fb34f599330c7138a1ac7b58c3cf2c7cdf2e9cafd2a9bd8d5ff13c91c166d34c56f9049eed977b7a97bf2bbb7cb65e6df2a94b8dcb5efa8daff0562110201e9b7b116b0cfcca33feb566b54e0fa85756fb05fccd0d322ee65b52aa4e1c3850fac906dbb8ea875d4b35313c57f7dc52115df35d7da3cb669a3fad237c737e4e4f76b1a161abb088c00d76b6028d9501a088471bdd21293861b8f2ef8cb4b9a4007dc0d1e6891dad7fecb7b32dd404c8c99bac6dae5fd6074b34ec4dbc4b2acc0250d9b7dc26a834074142fee4fe6381108dfd94a4e80d8927825d67ac5f8bbffe433d544ac3198168e789b4a22501f7126f75d79828c19da3edef0023f8f240e93ad74d1da826476000b0d040dce4168221db7fd5ee97582baf1e66ab61dd47bd3caf7fee412251a21bc906841af17f485f13d7055e7b86e73418d2b5dedc45aafe91a03fb2101af04b85ebd9262bdb010c09acd5a11b36fdfbeb070e4384820ed04ee9ab945ce3db5d0b2a2b4487bdf4e1dfee4b10df2e77fef552e691f4ee95ee781dae91acce1b9bf54aa534b9ee8e9e91aa77670ec958595f2ab67b7a8fe974debe5564dedbf72e6b8d5eae1ffe19f74904b063907ecaf2b3f24df191f714d7bfb9e6e9605aaa96b9ba93eb1d412525fac3b208bfeb35ffd6dda51b399275c00678fefe2383e730e7f9fdc5dba147bcf6497ec9c30e6f3ee59a39ab9f1876de597ff1b494ca1dbc5d87efb6685bcfe614dc07fa639ebb1f19504488004488004e21168d1c2f9f9cb9325a6aaaa2a5efb3c4f02394d00d607fbafef999a30c6f2833b570b1eb04fefdd5c5ebfad5bcca1bcbc60a7fcf299cdd13abfb9baa35c3a387197a7518fac5322eac2efb492c74a6be242a21d186f1e7ea35c1eb11ea08f6fdb503efeadb3e099f1ce76b9f7a5add2a94d43f9e411e73a4693697d0b01f0e17ff6294103217bdeb75abaf6ff5f37ad50f72459beae1db89cf8c19dab64d9ba8352d2b989fce5be1e2eb54430979f3cbe5e96af3fa804e8470f2727665d3be20912200112200112089040b366cd1c5bf32462c26a46729c51480fd27c1cd21b93a5c332b36ac572c1824bd1b07bca943544675a3bc5b2742c7ce8949833775baf706b1bf08ba5ea5aedb614ab2108aefe6397a8fe7516337bfd919357ca3b9fee52a9ad278dee623f9d359fb5fb1c6266668d77de6433e8c9683732dcdb05534e764d4aa0fb35ef879775a0af0bfbabdb7a0dfbb839befc24c0f59a9ff73d9b678d351b467732ee1393cdab8a63cf5b024812a0f7b3412c07c48abde081550b18c47260ef1414c49e408c2452f4de30c8d6e6257d32ac574852808271da0bc60801838200fb6c2e7a1f21a4ca4e47c13dd7e99ec75fd429ae80c198703fe658313d28580763a67ea5def33f24400224400224906d042862b2ed8e71bc24504d00560b8813049c6307797b19766f8d0566a6b5670b840feaa34c7f6babbdbaa7cf2fcdaf50f52e38cd39bec5a911a49286a5007bdfc0726016bdc125cec7dba3c5bc2e8cef2fa8dea413f7c34954063966883f7dcfb1d9a89f6408109fb08aa1bc3c7f87cac616e4d8d81609900009900009782570705599ec5b345f8eeea989dbf47aad6f1153b17096cc983123f237a72cda4fd99cea633366c9c2c8734ef41cdf900009a486c0b4b1914c63f855dd1408f8851dc7506081d11b6b8e3cbb481d4b647779586f749bba1dd5589cff98d69827df2a5701fffa126dd9c1669ed95e304f2d12b5384bd59c2659562ddc0b88bf6963e2679bb38f039b935e323892a21bd9f7e26d206abf9e9f49c02480f5c3356412e17b1220012f04206036dd7a9d6cbdff56597bd9b9b2feba2ba562c6a39e458d271113f5832b9b236f540e94d2d252f53744e68bd231d6f1f97b4a64388e0f2994e5ef2e14ea182fb78f7548203902f8551de99f51e05a040b00d2fde2177614fce20e0b8c2e23cf8eece902ab08366ff453b4f5060fea5e5cc9ccb6b53506560aa4fdd5458b293f961d7d6d185fb54b99171183fb04b1e9d7b50ff76dc6dbdbd4f4bdba9139b142aa6d2dbab0078edf7138b5c963f94960d6fbdbd526b7f9397bce9a04482011025ac01cdb5f9301f9f09a95b2fb4fb3a3a266ede8ff95ca3fbeecdabc2711a3afae28df231d6545d412335f86c830cbbd1ac70b3a9788fa8db7772fe9b8b752b6eb8bf84a0224905202d8391e2e4528573cb452ed6b83f7f8a51dbfb89b05d602049ea3e0c1c34fd182c38f1546b7ef648d81e082a841d1ae58ba7eb6beeab89e7871317007bbedf9f54a6c2251821731835fbab1d7cf95bf89a4a3f6eb46e6c4147bdec09a83fb70c5c32b6b59c99ceaf31809d809602d632f22fc3082fd965848800448201e0153c034ea66798bbcf48e1cffd873d2e69aeba5d9696749bd66cd551347b7c5fe4e6918af23f3fcf6cabdb259608919a60ec3b56c4e596f39c3fa5458ac1f96da5ac1a3e6557c4f0224906a0270291a3c6e997a90405ff885dd6d534b5863104c8f3f3c804060c42b101c784841495470c01a0377326d8dd9b5ffa86a0f63f532065539e4ffd19618cc11a2c3b482994387354a0b381c87e50c7f970e6923e32fac1da48f7626bfba593e5cbe37da04044c226e64d106aadf803b02fd910002ee6988a36ad5dc793db46ad140a68ee99633f7cace829f1323a05d4271359277e0fb2557fe3d27468457910009c4226017309d1e9c2a0d0a5baabf263daccda47f7ca9ba1cf5aa962c9616a70f766dce9725a6ada54e3af68a64b6418b45c585b2a73ce238a65fc5b2c1585a87850448208d0410f302d72214fcb28e5fd8dd0a02e8915d0cc5ab3566d6fb917fe7101c3abec6ad7db7e378b0d199ca2066b4b5225151e4d64f268f638eda45cbcda50c6e5b3aab18d263c3e54f5bd22064b46566dec73b95e5e547bffe322a6050efcdbb4e9279f77e23e1fb60e703d7c00746755687216420969cfedefee7ae9c761982a0c75fd025d5491e821eafdff69e3492844098235ecb6b016fbf6ead5edb663d122081f0117013304e23d582a65187c8b38d531de79fdc9c6a5ac7205a36afb082f97b471e90e046060b4c9114cade4f975b713083a4a86c856c2e68adac332ecdf0300990400a082043151e9c275cdc29ee2fa18841415c05b28d79c96cf552b5eb19ac29c914d31aa393045c705ae21b6f263396545d0b51b66cdd16f9c025d5f2d8696b54d7103b9a3ddcfe6071c103e0a2e5fba296193d46b8064ef09846595fe3e715fdf7edd65c76ed737e885fb2a64aeef8fd068190c14367b66792736283fb82f961ff1cb805c2aad6a76bf3a4c42258c1fdef84a246eafe8db4b9773a8d239b8e41a0e97fc788cd8338c7f7cab5e7b7f7c40db15810ccbfff65f79c5c53d9742f3956124835013f02c6eb587c6f760917b237aadd1a0a4a86cbc84111373264279bbf19dd1648c9f091527dd8eb3872be1e37b7caf95b9c5513843520d6a695e67ad50f6298e0ea67fbc71548f140e80d1a510f16a125d3fbc5bb24abce438cc07a82b263f6c05a633759c2a2e2e46e668a99548b975a838bf3416f4a0a4b9f978d35d11c7e6987d50d16b854ba1899eb35ce341c4f9bf7c55e0102048206c2c68f08c103bedea749b7996b62466ff00a41fec1c3a7c859bffac212f007e4cc9202997bafbb35183c263cb72e9aa0026b0a6e8d7e138668aed9f69aec7acdb6f972bcd94f006b369ae42b81e9a442c06018be454c0263e72516017e697119848d807ee0c0a699d873c62c7abdeeda7754c549e0d7d6a076a2c7836dffb14b544c081ed2dd6277ccf164dbfb36177faa866c0a15cc5bc72d799937eaa7f2c1df2f538c67d02dcb64e3f6c39e1e52511f3136583bb06e4cb5e2b652f590aad76b22ff93c538f57ac41a8760814513ee8e66dc1278216649a7358fc5cf9c3b843ada44f0bb2e10334890916a71a7fb4bd56bd7ab162b467089d4d6442de0cdb56fef1f99f990da1b452796001388e330ad79fbb883fa9ccc7a0d6a0c6c8704fc10c09a4de4fb157d20bbd88ea71f57dd21885fc7c0f8e9dfad6e837bace276d23c9ee8e0cd36f8de528df5ea1103098482409346f595fbcc8a8d07e4a6ffed58674c7810fbe1af5744f72379d08a9be85adca44e3dbf079a36ae2f070e7daddc48c65fd8517a9dd0cc6f13a1afbfc0b2c6201142cbe60de4fb0322d9e01ef9c3662b99c26ef5d0f6daed270938c42af1cec7ba3615e7309ebedd9a2957b7f51587ac793490ffeae59cc5c57c88c758b6ed3a22cfffa542f170bb26883127f2fd7af5a3abe50bcb7aa063c9601d1b71561bf56fe2bc6fb5969e9d9a4ae386f564e5e683b2746d954a63febdfe2d63de3fb4f9a1e51688365fbbbd975cfd3fc572e9e0b6d6fcebcb9235fba562f7514b24ed9567dfdd26e59587555b582b41dc73b0bff9a9b5b26edb21c1bff1f6c745e2df82e06bb60121f2c745956a8ebffd695735767c3f7cb67abf620521e8e47e0a0bd535169f43478ea90c8abf2ded2aafff7d8762f2977fef929f9c536c7693d3ef1359af390d84930b3501bfeb159b576e9d7297ec99f3aa9a57d002068d52c4a479c9f85d04691e1ebbcb23025dda3596c7dedcaa1e264e286a5ceb5772bb8081abc769bd9d1f58134186f80b3cc0e5a215063cd6951f5422edc0e1afd54319dcf7746ae4bb461eefe8469608c7745f8387d49dd643f2a72bf7cb272bf6caf7bed9aace43b25dc02056a2d28ab5819079ef336c8ab847ceb7e286827860b7cfdfeff72bdcc8749285a76fb02c45dd23a9ca75bb1000105d1035f837829899959b0e0a1eb6879fd9c6710e70977ce1af91f4e56853bb0cc2c280f7a37fd04e89228819587ac0f2a5f9dbd5bfc5b95632872fad1f150e5aeba6b85523c7f6f5d89c5e35fbbf7db647b1867044dae37f7eb94f89a520450d528443ccfeef99c7c9856745f69fc298be75520b2b61488512255f7f7d2c3a7f9cd3e38388830bdab3377657b133b806492db046d65aff76722d4e0e73772a7ed7ab531b3c4602e922e067bd6af7b1432b96a9e1b51c769174bc6b8ad46f92fc0fa1e67c29624c1a6978ef6711a46138ec228f09e021728df570fd85f5ebb26529560f6ac0815f4a878c5bae2c09a9f25547df787009c2b213c65bd8aa45436579c043d9cfce2b966b1efb4a3df0e1c12ddb851b2c4b73ac877fb8957df2e5de5abf9ceb87541dec0d37a331433ba83a5afce0c117023615f7dfcff76b64ac2b9488874b25c619abc0154e0b19dc572721035174cb33eb5533106fb0c0d80bd6be1633ed2ca15275e868347d39da85a8f9c3873ba3a2e624cb12e4e5df89c91eff6e7b766aa244012c1e105e10905ad4c012aac5957d7c5e3e439423d1030ad26e9bd61e88356d6985508368d382f507b72f97559b61c58b6450ecd0a6b16a03f3d36c61ed8a65e55317e4c87ffcacd71c9932a791c504bcae57b88f953f709b60134becf7523ceed7d2fa7f236993839e3e454cd044e3b4e77511c46986a749201002ad2c1716fc020a5719b8bbc005450723a74ac0e8817b7930d375b3ed150f75f8051c0f905b761e567bf2600ef8653e17e6fdad930aa2224dffda6e3e4463ae3a4e02ef51207e10f03defe34a6581c0bac335dadd2e522bb9fffaf97ed56e6488598145403f68c71a412c2103f18f6c5bb8e788ad79f467dd6235a5fa839507b124488f0e369d2d6b0fdccab65a2e666807a2069cf02303e26adc8aeadbdaac14e251ffbbc526b810d0037bb69076ad1b5a62e9eba8a8414630b8ca99e2c3ad6da7e3c8a207b105518e7eec0596d6d73e88b88861fd0fb532106243575888505ebdad671dab17d8ea1f5520b84ee9d22c275d4d4d567ed6ab791ddf93402608c45baf8eee6393a649b392be291b2e454ccad03a371c6f11385fc5a324901a0278a07ef1bd0af550b96bff11b977e646f51e0f427fbabb97f4b7b9d7a46614b9d9ea272bf62971084b170a82f9e3fdda9f2d24f0f00bf1a2f793c103f8358f59b125d643348a5dc0e87961bde197f9b20d07141b3c08c3bdcc4fd62fdd96d3abd7ef57c4733cfea7c84ed02fded2437afb88cbd24206311f887b8245e67bfd5bc9450f7ca95ca8f0603f735c4f4fa2c89c03d8c03a62c6e3946dac527d207ec6cd0d0f02063f3c602c5ac0608c2810668839835044ac0944cdc7961b20ea22162e51ee1080105937fca883635c14fac5e6a870bfd396dedf59a99751b03792e97ea60e56ff076247c79329ae0eee8a66fd6c7fef75bd66fb3c39fedc20106bbdc27d6cc3f5a3e4f09a956ab2da7dac4181fb8f2f4150a1880982a28f36622d021fcdb02a090446007b83e061146e1c7830d102060f425caf8963c6afe9f84519054c9fb17eedcfa5cc4b78e0d60f9c3a9e01f384b5c9ed21152cf0808b0775b80c814fbc2401b8c65ef0e0bec27ac0b75bb5bcac57b842698b09dcc89c5cbeecfdd93fe3df06e28110900e41f0bbb7cb65f7feafd57d868049744358b31f08455869b4587472c3d30206b135760163b6a5df833d62e170bfd09e3d164ed78bf50a97399d690df71a6d3a1530d2eb03220c0542fede2b4e70aa1e3d867d96febc7897725784908155071662a7bfa09221443b4ff31b2feb35cd4362772123007150f9da8bd27ce0e9191f99db7ad5ee6372f870caddc7ec109862d94e24459f9952314560d96cd204cc3d63d4afc8b7f4942ec5115f75b72fada43bcd8306f08079f6f8e56aa6888f7072bbc9760c583b481bedf521da3e5fbd67909707707dadf9e0aef75db9ecec4860b997f53af4ee3225dae146b6f0a1e452fa9a63c1f852b56923f60e82f0d2299fc75959fd901c2151d74fbdbf0bb87f36b5af2f71adf70bf29226dcdc3309df2dd84bc64bb17375bb06a9bbe7dcdddbd7f8ddda4ae7713e0fa49376f6f605f7ac75578f50b12505df3d4f8a6fbe336393714ab18cf1953f7abf54fd63a11a17b28f75b863b234ead0296de3a425266da8231d79f99f6c9a87c4eef29c00ac03f8c514bf6aceb5b290e9605b60e17a4d7c71e8b89876ad1acaacf12725de5088afc4da296edd48edab92c86685b0e6b82509709a366268aeb0623f60fd4081f5e32dcb6509d9b010dfd5efc4dad9c5cc36f060fce81f37abb4c038eed78dcc6c4bbfc73dd616991b7ed43e21ab8e6e2bd6ab76c3d3ae60b06c20481f9653edbea65dc862b5a3cf61e34e2457802842ac8cd7b82488569db8e081ab4ea86309d3edeb578c1b712ec8d607c1e866b5d1f5f52bb822f103329575b62c474e7f5803881982c5335bb399f1fb55df71beda0940206cbaf53a39ba2de2f67ae8ab957278cb266971c6107b55c7cfa85bfec87dd2f8842ed2b04d64537ac78a3e0e9aeb1516a22df7dd2a07bff8b76a215dee63f6e1d212632792a2cffce5254560d96c2004f08b29dc36b4bb13d76b205805bf788fb4ac04c964820a6624a96d050fb789ba50415c78b558692b0a2c08c88a35ef93caa86b1366a82d33b052c0fd081b562276057fda8a817a4e1bbce278a22599f9fbed535baf701d040c7e78d0ff6efdb485c4133ac3d8e227fa78ba7fba6f58b1964cefe7a93bb0d9b5ff68ad14ee9e2e8c53c9dc3033db2c9dfc7e8d7373795aca7f3b51f6bef7b672cf6adaf754a9faf80345c58b4566f79fe7caf6a71e53161c5cd4e69aeba5f58f93cb0e665a62ccf6917dac6de98dd2f207433372d72862d2849d5f5a6902cd6e0221c0f51a084695aedacf2fe4c1f49a7dade887638cfcfdc9258e0fbcc86e85580e14d36d0b0fc9c896f59625684ca1a22adafe83877e64f99a6065034be4c1dfd65cc63e42f84d9abd49a68ded96d43ccefad517b2ccdae8138919e6dedb3bee7cfa8df95c59c1c2221a263cb74e6654270c704b2611775219a8c0efd70c40cfa22e77bcf89454befc9c1a71d10db72981b0f5b7bf967defbda38eb90919bb7b9739e566df1e24c537de2e0d0a5b9a873dbfd722a6e2778fc86e63f3cae29bee90263de27f7778eec867458a189fc012adce2fad44c9f1ba4c10e07acd04f5fcee533f5023ce61e143b56327cc5fdd91dd6accd0f6b56061bdc2d5ecc9b7cad59f1633b01840b420581cafd92c5c6a4d38a00f66cc8a290c9d9a37eb7ab5dc38b513f4311da3e327ae2ae831f86d8fdfaf7e89e54f7d58392a1e7b404db8f5a5a3a5cd153f8d4e3e9690a9fafc53e53ea6ddcf5a7cf75c29fae98db273d63351d1d1a05d7b2b66655242a2036bf6c0927fc9e6db7ea1c6a3db4f5414452795e41b8a9824017abd9c5f5a5e49b15e180870bd86e12ee4d718dcdccacc8767b7607273bd42ccc07d0cee9189bab8e513791de40f57bc05539c131dccb25252c3da853814ec81336b7ccfd020c2fd1e6aa598864529914405999888b95e33d13ffb0c2701bdcb3d36898448687ff35d7506ea246476cc7c5a2a5f7a56d5857b57bb9bee9482336b6267f67e385fb63d32518e55ed577512712fc39addf08bab540ae526a7f497e3274faf33b64c1ca0884913757e69a50934bb098400d76b2018d9884f0276b7325cae3370c5ca6ec5f5ea13b4511d22a0ffd825ca15cfee26668a177dc99b779d14ba182fb814ea2c79f1329641e0c62bb136168d77ad97f35ed72b84fd6e2b9ec8ad20190bdd55dde864d77104e26fb8fe2a15c7822c5f9d1e9ceaeafa650a195857b4f505e2a2d812304ed9c1d0fe96fbc65b22649502d3a4cf37a5c3ed935cfbb0d3dbf9879764e7334fa8c3c73ff65c42d61c7b9b417ca6880982a28736bc7e6979688a554820e504b85e538e981db81030ddca50051b68c64b87ccf5ea02d3e36133c81f31494bd7583137d59617dd04ac6088250aab750b0ffc5af05e3aa48d152f74a21aba4eec8057ec87e5a5d8c59c976bfcd4f1b25e4d6116abed9f597b1d3d38ba4bac2a3c1772023a1319368a8425a5cbb36fc41517a690c1f4ecae676e5336e36d1a75eb6989a5ff8bdb17c6a7533d230b59d1cf6e726b3eedc72962d284dccb97569a86c26e48202e01aed7b888582145044cb73274e125d681eb35f99ba1c5a3d912d823d35b98c58b395e33760a16190860a702ab5eab160dea9cdab5efa8724bc3093f890260cdc23e3e0f8ceaecc932e265bd6a373fdc833edd9ac51c2be6fae2af82d964b54e473c9072029b278e577bad40c0749a34d5b3950342e6c0e78ba5c39dfee25c103fb3c5ea13ee6508f8ef78e7e49873d482c9abc08ad958c02729620206ead69c972f2db76b799c04d24d80eb35ddc4d99f49c0742b8b17708eebb85e4d7a89bd37638ff0e0fcf3f38be5da0bda675d320473ed68126794b410ec8d0337313395bc3e6fbefa4d14000133ecde322598bc086ef4156fbd9af722d6fa372d68e81b22eaf2ff0e664f109389d7f760c1e4195e6945eae954caf8a43391f9690156924482ebcd0402b1ac2b88d3d978c36835a444c6e7672e89d4a58849845a02d7c4fbd24aa0495e42022923c0f59a32b46cd823015806469e5d54271399d3e55caf4e54fc1f43ca626c1a9a8de2c59cad9e07448bdf3d9af020ee355180296074ff5ec444bcf5aaf74382f89a77ef3774d38eafb05c5e3e65a56cdc1ed90016ae740f5cd5b98e98403dbd6f122c4eb1ca65d6de567ec410388c9db6c6da9be9a0ccb93bb17d8b628d2757cf252b6092e562ba96b909948d13c6c8c1a5ff963005f39bf3a6883169a4f07dbc2fad1476cda649c03701ae57dfc87841c004fcfcaacbf51a30fc3c6fce8c47714b14600a180897176fe921b73ebfde933b5aacf53af71f3be5cadfac5677c06b12058c057dbfb220b28f12c60c17406cf8aa638274da71afb7f6bc6fb5521bcac6b3acc06a04573addbe1b2faffd86bd5ea2960f735e6863cbfd139438c0713701615e93aaf7da550ceddb03f64d6b4da7479f95a63d630bea548d3156bb1431b1e804782ed6975680ddb02912088400d76b2018d9489a0870bda609741e7563c66699890280c02e60e6dcd35bc5c2e0b8b6e2a09e5b5c4dacf5aa3714754b278e76dd0a62826eb3c48c1614f67a8805823b1d2c545dda35b69f569fe7599bc6ea0d4491767bea986eaed6ac5b2dcbddefaa371b85904341dfb9286422d9bd26a814c3c808d6acefa9d2b4dfa9d2accf00c76c600a86c37f206036dd7a9d6a07a7332960d07f643c6355d6b27acd5bc8098fbfa0e683e366307fdbd21ba55ebd7ab824548522264db723d697569a86c06e48c03301ae57cfa858310404b85e43701372700866a2009db1cc4dc0e8e97b11326eebd58c714974435188af3153bf521621881608161d0f14cfaaa2e7006b10dcc3b4181a776147997071277d5a60a9bae2e195d1c409707b9b794b4f65f9d119e27249c8a87d561ebd4fa53f8e4230de40d4342819209f1de928df1e76a614f5adbd59afae1a3601638e6bdd4f86ab407f9db14c6f92a983f9eb171452c46860f9f8eaf6a5958f2c38e7f013e07a0dff3de2086b0870bdd6b0e0bb600920be465b26eebfea0499f57e45dc207e0819d3bdcb6e91715aafb8c66dbf1ebf33425b285e458b53fb68e3f28756caa2e5fbd4b3a0b50400002702494441546988126440fb60d99e5ad69efbae3ca156dc1a44542e09998a198fcaee3fcd560c1a14b51758248e946f96aacfff2587567f29472bb6d6c177ac690b69dedfb2d2f41da0fe9af4e85d6df1088f05c63e68b5d1e684b14ac8600f19c4c1a0684b11d66cd65a62aaaaaaecf3e56712200112200112200112c87902a31e59277ffe77cd1e33709d7a754257cb35ab6eea6313c60d3336ca6b7fdfa50eddfce37672f50f8e7315160fbf512e8fbc59a1528a7ff4704fd77a66fbe978afc765efab539b86f2ec0d9d1d192c595325174d5aab2c3927776922af8eef1a9af9d8e761fffcca829db2a86cbfdcf5bdafe5e8b48972646d6473c8c603cf90d663c7d5c904b663f57a79e291bf49c76dcbe45b47574a47d9696f52e0a685bfaf2bcad53e30c78dfbb534b1dcd0c256f6bdf7b6ec9efe7074588d4afa4ad1af1f8d7ecee49b66cd9cffad797227dbb72fa2c4333901f64d02244002244002244002e92600abc44593d7c97f361c522263f6f82ed2c7b24c7829373eb5495eff70b7aa0af173cd396de427df6f5deba17e5df921f9cef84830ff5d9716cb4fffa78d97a6d35667a9b5dfced58f6f904d3b22169e1167b6947b2e2bae3507fb6070cdc51633b8a495746e2cb3c7758959df7e7dba3fcf5e5829bfb544e4c6ed565cd3e145f2ab237f908263911ff00baefcb9b4b860449d21615d5c3c659d2c5f7f489dc3bd7befbd2fa5f5c66532f0eb2fe5ac06abe5b843dba3d7c135ebb8bb1f9646279e143d16b6377b67bf20fb5e7f510dabcda469a1196b8b162d1c5179123161352339ce28a4079dccc7211d2a87450271f7312022120813017ebf86e96ee4e658100782a0fd99e37a7adad0d2a480bd6b9e7cab3c1a6302318334d6d88b072e5f7a63cbe3db369225d3fb999786e63d1ed827bdba49c5d70cfdf6719ec665ba962149c005d6c6a988d1f98eb5674f32ae6e9e3af7586996950c01f3da5071583a7e5d21371f7a43fefbeb25eaea15f53a49c5889be58a5167d6690d3cf4fe403869ba0c9a2e88a7b6da2593beb35dba1ddc2085df3fdff34696753a4ce301642c43697ff35dd15ec3aa032862a2b728b56ff83fd9d4f265ebc112e07a0d96275b4b2d01aed7d4f265ebc913c043eff4795beb88193cd4bffdcf88cb99d794cac98f267d2d9842c6ec15a246271d80a8e9dabe89793ae5efede265ecd7efc8b987fe11ed7741cbd3e5ae433f96bdf55b883dddb4296020487576bae8c5d69b78c911ccba617b8f040428e6269a143161bb4b691e0fff279b66e0ec2e29025caf49e1e3c56926c0f59a66e0ec2e610278009efbf14e99fceae6e8069568cccbc69609779ae10b61c542ea66ec59830d3775d63373586e9b749a759279aff7cbc1eb87cb23f14db0bcd8c58b0ede2f38738898161588ae17ad0c6cd80c5667667313307a9c98f798695f459323d85375eb7ad9f04a11930d77298563e4ff645308974d074e80eb3570a46c308504b85e5308974d074e40afd759ef6f9749b3372931f3fee412df6e6a810f2c4d0dc23a0331b1644de475e3f6c3aa6764409b3ae6c440384040bc347fbbea478b163d3d27f1821de95bfde8528178318bdda202e10211164fc0986dc09df0a1d7b7a8433a55b7793ed1f7e0b87bff51e95cd438e5962cacd9accd4ee634f88a85b3e45d3947460e2a52fccbe6cc90f99bf1b6404a868f94eac389de9b9cbb4e7f69857111e41c6c4e2869025caf492364036924c0f59a46d8ec2a6902f6f58a5def07f5699974bbd9da80b94927c4c103a33acbe5ff1d79b64c644e76e1a1db80b56bb4cc97fe4b5f950607f7abc3102f6d2ebf469af51ba8abd579852042bae965eb0ea8737e048c6eccb4ea98f133fabc9757881658b2b455c9b468a5da3d0f6b368ccfaf89c5c494cd911996622928191e1131f8fc696b193e72901499efbddc953ca963ffd2ca9369739a594a80eb354b6f5c9e0e9beb354f6f7c964e9bebb5ee8dc303badea4136713752f33372845a2849167b755b137677615297ff47ea9fac742d579a36e3da4c8daf3259678b18f1242e425cb7ae6140363afebf479e4e495f2cea7bb7c597120c89014c26e4d726adf3c0651d3b75b73197f51a7402c5b58b3b921622a16caac7745ce195829ef969fa1444c6dab4c99cc99b1427a950e93de26d13c7fcf2fad3c5f0059367daed72cbb61793e5caed73c5f0059367dae57e71b867821739350bfee65a68039b94b53997b4f6f95050d1b396eb96f821cdd16d998b2e5b08be4b89157d70a5c771e51dda31863a299d5702d32dcc1a2036bce6753fbbab685bab7bdb05e5e9ebfa3d620302f9d1001af180b04a076cd839546bbe7e90bb1492bb2e12553b066b356c4d44cdc102896c56596216216158f94614ab554c8c2598ba47824454c0d3761ca5a1306df879e00ff271bfa5bc4011a04b85e0d187c1b7a025cafb16f91ddbdcc4c47ed76a59b80a9fce3cbb2e3e9c7d565d8a7a5dd4d77d6897b716b3315c7e19a3678dc321557039136e7ee88d032fb8228b9c2725f43da67947307b68a5a94bc0828f4f181e576866c78da05ce9e61cdeccfcbfb5489182dd620c2128987f2e44ea627088bcb1bd5591df431b8949d6345c7d4c4c718424757e22b450cd7405611e0ff64b3ea76e5fd60b95ef37e096415805c5daf87b76c92461d3a05722fb47b59b3af3e974f1bf452960b8899cb86b4ad13c46e0a18c4bdccb4b288151edb5fc77dacc31d93031b5f3293c4dcce1ebf5c3561cf5886440f535e5301e66ace53c77413affbf2388dc98cc5818b19da4b24fe2a1522c62ed6307ebf56a306f758c569e24ec79a77ed2b03070e8cfc156c92b2e691c0fee607d6c8a2ffec95ae7dbb4af3b245327f7b6b1988f74e8de4f9b1309ae3f2fc9670fa310870bdc680c353a123c0f51aba5bc201c52090cdeb157b8954fdeb23d9bbe02fb263d6d35261c59becf9cb3c69747c5769dcb95b8c597b3b55d4b04ace5dfe9c9cbf7a96f468b453e61de96b05b5ef95dfbd5d2e6bcb0f4a9faecd952b9529602e19dc46668d3f491aecd8229befbe590e7ef16fd519dcc73ade35451a14147aeb3cc5b5da1fd7484eb0328a617fa0a56babe4ebaf8f4997764d2cebcb2a797941c47d4cbbc39dd6bb20a9d17c7f402b39a54b33f9cbbf7749c5eea3ca3dcdf20c532e697e1b0e72bdc24a74e5c3abadec6a914c6f3d3b35916dbb8ec87b9fed96854bf7c8f9d6c6a84d1bd78f3b445f96985aad19ee6438ceec64b5e8d4f990abbfbcd499280fe40401aed79cb88d793309aed7bcb9d53931d16c5daffb16cd97aa258ba5eaf37fc9e1352b5def45cb1f5e2cc75df69384624ed0286258ca1fb9bf561fe5277f577ebae7e25af11e7091d21b8542c04cbfee4475eda65baf9363fbf74918dcc75c2159274c2b09626474b6b120d330ebfee16266ee5973664981b5ef4d0fd7981c7d9d7ec59a8d276290650f299fb179a99bdb1bdcc7c64e5b13bd6f106bb09c61b3533b0f8c2f9ed5c89388f132783d51be3a13c8d62f2de7d9f068ae13e07acdf53b9c5bf3e37acdadfb99ebb3c9b6f5badbb2b0ec9cf9743430debc3f4851dcacefa95696af53a5f28faf48d5c71fa8d38dbaf594e29b6e97263dfca578b2c7b0343f63b0ec7bef1dd566c177cf933f0fb836bab78e1e879b80e93469aaeffe759be97ad519cbd01fb2a94d1b9b98bb97d7f19a7bd6b8c5e438b58535eb2662205eb079ab99410d6d9f658919241fd0a2c6ee3e567a5e3b9934ba4badeed0162c525ad0fdccaaf3a0ad8e7901458c492385efb3ed4b2b8528d8741610e07acd829bc421460970bd4651f04d1610c8e47a859563d79bb3a5a9253a9af519e01a230277b17d563a62bb786976da594ab034eb3bc05120ecfef35cd93ee3513956b55fea356f216d7f7a83b4fcc1d0b87705fdd9532017df7487ea036d563cf6806a0342a6f8e63b056e64b3deaf506e584e16986c10309890ce580677320818370b465c803e2a984201d6ac99e37ac6bd1a6bd62e6260dd8155c5142f6e0d41d47cb1b6669f9d58b13e60827d79162ddfa79ac3b50b1f3ac5b1698a18472cc11fcce49756f0b3618bb94e80eb35d7ef706ecd8feb35b7ee67aecf2653eb7587654da97ce9d95a781bb46baf2c295ad4d46f5120bbfe34db123aaf28972c54865b162c226d465ee32a7acc4623ee60f759ee60abd461080f88990685ce1b7a3aa5402efad94d6693620a99267dbe291d6e9f146d0fd79b2e64d922606a4d30cd1fcc5822278b887d3858b35ac440bc4c7e6d53adf4cf48a830c1da9306ee5f10496a434e2b439a1622ba3dd37d4c1f737b9d3677abdcf1fb0d72df9527c898a1ce29a22962dce8057c3c535f5a014f83cde50901aed73cb9d139324daed71cb99179328d74af57640d2b7ff43e39b83412e8dea028f24078b422b26f8a1b768897563fba44fdb90910b76b6159a978ead1a82b18c452c3f61d1dabeb71c58b6131850cdcd53a3df87f72a47c7354c06003cb4e0f4e8d8a1bc7ce78304ac0742d7be2daae72f97f1745cfd9df60cdeeda77d4721bdb642557d8163d6d8a97e841db1bb89141d4ecda67ed0374c9f1b6b3b13f4230215ec6ad50c4b89109f878babfb4021e3e9bcb33025caf7976c3b37cba5caf597e03f36cf8e95caf7b3f9c2fdb2c0183407794d6978e963657fc54bd87b8a95af22ff577e0f3c5a2454d32e245356cfcc7742f330ed7790b01e22505b25dc840c4606e143075907a3a70edff7d25af5467447b7f7289f43bd139aff067abf7c975d3d7445dc2bc88174f0348b212454c9200bd5e9ece2f2daf63623d127023c0f5ea4686c7c34880eb358c7785637223908ef50a4bc84ecb756cb7e51a8602eb4bf1cd7758f12c03dd8625103507577f69b9970d08d49a81762136629558e3b25f670a199ca380b113f2fe59c7e460534c64485b30e5e43a960fa443befd850daa51d4196fb98db9b97779ef39989a1431c1708cdb4a3abeb4e20e821548c02301ae578fa0582d1404b85e43711b38088f0452bd5e910a79c7cc67a2298a118c8f2079bf2e611ea793916a559f7f2a5b268e572e6a74214bee1640c8f41fbb446504333396e1383285e9c07d3ff12cc98dc8fbd51431de59255533d55f5a490d8e1793808d00d7ab0d083f869a00d76ba86f0f07672310f47ac5be2dda2d4cc797a04bb885b52dbdd1537630db10b3e22302fa1b1677cc29719629f0885b19764f991232c85876d990b62af3984e75ec25f83f1363a7884913f5a0bfb4d2346c7693a704b85ef3f4c667e9b4b95eb3f4c6e5e9b0935daf7015dbf3d7b764df470ba2c1fa7694b0beb4b9fc6ac734c8f6bafc4c022060662cd344e03e864d27b1df8bce4ea6cf85e1b5611806c131900009900009900009900009b8138078b1a73fd6b5cd4d27fdc497e8ebf94a02c84eb6aefca03cf4fa1605e3dc81ada27bd768e11d364a143161bb231c0f09900009900009900009541370122f70152bfcfe05d2c2dabf85a2854b2528024881bc6bff51b589685882f763cd8dee64b1e804784eabd8309ae3029c269bca11025caf397223f3641a5caf7972a373649a5ed7ab9b784974ef961cc1c769648000d66c189f5f6989c9c062609724400224400224400224e046c0dc851e7582dcbbc5ad4f1e27816c234011936d778ce3250112200112200112c85902a680a178c9d9dbcc89054080222600886c820448800448800448800492250017b2f247ee57bbd043c0749a349519c69285caeb739600454ccede5a4e8c044880044880044820d504b0f1e29ebfbc258dbb9fa476bb6fd2a377425d42c06cbaf53ab54925054c420879519e1160607f9a6eb8d740be340d87dd90404c025caf31f1f064c80870bd86ec86e4c970205e76cc7ac671af96267dbe69099a53237ffd4ead45c469bd52c0d442c40f212380351bc6c07e8a98342d14a72fad3475cd6e48c03701ae57dfc87841060970bd66107e0e746dee787f64eb66253c9a5ac2a3599f01d2a843a73a3374122f8dbaf550f50eaf5955a73e0e6851d3c4b2d63439e59b6a9779fd504801e3888c0743448022264437231343e1ff6433419d7d264a80eb355172bc2e1304b85e3341dd5b9f78403f52be3954711da66839b8f4df3127d2a05d7bcb4dac9772136bd4bea354bef94a2dcb0b36996c73f935d1bd5a30dfaa258be5d0ea15d6ebbfe4e0179f39b6dfa85b4feb1a586a06c88e99cfd085cc91120f868500454c58ee4486c6c1ffc966083cbb4d8800d76b42d87851860870bd66087c9c6e4d0b439b6bae97d63fbe34ce15a93b8db1ecfbc742d939f36939ba6d6b9d8e604981fb57fd160572d8125d073e5f2c472bead6d317dac58b3eeef40acb8d164e6ea28631304ee4782c2c042862c2722732340efe4f3643e0d96d4204b85e13c2c68b324480eb3543e0e3745bfedb89b2f7bdb7a3b59a7d7b9014df78bb72a58a1e4ce0cde12d9be4d0575f4ac3e20e712d3c102fbbfe345b7659169463fbf7457bd3a2a5a98a5b19e03826f4036b0afeb4a8f1235ea29dd9de1c58f91f65ad3960596c0e586da3300b990d123f868a00454ca86e47fa07c3ffc9a69f397b4c9c00d76be2ec7865fa0970bda69f79bc1e2bfff8b2ec78fa7155add9696749d5c71fa8f770cfea70c7a4b8e2c36c5f8989a5d603ffe71141615a52ea356f519d15ac7610bd937809cb9e2bf6f58ab136286c694e99ef49205404b066750c579806e629b0ffe0c183a11c7c9840c61b8bfd4b2b5e7d9e27814c12e07acd247df6ed9700d7ab5f62a9ad0feb42c5dd37ab4e9a9d7d8eb4bdfe36d9ff91e5caf5c48372ac6abf3ade6af458291c7691e340104f02b7abc35fadb45effede8fe0541a2dbb237d2d88a53c1b5daf282ba05432f547f61100b5caff63bc6cf612780359b4911d3b8716347449e44cceeddbb1d2fe64112200112200112200112d00490dd6bd7edd72901d1f01b7da4f55d0feb5382737b1ef9b51c5df7953ad668e01952507a937c6dc59e1c5ebe44fd1d59fe79547c442fb4ded46f5b2c0d4fee2b8d4afaa9bf8656903d2c18b80ed71c59bb4a8efc67a97989baa6c9e0ef4bd3737f4c4b472d32fc4002d945a0654b674ba52711936905965da89d47cb5f5e9cb9f068380970bd86f3be7054ce04b85e9db9a4fb284485deacb141517b39e189171cc543c5ef1e91dd735e8d393c5cdfb4df00156c8f807ba754c74e0de8207a889c963f18ea5425e3c7b85e337e0b38009f04b066336989711b2e458c1b99808ff34b2b60a06c2ea504b85e538a978d074c80eb3560a00936a703f9bd64da82d8d832717cd425cc4ba07d82c30add655cafa1bb251c501c0258b314317120e5f2697e69e5f2ddcdbdb971bde6de3dcde51971bd66feee9a81fc4537dce6c90a02cb0df654c15e29618855491745aed77491663f4111c09aa588098a6616b6c32fad2cbc69793c64aed73cbef9593875aed7ccde3453c0b4b482f58b7e7653660714f2deb95e437e8338bc3a04b066c328621ad619a9c3819a8157c8c2596fc8f2bdd5950a4a64f8c84152647d2c9b3343e66fc6f10229193e5206e1200b0990000990000990404e11d01b37aa1de98d1defb1870a054c4edd6a4e8604424dc0938889cea06c912c2f1c22a5237bab43102e8bca06c9309923f3f75882a6d41234657364c6bb0ba5a45adc44afe51b12200112200112c8230270972a7ff47e69d2fda448807abf5333367b73af95a6d6385a7eff025f63d9fd9779b26fd102a9b276bd772ad80ba6f8a63b9c4ef11809900009a484803f11d37b989446f48b1a4cdbd605eab5a27c8f14743e435964a4772fe9387f856cb7ced01893927bc646498004488004424ec0ccd48507ffca979e55236ed2e79bd18c5b8d4fec99b2581053b4c062626e10b9f7bdb765e7cca7e5b8cbaf9116df1e14730c102fa86b5e8f89e840fc16670c9666fd0686fc6e7078244002b948c09f883109581697372a078a657c918a7291c2622d59da4ab5b6316bf33d09900009900009e4050153c020535763cb1283cd1b510e5aee57f8d3a2269d4090b6b861fb0e7268f5974a94545856a2edd68ef7ad7e7489b4fae1c5513183f1eff9eb5bb2ebcd576a899716df3d575a9c3e24ef02f1d3798fd81709908077029e448c3da047c5bf88e55636acc62cb3a7bc42a43784cc76a9dc2b52ec7d0cac49022440022440023941c02e603a4d9a2a4d7a44fe5fa9f73051b124d5a226959376db6b05638440c11f76b587a0c27b8819147d1cef21c20a2dd7339cf3ba570bae6321011220815413f0b44f4ccd202281fd95034bc5d02f88ea97199fb68e04f99bef6b2eccfb77cc4692f74b20ab0070bd66d5edcafbc18665bdc612304e3709a22655a56171c7b8a2a39698a9da5f6b28102fca426389977c4a7f5c0b428a3e8465bda6687a6c36070960cdd624f90acf047d89989a0c6435132828192e23ad546435e7989dac864ecd3b7e69d5b0e0bbf013e07a0dff3de2086b0804b15e75c6ad9a566bbfc30ef0cdfa0c7015067e054cedd633fb498b993d7f794bbedeb787e225c5b72388f59ae221b27912a845006b36eb454cad19f1832f02fcd2f2858b95334c80eb35c33780ddfb2290c87ad5a2c59e26385ec7f5ac1892a67d4f557121d8a411ae62d92c60ecf3c55c6879b15309f67322eb35d811b03512f047006b9622c61fb39caacd2fad9cba9d393f19aed79cbfc5a19e201ea4b73ff5980a886ffde34be38ed5cb7af5225a9071ab7e8b48d64d7ba747b66e91a3155bed8705a206d7207b175cb0cc18983a957980042c025ed62b419140980860cd66ad8809ebe0c37483e38d855f5af108f17c980870bd86e96e847f2c41fe7a7f7055996cb96f42342b56332b0570f18db7c7b40e38ad57b453b564b1fa3b60a5184600bbbde834c1dab212cf02a1d2165b6d21bb172c3887d7ac8a3649011345c137710838add73897f03409649400d62c454c466f41663be7975666f9b3777f04b85efdf1cae7da3bac3d4490ddaae886dba4e50f862685a2f28f2fcb8ea71f576d40141cab0e3687b5a3c31d935cf723d1ebf5c8d6cdb2eb4fb3658fb5b74910a225de6420de209420920abf7f7e340b59bceb783ebf09e8f51ac687c2fcbe339cbd1b01acd930ae574f81fd611dbc1bec301ee7975618ef0ac7e44680ebd58d4cf88fc302a153fafa192dac0c708b8a678dd06da27ef9a3f7a93d4ff4b144850cc40076b6d7bbc1c342d2e18ec972a47cb36c99383e2a665a5a7b991495dea8bb8bbe1edabc5109296ce26816bf9616f35abe27815411e0f76baac8b2dd541108ab0ea08849d51db7b5cb2f2d1b107e0c3501aed750df1ec7c19942c08b0b96d988b680c0e261dff8d0aca7dfeffd70be6cb3048cb676603f121d2fe257c8d8ddc75a0ebb488a7e7693ee4a05cd6fb96f7c74b3c846dd7a4af14db72ba10621b573d633628a178ce5b8cbafb636651cec5990453be31b124803017ebfa60132bb089400454ca038b3af317e6965df3dcbe71173bd66d7ddb70b018cbe41bbf6d6c3fe1dae2e58a8630a1f7cd6c54dcca0fe4ecb756cb7e5b28502c1507cf31dd2f8c49364d3ad63a331225e858c164f680bee63ed6eba530ace1c828f754aadbad519c2b4e50695b57849d6a5ad4ec73c40020113e0f76bc040d95cca0950c4a41c71b83be09756b8ef0f47579b00d76b6d1e61fe54ebe1be7a8342b5e37a753c49ebcb7e226d2ebfa6ce14ecc2071610b89399d76a3153f8bdf3d5fe21e58fdc6f099595aaad66a79da54492763f83c0f12a64765b312b3bad581a64f442d1ee63f17684c798cb1fb92f2a96706d9353fa4b81353e889730fa6c638c2c246012e0f7ab4983efb38100454c36dca5148e915f5a2984cba60327c0f51a38d2c01bb45b514c21a0e2551e9958cb050b81f15a24d8858f690141bb1032d8f850bb88998387c5a4ad1597e264f188256454bb9605478924235398dd7dcceccbe93dda810bd9c1d52b94386bd66f2053d63a81e2b1d012e0f76b686f0d07e6428022c6054cbe1ce69756bedce9dc9827d76bb8efa39315c58c23d1a3dff1e25352f9f273ea23ac2ac78dbc3a9276f81f0bd53153f8e86bccd7dd7f9e6b594c9e898a19d4878b5aacc4017621d3e69aeb2d2bcede5ae2054248c5defce89240e256b85ecdbbc6f76127c0f51af63bc4f1d90960cd86d1d2cdc07efb9d4ad1677e69a5082c9b4d0981b0ae57bb1b92d3e411f86d5a1d9cea247b0c968eaaa5566addcfffa5f60bd16e51c9b6ebf7fa787124684f099e89d6be2bb68d1afd58402066b0378a9350721ab35dc8e83a418b17dd6e58d7ab1e1f5f49c024c0f56ad2e0fb6c2080354b11930d772a4563e497568ac0b2d94008e0a113e96cf52fec615baf5ec48b09025687b63fbdc1d1e5c9ace7f57d58448b395ec482145b81f0da45cc3c677f8ffb5bf1d4a3b2efbd77e206d0dbaf4df4b3296452255ef4d8c2b65ef5b8f84a024e04b85e9da8f058980960cd52c484f90ea5786cfcd24a3160369f3081aacf3f55c1d270f981bb51eb1f5f1a9a1803bb78d10fc3cdfa9dea38dfa37bf7caf6198f46ad0e05df3d4f89191d7cee78518c8360b303f1174bff5da716b26135ed37409af53d551ab5ef58e77caa0f2016c46f416ae426dd4ff2247cfcb6ed541f4266df470b0213934e7de018bf5fddc8f078180970bd86f1ae704cb10850c4c4a29307e7f8a5950737390ba7a8775b37878e3d46da59bbafe3c13f55bfbcc0c5093b9d433839151c37775dd7e2057114f10489697540db48350cf7326d6572eacf7ecc49bc98a24509970e9dec97f1738608f0fb3543e0d96d4204b85e13c2c68b324880222683f0c3d035bfb4c2701738064d4065af32765b876b5293eebd64f79c575515b863b5bffd4169deff5bfa92a45eabaa6347aa96fccbd1aae1d6b81ff1626f436dc86865e83a1627d5b079ddbe45f3a5d2cacc655a5ec006298a13b17c986df37dea08f0fb35756cd972f004b85e8367ca16534b802226b57c43df3abfb4427f8bf26680f6ddd65b5f3a5ada5cf153357ffb837fcb1f5e2c45563a5dbfc58b6841a62bec4be25660edf0627971bb1ec79d520dd72f70eef3c8d6cdd17d4b702df64169fde34b285e0023e485dfaf21bf411c5e2d025cafb570f0431610a088c9829b94ca21f24b2b9574d9b6170270b3dafed463b2f7bdb75575b84775b8b3ae9b15ea6db96f7cad3d468a6fba3da63b9657d10261d2d4fa6bd677405cb7302f73f25ac74c351cef9a16df3d57da8cbc266d7123f1c6c3f3f109f0fb353e23d6080f01aed7f0dc0b8ec41b018a186f9c72b616bfb472f6d6a67562e62685c9746cdf6dddde16d62bfadaf9cc13f6539e3fc3d29229d1e23448c4b9406cc52a85dfbf80e22516a0909ee3f76b486f0c87e54880ebd5110b0f869800d66caa6264939936f78949869e8f6bf9a5e50316abd62100eb48f9a3f74b55f52685752a783c801813b7ddd6cd26f47a3d64ed8a5efec87d7278cd2af3b4e37bc48e40b434b6626bd26d69711c100fe60d01bd5ec3f83fd9bcb9099ca867025caf9e51b162480860cd86f1fb9522264d0b845f5a69029d83dd38edcedee28cc109cdb46171474f960673bd42401dfaeacb98fd31e83d261e9e4c310173bda6b82b364f024913e07a4d1a211b483301ac598a9834430f5377fcd20ad3ddc89eb198ee63b0a2b4b336372c387348ca27c0f59a72c4ec2040025caf01c264532927c0f59a72c4ec20600258b36114310d039e279b2301120880800aaebf7f4234d52fe24b3adc31d993152580eed90409900009900009900009849a405c77b26d735f97aaf9ef867a121c1c09e41a81a36b57cbb1fdfbd4b49afecf8fa470d498b44e91bf14a615373b4b9200d76b920079795a0970bda615373b0b8040a62d318585858eb3882b62fe7cd3cfa5c7979f3b5ecc83244002a92370b84143f9fcdbdf939d451d53d7095b26011220011220011220811013282d2d751c5d5c11e378150f92000990000990000990000990000990408608d4cf50bfec9604488004488004488004488004488004122240119310365e44022440022440022440022440022490290214319922cf7e498004488004488004488004488004122240119310365e44022440022440022440022440022490290214319922cf7e498004488004488004488004488004122240119310365e44022440022440022440022440022490290214319922cf7e4980044880044880044880044880041222d030a1ab785135810a5938eb0d59beb7fa6341890c1f39488aac8f657366c8fccd385e2025c347ca201cb44afce3a855fb1a1c612181e40904b35e2b16ce9237a28b3e32aa8292e132522ff2e407ca1648c02210cc7ab5b7c3b5cac5951a02fed76b641c653267c60ae9553a4c7ad71a98dbf15a95f88104122410dc7aad79ae15e938a45486d55ec8098ecfdb651431de3839d72a5b24cb0b8748e9c8c81dc38d5c54364886c91c99bfc71234a596a0299b2333de5d28251037d67bc7e3d6ffaccbf750b83843e6d1c00804b55e078d146b695717eb8b70ce7229a180d140f81a148180d6ab2c7cb7cef7f49cb2f4fe8f3628246c27c404fcae574c05cf07ead7ce8ed2cb9c9adb71b30edf93403204825aaf78ae15eb39b814cfc110de73a4acb75d902733d0d8d7d29d2c369fd867ad1b556a48ceb6ad0b54fd8af23d52d0b9445964a4772fe9b8b752b65b67dc8e8b75b6d23abffe8d19326386f537a72c76bf3c4b028910086cbdd6745e36e75d913322d6c79aa37c470201100870bd16b46e5b6b407bca2b6a7de60712489a80cff5aa2c84e5bdac87bfe152127974a81e82f5c390e3f1a447c80648a0864050ebd5d64e4d07e979474b4c509c2d35fa46e540f50b7545b9486171b5ff98b4956a6da37a723c5eb64236ef2d9421a523953919ee3a73ca7aa7d524171406b69325049259af7a8aea17186bcdeba5ae8ff39504822690c47a2d1a748e74b6dc7eaddf8754e9d8b163d0a3637b24509b80a7f55a24839405db2ea8dd8ed7ee829f4820300249add7c828b44b19dc75d3e84d26143101ac0275f3604e33ac32ea97bede78bab3ac2c7b458aabfb713c0e256bdcf5a2e242a9a917c000d904091804925eafd56d95add8232567180bd7e8836f49202802c9af57eba17064a9680f48fc4864d90f5948202504fcacd7940c808d92800f0241add7dec34aa33fc2cf5a784eda6264e94ee6e366d7ad8ac0a819b2a257692d010311b277fd722bd2c52ab0b214b4b6ec31226ec7e1173b6b61cdaf31703babb1d8d4ed95474820310201ad57d57999acd8d3594a688549ec56f02a0f04025aafd6f76b8d8b6e992c5a2ed2990bd7037f56f147c0df7af5d7366b9340d004025aafb6e7d7a04719afbd7ac7ac12af12cf3b13500a7673ed733af34dcdb9da01fbf18f5bb9c998e9a936547e0a8440cddaab694eafb59a73ded6ab542c94598b8a65a4617dac6995ef48207902356bb2a6ad44d7abd956bab3e7d48c9eef729980b9c6f43ce3add7483d3c4c2e92e291f66068b7e3ba75be9240e204825cafb5daea58db2b29f1117abb9222c61b27d6220112200112200112200112200112080901ba9385e4467018244002244002244002244002244002de0850c478e3c45a2440022440022440022440022440022121401113921bc16190000990000990000990000990000978234011e38d136b910009900009900009900009900009848400454c486e0487410224400224400224400224400224e08d00458c374eac450224400224400224400224400224101202143121b9111c0609900009900009900009900009908037021431de38b116099000099000099000099000099040480850c484e4467018244002244002244002244002244002de0850c478e3c45a2440022440022440022440022440022121401113921bc1619000099000099000099000099000097823f0ff019c4bc3270b17b1810000000049454e44ae426082}}
+\f0\fs38 \cf3 \
+\pard\pardeftab720\sa384
+\cf3 However, if your customer base consists of a large number of enterprise customers, you may find yourself having to support XML anyway. If you must do this, you'll find yourself with a new question:\
+\
+\pard\pardeftab720\sa384
+
+\b \cf3 Should the media type change based on Accept headers or based on the URL?
+\b0  To ensure browser explorability, it should be in the URL. The most sensible option here would be to append a 
+\f1\fs34 \cb5 .json
+\f0\fs38 \cb1  or 
+\f1\fs34 \cb5 .xml
+\f0\fs38 \cb1  extension to the endpoint URL.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 snake_case vs camelCase for field names\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 If you're using JSON (
+\i JavaScript
+\i0  Object Notation) as your primary representation format, the "right" thing to do is to follow JavaScript naming conventions - and that means camelCase for field names! If you then go the route of building client libraries in various languages, it's best to use idiomatic naming conventions in them - camelCase for C# & Java, snake_case for python & ruby.\
+Food for thought: I've always felt that {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Snake_case"}}{\fldrslt \cf4 \ul snake_case}} is easier to read than JavaScript's convention of {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/CamelCase"}}{\fldrslt \cf4 \ul camelCase}}. I just didn't have any evidence to back up my gut feelings, until now. Based on an {\field{\*\fldinst{HYPERLINK "http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5521745"}}{\fldrslt \cf4 \ul eye tracking study on camelCase and snake_case}} ({\field{\*\fldinst{HYPERLINK "http://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf"}}{\fldrslt \cf4 \ul PDF}}) from 2010, 
+\b snake_case is 20% easier to read than camelCase
+\b0 ! That impact on readability would affect API explorability and examples in documentation.\
+Many popular JSON APIs use snake_case. I suspect this is due to serialization libraries following naming conventions of the underlying language they are using. Perhaps we need to have JSON serialization libraries handle naming convention transformations.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Pretty print by default & ensure gzip is supported\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 An API that provides white-space compressed output isn't very fun to look at from a browser. Although some sort of query parameter (like 
+\f1\fs34 \cb5 ?pretty=true
+\f0\fs38 \cb1 ) could be provided to enable pretty printing, an API that pretty prints by default is much more approachable. The cost of the extra data transfer is negligible, especially when you compare to the cost of not implementing gzip.\
+Consider some use cases: What if an API consumer is debugging and has their code print out data it received from the API - It will be readable by default. Or if the consumer grabbed the URL their code was generating and hit it directly from the browser - it will be readable by default. These are small things. Small things that make an API pleasant to use!\
+\pard\pardeftab720\sa384
+
+\b \cf3 But what about all the extra data transfer?
+\b0 \
+Let's look at this with a real world example. I've pulled some {\field{\*\fldinst{HYPERLINK "https://api.github.com/users/veesahni"}}{\fldrslt \cf4 \ul data from GitHub's API}}, which uses pretty print by default. I'll also be doing some gzip comparisons:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 $ curl https://api.github.com/users/veesahni > with-whitespace.txt\
+$ ruby -r json -e 'puts JSON JSON.parse(STDIN.read)' < with-whitespace.txt > without-whitespace.txt\
+$ gzip -c with-whitespace.txt > with-whitespace.txt.gz\
+$ gzip -c without-whitespace.txt > without-whitespace.txt.gz\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 The output files have the following sizes:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls7\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}without-whitespace.txt
+\f0\fs38 \cb1  - 1252 bytes\
+\ls7\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}with-whitespace.txt
+\f0\fs38 \cb1  - 1369 bytes\
+\ls7\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}without-whitespace.txt.gz
+\f0\fs38 \cb1  - 496 bytes\
+\ls7\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}with-whitespace.txt.gz
+\f0\fs38 \cb1  - 509 bytes\
+\pard\pardeftab720\sa384
+\cf3 In this example, the whitespace increased the output size by 8.5% when gzip is not in play and 2.6% when gzip is in play. On the other hand, the act of 
+\b gzipping in itself provided over 60% in bandwidth savings
+\b0 . Since the cost of pretty printing is relatively small, it's best to pretty print by default and ensure gzip compression is supported!\
+To further hammer in this point, Twitter found that there was an {\field{\*\fldinst{HYPERLINK "https://dev.twitter.com/blog/announcing-gzip-compression-streaming-apis"}}{\fldrslt \cf4 \ul 80% savings (in some cases)}} when enabling gzip compression on their {\field{\*\fldinst{HYPERLINK "https://dev.twitter.com/docs/streaming-apis"}}{\fldrslt \cf4 \ul Streaming API}}. Stack Exchange went as far as to {\field{\*\fldinst{HYPERLINK "https://api.stackexchange.com/docs/compression"}}{\fldrslt \cf4 \ul never return a response that's not compressed}}!\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Don't use an envelope by default, but make it possible when needed\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Many APIs wrap their responses in envelopes like this:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 \{\
+  "data" : \{\
+    "id" : 123,\
+    "name" : "John"\
+  \}\
+\}\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 There are a couple of justifications for doing this - it makes it easy to include additional metadata or pagination information, some REST clients don't allow easy access to HTTP headers & {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/JSONP"}}{\fldrslt \cf4 \ul JSONP}} requests have no access to HTTP headers. However, with standards that are being rapidly adopted like {\field{\*\fldinst{HYPERLINK "http://www.w3.org/TR/cors/"}}{\fldrslt \cf4 \ul CORS}} and the {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc5988#page-6"}}{\fldrslt \cf4 \ul Link header from RFC 5988}}, enveloping is starting to become unnecessary.\
+We can future proof the API by staying envelope free by default and enveloping only in exceptional cases.\
+\pard\pardeftab720\sa384
+
+\b \cf3 How should an envelope be used in the exceptional cases?
+\b0 \
+There are 2 situations where an envelope is really needed - if the API needs to support cross domain requests over JSONP or if the client is incapable of working with HTTP headers.\
+JSONP requests come with an additional query parameter (usually named 
+\f1\fs34 \cb5 callback
+\f0\fs38 \cb1  or 
+\f1\fs34 \cb5 jsonp
+\f0\fs38 \cb1 ) representing the name of the callback function. If this parameter is present, the API should switch to a full envelope mode where it always responds with a 200 HTTP status code and passes the real status code in the JSON payload. Any additional HTTP headers that would have been passed alongside the response should be mapped to JSON fields, like so:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 callback_function(\{\
+  status_code: 200,\
+  next_page: "https://..",\
+  response: \{\
+    ... actual JSON response body ... \
+  \}\
+\})\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 Similarly, to support limited HTTP clients, allow for a special query parameter 
+\f1\fs34 \cb5 ?envelope=true
+\f0\fs38 \cb1  that would trigger full enveloping (without the JSONP callback function).\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 JSON encoded POST, PUT & PATCH bodies\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 If you're following the approach in this post, then you've embraced JSON for all API output. Let's consider JSON for API input.\
+Many APIs use URL encoding in their API request bodies. URL encoding is exactly what it sounds like - request bodies where key value pairs are encoded using the same conventions as one would use to encode data in URL query parameters. This is simple, widely supported and gets the job done.\
+However, URL encoding has a few issues that make it problematic. It has no concept of data types. This forces the API to parse integers and booleans out of strings. Furthermore, it has no real concept of hierarchical structure. Although there are some conventions that can build some structure out of key value pairs (like appending [ ] to a key to represent an array), this is no comparison to the native hierarchical structure of JSON.\
+If the API is simple, URL encoding may suffice. However, complex APIs should stick to JSON for their API input. Either way, pick one and be consistent throughout the API.\
+An API that accepts JSON encoded POST, PUT & PATCH requests should also require the 
+\f1\fs34 \cb5 Content-Type
+\f0\fs38 \cb1  header be set to 
+\f1\fs34 \cb5 application/json
+\f0\fs38 \cb1  or throw a 415 Unsupported Media Type HTTP status code.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Pagination\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Envelope loving APIs typically include pagination data in the envelope itself. And I don't blame them - until recently, there weren't many better options. The right way to include pagination details today is using the {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc5988#page-6"}}{\fldrslt \cf4 \ul Link header introduced by RFC 5988}}.\
+An API that uses the Link header can return a set of ready-made links so the API consumer doesn't have to construct links themselves. This is especially important when pagination is {\field{\*\fldinst{HYPERLINK "https://developers.facebook.com/docs/reference/api/pagination/"}}{\fldrslt \cf4 \ul cursor based}}. Here is an example of a Link header used properly, grabbed from {\field{\*\fldinst{HYPERLINK "http://developer.github.com/v3/#pagination"}}{\fldrslt \cf4 \ul GitHub}}'s documentation:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next", <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 But this isn't a complete solution as many APIs do like to return the additional pagination information, like a count of the total number of available results. An API that requires sending a count can use a custom HTTP header like 
+\f1\fs34 \cb5 X-Total-Count
+\f0\fs38 \cb1 .\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Auto loading related resource representations\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 There are many cases where an API consumer needs to load data related to (or referenced) from the resource being requested. Rather than requiring the consumer to hit the API repeatedly for this information, there would be a significant efficiency gain from allowing related data to be returned and loaded alongside the original resource on demand.\
+However, as this does {\field{\*\fldinst{HYPERLINK "http://idbentley.com/blog/2013/03/14/should-restful-apis-include-relationships/"}}{\fldrslt \cf4 \ul go against some RESTful principles}}, we can minimize our deviation by only doing so based on an 
+\f1\fs34 \cb5 embed
+\f0\fs38 \cb1  (or 
+\f1\fs34 \cb5 expand
+\f0\fs38 \cb1 ) query parameter.\
+In this case, 
+\f1\fs34 \cb5 embed
+\f0\fs38 \cb1  would be a comma separated list of fields to be embedded. Dot-notation could be used to refer to sub-fields. For example:\
+\pard\pardeftab720\sa384
+
+\f1\fs34 \cf3 \cb5 GET /tickets/12?embed=customer.name,assigned_user
+\f0\fs38 \cb1 \
+This would return a ticket with additional details embedded, like:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 \{\
+  "id" : 12,\
+  "subject" : "I have a question!",\
+  "summary" : "Hi, ....",\
+  "customer" : \{\
+    "name" : "Bob"\
+  \},\
+  assigned_user: \{\
+   "id" : 42,\
+   "name" : "Jim",\
+  \}\
+\}\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 Of course, ability to implement something like this really depends on internal complexity. This kind of embedding can easily result in an {\field{\*\fldinst{HYPERLINK "http://stackoverflow.com/questions/97197/what-is-the-n1-selects-issue"}}{\fldrslt \cf4 \ul N+1 select issue}}.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Overriding the HTTP method\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Some HTTP clients can only work with simple GET and POST requests. To increase accessibility to these limited clients, the API needs a way to override the HTTP method. Although there aren't any hard standards here, the popular convention is to accept a request header 
+\f1\fs34 \cb5 X-HTTP-Method-Override
+\f0\fs38 \cb1  with a string value containing one of PUT, PATCH or DELETE.\
+Note that the override header should 
+\b only
+\b0  be accepted on POST requests. GET requests should never {\field{\*\fldinst{HYPERLINK "http://programmers.stackexchange.com/questions/188860/why-shouldnt-a-get-request-change-data-on-the-server"}}{\fldrslt \cf4 \ul change data on the server}}!\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Rate limiting\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 To prevent abuse, it is standard practice to add some sort of rate limiting to an API. {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc6585"}}{\fldrslt \cf4 \ul RFC 6585}} introduced a HTTP status code {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc6585#section-4"}}{\fldrslt \cf4 \ul 429 Too Many Requests}} to accommodate this.\
+However, it can be very useful to notify the consumer of their limits before they actually hit it. This is an area that currently lacks standards but has a number of {\field{\*\fldinst{HYPERLINK "http://stackoverflow.com/questions/16022624/examples-of-http-api-rate-limiting-http-response-headers"}}{\fldrslt \cf4 \ul popular conventions using HTTP response headers}}.\
+At a minimum, include the following headers (using Twitter's {\field{\*\fldinst{HYPERLINK "https://dev.twitter.com/docs/rate-limiting/1.1"}}{\fldrslt \cf4 \ul naming conventions}} as headers typically don't have mid-word capitalization):\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls8\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}X-Rate-Limit-Limit
+\f0\fs38 \cb1  - The number of allowed requests in the current period\
+\ls8\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}X-Rate-Limit-Remaining
+\f0\fs38 \cb1  - The number of remaining requests in the current period\
+\ls8\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}X-Rate-Limit-Reset
+\f0\fs38 \cb1  - The number of seconds left in the current period\
+\pard\pardeftab720\sa384
+
+\b \cf3 Why is number of seconds left being used instead of a time stamp for X-Rate-Limit-Reset?
+\b0 \
+A timestamp contains all sorts of useful but unnecessary information like the date and possibly the time-zone. An API consumer really just wants to when they can send the request again & the number of seconds answers this question with minimal additional processing on their end. It also avoids issues related to {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Clock_skew"}}{\fldrslt \cf4 \ul clock skew}}.\
+Some APIs use a UNIX timestamp (seconds since epoch) for X-Rate-Limit-Reset. Don't do this!\
+
+\b Why is it bad practice to use a UNIX timestamp for X-Rate-Limit-Reset?
+\b0 \
+The {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616.txt"}}{\fldrslt \cf4 \ul HTTP spec}} already {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3"}}{\fldrslt \cf4 \ul specifies}} using {\field{\*\fldinst{HYPERLINK "http://www.ietf.org/rfc/rfc1123.txt"}}{\fldrslt \cf4 \ul RFC 1123 date formats}} (currently being used in {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18"}}{\fldrslt \cf4 \ul Date}}, {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25"}}{\fldrslt \cf4 \ul If-Modified-Since}} & {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.29"}}{\fldrslt \cf4 \ul Last-Modified}} HTTP headers). If we were to specify a new HTTP header that takes a timestamp of some sort, it should follow RFC 1123 conventions instead of using UNIX timestamps.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Authentication\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 A RESTful API should be stateless. This means that request authentication should not depend on cookies or sessions. Instead, each request should come with some sort authentication credentials.\
+By always using SSL, the authentication credentials can be simplified to a randomly generated access token that is delivered in the user name field of HTTP Basic Auth. The great thing about this is that it's completely browser explorable - the browser will just popup a prompt asking for credentials if it receives a 
+\f1\fs34 \cb5 401 Unauthorized
+\f0\fs38 \cb1  status code from the server.\
+However, this token-over-basic-auth method of authentication is only acceptable in cases where it's practical to have the user copy a token from an administration interface to the API consumer environment. In cases where this isn't possible, {\field{\*\fldinst{HYPERLINK "http://oauth.net/2/"}}{\fldrslt \cf4 \ul OAuth 2}} should be used to provide secure token transfer to a third party. OAuth 2 uses {\field{\*\fldinst{HYPERLINK "http://tools.ietf.org/html/rfc6750"}}{\fldrslt \cf4 \ul Bearer tokens}} & also depends on SSL for its underlying transport encryption.\
+An API that needs to support JSONP will need a third method of authentication, as JSONP requests cannot send HTTP Basic Auth credentials or Bearer tokens. In this case, a special query parameter 
+\f1\fs34 \cb5 access_token
+\f0\fs38 \cb1  can be used. Note: there is an inherent security issue in using a query parameter for the token as most web servers store query parameters in server logs.\
+For what it's worth, all three methods above are just ways to transport the token across the API boundary. The actual underlying token itself could be identical.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Caching\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 HTTP provides a built-in caching framework! All you have to do is include some additional outbound response headers and do a little validation when you receive some inbound request headers.\
+There are 2 approaches: {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/HTTP_ETag"}}{\fldrslt \cf4 \ul ETag}} and {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.29"}}{\fldrslt \cf4 \ul Last-Modified}}\
+\pard\pardeftab720\sa384
+
+\b \cf3 ETag
+\b0 : When generating a request, include a HTTP header ETag containing a hash or checksum of the representation. This value should change whenever the output representation changes. Now, if an inbound HTTP requests contains a 
+\f1\fs34 \cb5 If-None-Match
+\f0\fs38 \cb1  header with a matching ETag value, the API should return a 
+\f1\fs34 \cb5 304 Not Modified
+\f0\fs38 \cb1  status code instead of the output representation of the resource.\
+
+\b Last-Modified
+\b0 : This basically works like to ETag, except that it uses timestamps. The response header 
+\f1\fs34 \cb5 Last-Modified
+\f0\fs38 \cb1  contains a timestamp in {\field{\*\fldinst{HYPERLINK "http://www.ietf.org/rfc/rfc1123.txt"}}{\fldrslt \cf4 \ul RFC 1123}} format which is validated against 
+\f1\fs34 \cb5 If-Modified-Since
+\f0\fs38 \cb1 . Note that the HTTP spec has had {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3"}}{\fldrslt \cf4 \ul 3 different acceptable date formats}} and the server should be prepared to accept any one of them.\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 Errors\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 Just like an HTML error page shows a useful error message to a visitor, an API should provide a useful error message in a known consumable format. The representation of an error should be no different than the representation of any resource, just with its own set of fields.\
+The API should always return sensible HTTP status codes. API errors typically break down into 2 types: 400 series status codes for client issues & 500 series status codes for server issues. At a minimum, the API should standardize that all 400 series errors come with consumable JSON error representation. If possible (i.e. if load balancers & reverse proxies can create custom error bodies), this should extend to 500 series status codes.\
+A JSON error body should provide a few things for the developer - a useful error message, a unique error code (that can be looked up for more details in the docs) and possibly a detailed description. JSON output representation for something like this would look like:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 \{\
+  "code" : 1234,\
+  "message" : "Something bad happened :(",\
+  "description" : "More details about the error here"\
+\}\
+\pard\pardeftab720\sa384
+
+\f0\fs38 \cf3 \cb1 Validation errors for PUT, PATCH and POST requests will need a field breakdown. This is best modeled by using a fixed top-level error code for validation failures and providing the detailed errors in an additional 
+\f1\fs34 \cb5 errors
+\f0\fs38 \cb1  field, like so:\
+\pard\pardeftab720
+
+\f1\fs28 \cf3 \cb5 \{\
+  "code" : 1024,\
+  "message" : "Validation Failed",\
+  "errors" : [\
+    \{\
+      "code" : 5432,\
+      "field" : "first_name",\
+      "message" : "First name cannot have fancy characters"\
+    \},\
+    \{\
+       "code" : 5622,\
+       "field" : "password",\
+       "message" : "Password cannot be blank"\
+    \}\
+  ]\
+\}\
+\pard\pardeftab720\sa398
+
+\f0\b\fs48 \cf3 \cb1 HTTP status codes\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 HTTP defines a bunch of {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/List_of_HTTP_status_codes"}}{\fldrslt \cf4 \ul meaningful status codes}} that can be returned from your API. These can be leveraged to help the API consumers route their responses accordingly. I've curated a short list of the ones that you definitely should be using:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200
+\ls9\ilvl0
+\f1\fs34 \cf3 \cb5 {\listtext	\'95	}200 OK
+\f0\fs38 \cb1  - Response to a successful GET, PUT, PATCH or DELETE. Can also be used for a POST that doesn't result in a creation.\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}201 Created
+\f0\fs38 \cb1  - Response to a POST that results in a creation. Should be combined with a {\field{\*\fldinst{HYPERLINK "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30"}}{\fldrslt \cf4 \ul Location header}} pointing to the location of the new resource\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}204 No Content
+\f0\fs38 \cb1  - Response to a successful request that won't be returning a body (like a DELETE request)\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}304 Not Modified
+\f0\fs38 \cb1  - Used when HTTP caching headers are in play\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}400 Bad Request
+\f0\fs38 \cb1  - The request is malformed, such as if the body does not parse\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}401 Unauthorized
+\f0\fs38 \cb1  - When no or invalid authentication details are provided. Also useful to trigger an auth popup if the API is used from a browser\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}403 Forbidden
+\f0\fs38 \cb1  - When authentication succeeded but authenticated user doesn't have access to the resource\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}404 Not Found
+\f0\fs38 \cb1  - When a non-existent resource is requested\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}405 Method Not Allowed
+\f0\fs38 \cb1  - When an HTTP method is being requested that isn't allowed for the authenticated user\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}410 Gone
+\f0\fs38 \cb1  - Indicates that the resource at this end point is no longer available. Useful as a blanket response for old API versions\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}415 Unsupported Media Type
+\f0\fs38 \cb1  - If incorrect content type was provided as part of the request\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}422 Unprocessable Entity
+\f0\fs38 \cb1  - Used for validation errors\
+\ls9\ilvl0
+\f1\fs34 \cb5 {\listtext	\'95	}429 Too Many Requests
+\f0\fs38 \cb1  - When a request is rejected due to rate limiting\
+\pard\pardeftab720\sa398
+
+\b\fs48 \cf3 In Summary\
+\pard\pardeftab720\sa384
+
+\b0\fs38 \cf3 An API is a user interface for developers. Put the effort in to ensure it's not just functional but pleasant to use.}

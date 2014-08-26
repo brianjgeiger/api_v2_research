@@ -1,0 +1,1 @@
+API designers, please note the following rules before calling your creation a REST API:

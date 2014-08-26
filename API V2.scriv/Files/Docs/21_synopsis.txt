@@ -1,0 +1,4 @@
+	◦	Design your API with a specific intent in mind.
+	◦	Be vague in the details.
+	◦	Provide multiple APIs differentiated by their intent.
+	◦	Reduce code duplication by sharing common implementations, not by providing a generic service.

@@ -1,0 +1,195 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 CourierNewPS-ItalicMT;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red26\green93\blue176;\red38\green38\blue38;\red117\green117\blue117;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid1\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid101\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid201\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\deftab720
+\pard\pardeftab720\sa100
+{\field{\*\fldinst{HYPERLINK "https://mathieu.fenniak.net/stop-designing-fragile-web-apis/"}}{\fldrslt 
+\f0\fs64 \cf2 Stop Designing Fragile Web APIs}}
+\f0\fs64 \
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 My customers will be angry if I break my API.\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 When you release your Web API, it\'92s carved into stone. It\'92s a scary commitment to never make an incompatible change. If you fail, you\'92ll have irate customers yelling in your inbox, followed by your boss, and then your boss\'92s boss. You have to support this API. Forever. Unless you version it, right?\
+After publishing {\field{\*\fldinst{HYPERLINK "http://mathieu.fenniak.net/the-api-checklist/"}}{\fldrslt \cf2 The Web API Checklist}}, I received comments ({\field{\*\fldinst{HYPERLINK "http://mathieu.fenniak.net/the-api-checklist/#comment-126"}}{\fldrslt \cf2 #1}}, {\field{\*\fldinst{HYPERLINK "http://www.reddit.com/r/programming/comments/1ce4np/the_api_checklist_43_things_to_think_about_when/c9fu07d?context=3"}}{\fldrslt \cf2 #2}}) regarding API versioning. Before you struggle with how to version your API, I want you to know how to design your API to 
+\b avoid
+\b0  future incompatibilities.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 If my API is well designed, it won\'92t be fragile.\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 It is possible to design your API in a manner that reduces its fragility and increases its resilience to change. The key is to design your API around its intent. In the SOA world, this is also referred to as business-orientation. It\'92s a difficult design concept to understand, best explained with a fictitious example:\
+\
+What\'92s the difference between these URLs?\
+\pard\pardeftab720
+
+\f1\i\fs28 \cf4 http://api.fbi.gov/wanted?\
+  order_by=notoriety,desc&\
+  limit=10&\
+  page=1&\
+  fields=name,aka,known_associates,\
+  reward,description,last_seen\
+\pard\pardeftab720\sa400
+
+\f0\fs32 \cf4 This is a URL for the FBI most wanted list. The API contains many features: you can order by arbitrary fields, ascending or descending; you can specify the result count; you can query page-by-page; and you can specify details to retrieve.\
+\pard\pardeftab720\sa400
+
+\i0\b \cf3 Versus\'85
+\b0 \
+\pard\pardeftab720
+
+\f1\i\fs28 \cf4 http://api.fbi.gov/wanted/most\
+\pard\pardeftab720\sa400
+
+\f0\fs32 \cf4 This is a URL for the FBI most wanted list.\
+\pard\pardeftab720\sa400
+
+\i0 \cf3 These URLs have the same goal, but they vary in how they accomplish it. The first is a programmer\'92s design. Programmers know what they can provide, and they give you every feature they can. The design does not describe the intent of the user, but instead defines details about the request. The second URL is 
+\b very specific
+\b0  about its intent to deliver \'93The FBI Most Wanted List\'94, and vague about the details; this is an intent-driven design.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 Designing your API with \'93intent\'94 in mind will reduce fragility.\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 The intent-driven design has advantages over the programmer\'92s design:\
+
+\b #1. Easier to Use
+\b0  \'97 No knobs to turn, no details to learn.\
+
+\b #2. Flexible
+\b0  \'97 If the list ordering changes from by notoriety to by public_outcry, the intent-driven API can change server-side.\
+
+\b #3. Consistent
+\b0  \'97 A 24-hour news network can\'92t sort the list by race then notoriety.\
+
+\b #4. Loosely Coupled
+\b0 \strike \strikec3  \'97 After complaints that \'93notoriety\'94 is a made-up number, the FBI can hide the field; the intent-driven design is unchanged.\strike0\striked0  (
+\i Edit: Whoops, this is a backwards incompatible change; there\'92s a blunder! If it was important to remove \'93notoriety\'94 immediately due to a PR kerfuffle, you\'92re not going to want to provide it in a versioned API either. You could just start returning a fixed value all the time though, which would be backwards-compatible and work well in the intent-driven API.
+\i0 )\
+
+\b #5. Optimizable
+\b0  \'97 Can be calculated when the database is updated, instead of built on-demand. Optimizing the programmer\'92s design for every combination is much more difficult.\
+
+\b #6. Cacheable
+\b0  \'97 Easily made cacheable. The complexity of the programmer\'92s design makes caching difficult, (eg. normalizing the query parameters), and ineffective (eg. &limit=5 / 10 / 15 are cache misses).\
+
+\b #7. Easier to Develop
+\b0  \'97 Higher complexity makes it difficult and time-consuming to develop and test the programmer\'92s API design.\
+
+\b #8. Efficient Validation Model Caching
+\b0  \'97 Quickly check If-None-Match/If-Modified-Since HTTP headers to provide \'93304 Not Modified\'94 responses.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 But, I need a more generic API design\'85\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 I hope you\'92re thinking of a specific reason why you need that generic design. That reason is the 
+\b intent
+\b0  that allows you to design a better API. For example, the flexible API is great for developing a user interface: it allows sorting by any field, customizable pagination size, and filtering or searching. With that UI intent in mind, you can make design decisions that will provide an easy-to-use, easy-to-develop, flexible, consistent, loosely coupled, optimizable, cacheable, and efficient API. For example:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa60
+\ls1\ilvl0\cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}Asked to sort by a field that\'92s been removed? Meh, ignore it. Interactive users will compensate by selecting a new ordering.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}API request has a ridiculous pagination size, and a request is like a DoS attack? Max out at a reasonable page size, like 100.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Ordering records by an expensive aggregate calculation? Denormalize that field and have it calculated in an overnight job, and add visibility into the staleness for the UI.\
+\pard\pardeftab720\sa400
+\cf3 Create multiple, specific API endpoints for specific intents, and use that intent to influence the design.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 What about DRY (don\'92t repeat yourself)?\'85\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 Don\'92t repeat yourself in your implementation, but don\'92t worry about repeating yourself in your API design. If you provide multiple API endpoints to retrieve similar objects with different intent, start with common code paths. Specialize when needed.\
+More specific services are easier for clients to use, and for you to maintain. Those are the same advantages that DRY gives you.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 Does this really work in a real-world API?\
+\pard\pardeftab720\sa400
+
+\fs32 \cf3 Yes, this applies to the real world. An excellent example of this is GitHub\'92s {\field{\*\fldinst{HYPERLINK "http://developer.github.com/v3/repos/statuses/"}}{\fldrslt \cf2 commit status API}}, which is used by continuous integration services to mark repository versions as {\field{\*\fldinst{HYPERLINK "https://github.com/blog/1227-commit-status-api"}}{\fldrslt \cf2 good to merge}}.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa60
+\ls2\ilvl0\cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}Defines specific functionality: assign a state to a revision of a repository.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}GitHub automatically associates it with pull-requests, and displays the status prettily.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}No HTML, or customizable states; the API has the minimal amount of data required.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Future-proof: it satisfies a defined problem in a minimalist manner.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Statuses are associated with revisions; adding more commits to a pull request works like magic.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}GitHub has flexibility to make changes without breaking compatibility:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa60
+\ls2\ilvl1\cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}GitHub could rewrite the entire pull request feature without touching this API.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Statuses could be applied to other UIs, like the repository history.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}The same API could be applied if GitHub became MercurialHub or SubversionHub or PerforceHub or CvsHub or RcsHub.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa60
+\ls2\ilvl0\cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}GitHub has flexibility in displaying the commit status, because of the simple information collected:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa60
+\ls2\ilvl1\cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}Statuses can be displayed in a mobile application.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Localization of the \'93Good to merge\'94 text is easy.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Did you know that {\field{\*\fldinst{HYPERLINK "http://www.office.xerox.com/small-business/tips/color-guide/enus.html"}}{\fldrslt \cf2 colors have different associations in different cultures}}? Green, yellow, and red can be localized too.\
+\pard\pardeftab720\sa400
+\cf3 Another real-world example is Twilio\'92s {\field{\*\fldinst{HYPERLINK "http://www.twilio.com/docs/api/rest/available-phone-numbers"}}{\fldrslt \cf2 AvailablePhoneNumbers API}}. The 
+\b intent
+\b0  is to search for a phone number to assign to your account. It looks like a typical collection API, but details that aren\'92t relevant to the intent are missing, like specifying how many numbers to return or ordering them.\
+\pard\pardeftab720\sa300
+
+\fs44 \cf0 Summary\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa60
+\ls3\ilvl0
+\fs32 \cf3 {\listtext	
+\f2 \uc0\u9702 
+\f0 	}Design your API with a specific intent in mind.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Be vague in the details.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Provide multiple APIs differentiated by their intent.\
+{\listtext	
+\f2 \uc0\u9702 
+\f0 	}Reduce code duplication by sharing common implementations, not by providing a generic service.\
+\pard\pardeftab720\sa200
+\cf3 \
+\pard\pardeftab720\sa400
+\cf3 Please join in the discussion on this article over on {\field{\*\fldinst{HYPERLINK "https://news.ycombinator.com/item?id=5589284"}}{\fldrslt \cf2 Hacker News}} and {\field{\*\fldinst{HYPERLINK "http://www.reddit.com/r/programming/comments/1cv3il/stop_designing_fragile_web_apis/"}}{\fldrslt \cf2 reddit}}.\
+\pard\pardeftab720\sa200
+\cf3 \
+\pard\pardeftab720\sa400
+\cf3 Did you find this article interesting? I plan to write more on APIs in the future, if you\'92d like to catch whatever I have to say next, I\'92m starting a mailing list where I\'92ll be distributing more API-related content.\
+}

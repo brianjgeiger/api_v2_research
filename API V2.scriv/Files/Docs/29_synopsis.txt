@@ -1,0 +1,3 @@
+Prakash Subramaniam
+
+Focus on your endpoints as nouns so that everything is a resource rather. Instead of changing the address as a PUT/PATCH, consider POSTing a ChangeOfAddress, for example.

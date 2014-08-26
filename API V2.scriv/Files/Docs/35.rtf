@@ -1,0 +1,3097 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red77\green77\blue77;\red13\green103\blue150;\red38\green38\blue38;
+\red109\green109\blue109;\red242\green242\blue242;\red190\green0\blue53;\red245\green245\blue247;\red217\green217\blue217;
+\red213\green213\blue213;\red247\green247\blue247;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\deftab720
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 Introduction\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 SupportFu is a fully hosted solution to manage email and twitter based customer support. We provide a {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Representational_state_transfer"}}{\fldrslt \cf3 REST}} API built on {\field{\*\fldinst{HYPERLINK "http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api"}}{\fldrslt \cf3 pragmatic RESTful design}} principles.\
+Our API uses resource-oriented URLs that leverage built in features of HTTP, like authentication, verbs and response codes. All request and response bodies are {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/JSON"}}{\fldrslt \cf3 JSON}} encoded, including error responses. Any off-the-shelf HTTP client can be used to communicate with the API.\
+We believe an API is a user interface for a developer - accordingly, we've made sure our API can be easily explored from the browser!\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Changes\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 This is a versionless API. Advance notification of breaking changes will be available in this document and will be sent by email to our developer mailing list.
+\fs44 \
+\pard\pardeftab720\qc
+
+\fs34 \cf4 \
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Coming Soon...\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\b0\fs36 \cf2 {\listtext	\'95	}Token based authentication\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Authentication\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 This API is authenticated using {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Basic_access_authentication"}}{\fldrslt \cf3 HTTP Basic Auth}} over {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/HTTP_Secure"}}{\fldrslt \cf3 HTTPS}}. Any requests over plain HTTP will fail.\
+A user's email address and password can be provided as auth credentials:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 $ curl -u \cf7 email\cf4 :\cf7 password\cf4  https://\cf7 site\cf4 .supportfu.com/api/v1/tickets\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 All requests are associated with a specific user in SupportFu and permissions are limited to that user's capabilities.\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Requests\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 The base URL of the API is 
+\f1\fs24 \cf4 \cb8 https://\cf7 site\cf4 .supportfu.com/api/v1
+\f0\fs36 \cf2 \cb1  where 
+\f1\fs24 \cf7 \cb8 site
+\f0\fs36 \cf2 \cb1  should be replaced with your help desk identifier.\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 JSON Bodies\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All 
+\f1\fs24 \cf4 \cb8 POST
+\f0\fs36 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 PUT
+\f0\fs36 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 PATCH
+\f0\fs36 \cf2 \cb1  requests are {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/JSON"}}{\fldrslt \cf3 JSON}} encoded and must have have content type of 
+\f1\fs24 \cf4 \cb8 application/json
+\f0\fs36 \cf2 \cb1 , or the API will return a 
+\f1\fs24 \cf4 \cb8 415 Unsupported Media Type
+\f0\fs36 \cf2 \cb1  status code.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 $ curl -u \cf7 token\cf4 :X https://\cf7 site\cf4 .supportfu.com/api/v1/users/543abc \\\
+    -X PATCH \\\
+    -H 'Content-Type: application/json' \\\
+    -d '\{"first_name":"John"\}'\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 HTTP Verbs\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 We use standard HTTP verbs to indicate intent of a request:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}GET
+\f0\fs36 \cf2 \cb1  - To retrieve a resource or a collection of resources\
+\ls2\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}POST
+\f0\fs36 \cf2 \cb1  - To create a resource\
+\ls2\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}PATCH
+\f0\fs36 \cf2 \cb1  - To modify a resource\
+\ls2\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}PUT
+\f0\fs36 \cf2 \cb1  - To set a resource\
+\ls2\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}DELETE
+\f0\fs36 \cf2 \cb1  - To delete a resource\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Limited HTTP Clients\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 If you are using an HTTP client that doesn't support 
+\f1\fs24 \cf4 \cb8 PUT
+\f0\fs36 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 PATCH
+\f0\fs36 \cf2 \cb1  or 
+\f1\fs24 \cf4 \cb8 DELETE
+\f0\fs36 \cf2 \cb1  requests, send a 
+\f1\fs24 \cf4 \cb8 POST
+\f0\fs36 \cf2 \cb1  request with an 
+\f1\fs24 \cf4 \cb8 X-HTTP-Method-Override
+\f0\fs36 \cf2 \cb1  header specifying the desired verb.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 $ curl -u \cf7 token\cf4 :X https://\cf7 site\cf4 .supportfu.com/api/v1/users/543abc \\\
+    -X POST \\\
+    -H "X-HTTP-Method-Override: DELETE"\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Responses\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All response bodies are {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/JSON"}}{\fldrslt \cf3 JSON}} encoded.\
+A single resource is represented as a JSON object:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 \{\
+  "field1": "value",\
+  "field2": true,\
+  "field3": []\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 A collection of resources is represented as a JSON array of objects:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 [\
+  \{\
+    "field1": "value",\
+    "field2": true,\
+    "field3": []\
+  \},\
+  \{\
+    "field1": "another value",\
+    "field2": false,\
+    "field3": []\
+  \}\
+]\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Timestamps are in {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Coordinated_Universal_Time"}}{\fldrslt \cf3 UTC}} and formatted as {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/ISO_8601"}}{\fldrslt \cf3 ISO8601}}.\
+Unset fields will be represented as a 
+\f1\fs24 \cf4 \cb8 null
+\f0\fs36 \cf2 \cb1  instead of not being present. If the field is an array, it will be represented as an empty array - ie 
+\f1\fs24 \cf4 \cb8 []
+\f0\fs36 \cf2 \cb1 .\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 HTTP Status Codes\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 We use HTTP status codes to indicate success or failure of a request.\
+Success codes:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}200 OK
+\f0\fs36 \cf2 \cb1  - Request succeeded. Response included\
+\ls3\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}201 Created
+\f0\fs36 \cf2 \cb1  - Resource created. URL to new resource in Location header\
+\ls3\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}204 No Content
+\f0\fs36 \cf2 \cb1  - Request succeeded, but no response body\
+\pard\pardeftab720\sa400
+\cf2 Error codes:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}400 Bad Request
+\f0\fs36 \cf2 \cb1  - Could not parse request\
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}401 Unauthorized
+\f0\fs36 \cf2 \cb1  - No authentication credentials provided or authentication failed\
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}403 Forbidden
+\f0\fs36 \cf2 \cb1  - Authenticated user does not have access\
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}404 Not Found
+\f0\fs36 \cf2 \cb1  - Resource not found\
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}415 Unsupported Media Type
+\f0\fs36 \cf2 \cb1  - POST/PUT/PATCH request occurred without a 
+\f1\fs24 \cf4 \cb8 application/json
+\f0\fs36 \cf2 \cb1  content type\
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}422 Unprocessable Entry
+\f0\fs36 \cf2 \cb1  - A request to modify or create a resource failed due to a \cf3 validation error\cf2 \
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}429 Too Many Requests
+\f0\fs36 \cf2 \cb1  - Request rejected due to \cf3 rate limiting\cf2 \
+\ls4\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}500, 501, 502, 503, etc
+\f0\fs36 \cf2 \cb1  - An internal server error occured\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Errors\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All 400 series errors (400, 401, 403, etc) will be returned with a JSON object in the body and a 
+\f1\fs24 \cf4 \cb8 application/json
+\f0\fs36 \cf2 \cb1  content type.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 \{\
+   "message": "Not Found"\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 500 series error codes (500, 501, 502, etc) do not return JSON bodies.\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Validation Errors\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 In case of validation errors on a POST/PUT/PATCH request, a 
+\f1\fs24 \cf4 \cb8 422 Unprocessable Entry
+\f0\fs36 \cf2 \cb1  status code will be returned. The JSON response body will include an array of error messages.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 \{\
+  "message": "Validation Failed",\
+  "errors": [\
+    \{\
+      "message": "Field is not valid"\
+    \},\
+    \{\
+      "message": "OtherField is already used"\
+    \}\
+  ]\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Rate Limiting\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 The API is rate limited to 100 credits per minute for an entire help desk, across all end points, users and tokens. A request is typically worth 1 credit. However, \cf3 embedding\cf2  and \cf3 counting\cf2  can increase the the amount of required credits for a request. All responses include headers describing the current rate limit status:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls5\ilvl0
+\fs24 \cf4 \cb8 {\listtext	\'95	}Rate-Limit-Limit
+\f0\fs36 \cf2 \cb1  - Total credit for current period\
+\ls5\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}Rate-Limit-Remaining
+\f0\fs36 \cf2 \cb1  - Remaining credit for current period\
+\ls5\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}Rate-Limit-Used
+\f0\fs36 \cf2 \cb1  - Number of credits used for this request\
+\ls5\ilvl0
+\f1\fs24 \cf4 \cb8 {\listtext	\'95	}Rate-Limit-Reset
+\f0\fs36 \cf2 \cb1  - Number of seconds until the the credit count resets\
+\pard\pardeftab720\sa400
+\cf2 If the rate limit is hit, the API will return a 
+\f1\fs24 \cf4 \cb8 429 Too Many Requests
+\f0\fs36 \cf2 \cb1  status code. In this situation, your application should not send any further requests until 
+\f1\fs24 \cf4 \cb8 Rate-Limit-Reset
+\f0\fs36 \cf2 \cb1  seconds have elapsed.\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Field Filtering\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All responses from the API can limit fields to only the fields you need. Just pass in a 
+\f1\fs24 \cf4 \cb8 fields
+\f0\fs36 \cf2 \cb1  query parameter with a comma separated list of fields you need\
+For example:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/users?fields=id,first_name\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Would have the following response body:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 [\
+  \{\
+    "id": "543abc",\
+    "first_name:": "John"\
+  \},\
+  \{\
+    "id": "543add",\
+    "first_name:": "Bob"\
+  \}\
+]\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Embedding\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Many endpoints support embedding related resources to minimize the number of required API round trips.\
+Embedding is triggered by passing in an 
+\f1\fs24 \cf4 \cb8 embed
+\f0\fs36 \cf2 \cb1  query parameter, which takes a comma separated list of endpoint types.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets/543abc?embed=labels\
+\{\
+  id: "543add",\
+  type: "email",\
+  label_ids: [ "123abc", "234bcd" ],\
+  labels: [\
+    \{\
+      id: "123abc",\
+      name: "Refund"\
+    \},\
+    \{\
+      id: "234bcd",\
+      name: "VIP"\
+    \}\
+  ],\
+  \cf7 ... other ticket fields ...\cf4 \
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Only certain resource types can be embedded from certain endpoints. The endpoint documentation specifies which ones can be embedded.\
+Each embedded type uses an additional rate limit credit.\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Counting\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All endpoints that return a collection can provide a count of the total number of results. To request a count, just include a 
+\f1\fs24 \cf4 \cb8 count=true
+\f0\fs36 \cf2 \cb1  as a query parameter. The count will be returned in a header 
+\f1\fs24 \cf4 \cb8 Total-Count
+\f0\fs36 \cf2 \cb1 .\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets?count=true\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Total-Count: 135\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 198\
+Rate-Limit-Used: 2\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 [\
+  \cf7 ... results ... \cf4 \
+]\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Note that the count represents the total amount of available results, not the amount returned as part of the current response.\
+Counting uses an additional rate limit credit.\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Enveloping\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 If your HTTP client makes it difficult to read status codes or headers, we can package everything neatly into the response body. Just include 
+\f1\fs24 \cf4 \cb8 envelope=true
+\f0\fs36 \cf2 \cb1  as a request parameter and the API will always return a 200 HTTP status code. The real status, headers and response will be within the body.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/users/does-not-exist?envelope=true\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "status": 404,\
+  "headers": \{\
+    "Rate-Limit-Limit": 200,\
+    "Rate-Limit-Remaining": 150,\
+    "Rate-Limit-Used": 0,\
+    "Rate-Limit-Reset": 25\
+  \},\
+  "response": \{\
+    "message": "Not Found"\
+  \}\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Pagination\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Requests for collections can return between 0 and 100 results, controlled using the 
+\f1\fs24 \cf4 \cb8 per_page
+\f0\fs36 \cf2 \cb1  and 
+\f1\fs24 \cf4 \cb8 page
+\f0\fs36 \cf2 \cb1  query parameters. All end points are limited to 10 results by default.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets?per_page=15&page=2\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Not all endpoints support pagination. If they do, it will be mentioned in their documentation.\
+\pard\pardeftab720\sa200
+
+\b\fs50 \cf2 Sorting\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Some endpoints offer result sorting, triggered using the 
+\f1\fs24 \cf4 \cb8 sort
+\f0\fs36 \cf2 \cb1  query parameter. The value of sort is a comma separated list of fields to sort by. You can specify descending sort by prepending 
+\f1\fs24 \cf4 \cb8 -
+\f0\fs36 \cf2 \cb1  to a field. Not all fields can be sorted on. The endpoint documentation will list supported sort options.\
+The default sort for all endpoints is descending order of creation.\
+To get recently updated tickets, sorted in descending order of updated_at:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets?sort=-updated_at\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Tickets\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 All requests are tracked as tickets. A ticket contains one or more \cf3 messages\cf2 .\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 number\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 integer\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Friendly ticket number, unique across the help desk.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 customer_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Associated customer.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Assigned user. Can be null.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 group_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Assigned group. A ticket always belongs to a group.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 label_ids\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of strings\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 state\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 open
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 hold
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 closed
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 subject\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 email
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 twitter
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Default To: field of a new reply.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Default Cc: field of a new reply.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 spam\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 trash\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 updated_at\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 timestamp\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 created_at\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 timestamp\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1640\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth11060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 summary\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Automatically generated plain text summary containing an excerpt of the first message on the ticket\cell \lastrow\row
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls6\ilvl0\cf4 {\listtext	\'95	}\
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Listing tickets\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/tickets\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Query Parameter\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Comma separated list of ticket ids\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 group_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Comma separated list of group ids\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 state\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Comma separated list of states: 
+\f1\fs24 \cf4 \cb8 open
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 hold
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 closed
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Comma separated list of user ids\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 spam\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1 ,
+\f1\fs24 \cf4 \cb8 false
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 trash\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1 ,
+\f1\fs24 \cf4 \cb8 false
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 since_created_at\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Any tickets created since specified time (should be in UTC and ISO8601 formatted)\
+eg: 2013-08-02T13:41:10Z\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 since_updated_at\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Any tickets updated since specified time (should be in UTC and ISO8601 formatted)\
+eg: 2013-08-02T13:41:10Z\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 page\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Page number, starting from 1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 per_page\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Any integer between 0 and 100, inclusive\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 sort\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 -updated_at
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 -created_at
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 user_id,-updated_at
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 fields\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Field Filtering\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 count\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Counting\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3080\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11820\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 envelope\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Enveloping\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request for unassigned tickets:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets?user_id=null&sort=-updated_at&count=true&per_page=1\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Total-Count: 23\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 198\
+Rate-Limit-Used: 2\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 [\
+  \{\
+    "id": "51e6e9",\
+    "number": 2209,\
+    "user_id": "501efc",\
+    "state": "closed",\
+    "subject": "help, it didn't work!",\
+    "labels_ids": [\
+      "41e3dc"\
+    ],\
+    "customer_id": "51b3e9",\
+    "type": "email",\
+    "reply_to": "michael@example.com",\
+    "reply_cc": "",\
+    "group_id": "51e3f9",\
+    "spam": false,\
+    "trash": false,\
+    "updated_at": "2013-07-25T12:19:33Z",\
+    "created_at": "2013-07-17T18:58:44Z",\
+    "summary": "I was trying to do something and it just didn't work.  Can you help?"\
+  \}\
+]\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Getting a single ticket\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/tickets/\cf7 ticket_id\cf4 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth12360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Query Parameter\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth12360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 embed\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Comma separated list of embeddables: 
+\f1\fs24 \cf4 \cb8 user
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 group
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 customer
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 labels
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 messages
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 fields\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Field Filtering\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth12360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 envelope\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Enveloping\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets/51e6e9&embed=customer\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 196\
+Rate-Limit-Used: 2\
+Rate-Limit-Reset: 18\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "51e6e9",\
+  "number": 2209,\
+  "user_id": "501efc",\
+  "state": "closed",\
+  "subject": "help, it didn't work!",\
+  "label_ids": [\
+    "41e3dc"\
+  ],\
+  "customer_id": "51b3e9",\
+  "customer": \{\
+    "id": "51b3e9,\
+    "first_name": "Michael",\
+    "last_name": "Smith",\
+    "summary": null,\
+    "contacts": [\
+      \{\
+        "id": "5149d9",\
+        "type": "email",\
+        "value": "michael.smith@example.com",\
+      \}\
+    ]\
+  \},\
+  "type": "email",\
+  "group_id": "51e3f9",\
+  "spam": false,\
+  "trash": false,\
+  "updated_at": "2013-07-25T12:19:33Z",\
+  "created_at": "2013-07-17T18:58:44Z",\
+  "summary": "I was trying to do something and it just didn't work.  Can you help?"\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Updating a ticket\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 PATCH /api/v1/tickets/\cf7 ticket_id\cf4 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Should be combined with group_id.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 group_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Should be combined with uiser_id.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 state\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 open
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 hold
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 closed
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 spam\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 false
+\f0\fs28 \cf2 \cb1 . spam and trash cannot both be true at the same time.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 trash\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 One of: 
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 false
+\f0\fs28 \cf2 \cb1 . spam and trash cannot both be true at the same time.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 subject\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Closing a ticket:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 PATCH /api/v1/tickets/51b3e9\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "state": "closed"\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Assigning to a specific user:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 PATCH /api/v1/tickets/51b3e9\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "group_id": "543abc",\
+  "user_id": "555acc"\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Sending to trash:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 PATCH /api/v1/tickets/51b3e9\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "trash": true\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Adding or removing a single label\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 An additional endpoint is available to add or remove a single label, without having to provide the entire array of labels.\
+Adding a label:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 PUT /api/v1/tickets/\cf7 ticket_id\cf4 /labels/\cf7 label_id\cf4 \
+Content-Type: application/json\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Removing a label:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 DELETE /api/v1/tickets/\cf7 ticket_id\cf4 /labels/\cf7 label_id\cf4 \
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Creating a new ticket\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/tickets\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalb \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalb \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to 
+\f1\fs24 \cf4 \cb8 email
+\f0\fs28 \cf2 \cb1 . Twitter tickets cannot be created from the API.\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 subject\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Subject of the ticket\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 customer_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Associated customer\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Default To: address for replies\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Default Cc: address for replies\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clshdrawnil \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 If not combined with group_id or user does not belong to provided group, ticket will be assigned to the user's default group.\cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clmgf \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clmrg \clvertalt \clcbpat11 \clwWidth11140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 group_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell 
+\pard\intbl\itap1\cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/tickets\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "customer_id": "4332ca",\
+  "reply_to": "john@example.com",\
+  "type": "email",\
+  "user_id": "522aaa",\
+  "group_id": "533bcd",\
+  "subject": "Oh no, it happened again!"\
+\}\
+\pard\pardeftab720
+\cf4 \cb9 201 Created\
+Location: https://\cf7 site\cf4 .supportfu.com/api/v1/tickets/51f6e9\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "51f6e9",\
+  "number": 2210,\
+  "user_id": "522aaa",\
+  "state": "open",\
+  "subject": "Oh no, it happened again!",\
+  "label_ids": [\
+  ],\
+  "customer_id": "4332ca",\
+  "type": "email",\
+  "group_id": "533bcd",\
+  "spam": false,\
+  "trash": false,\
+  "updated_at": "2013-07-17T18:58:44Z",\
+  "created_at": "2013-07-17T18:58:44Z",\
+  "summary": null\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Messages\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Replies, forwards and notes are all represented as messages on a \cf3 ticket\cf2 .\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 from_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 display name associated with message\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 body\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 htmlized\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 true if the body is html\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 attachments\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of attachments\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 id of user who created the message. null if a customer\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 reply
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 note
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 forward
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth8720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 created_at\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 timestamp\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Additional fields for email reply messages:\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 direction\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 one of:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 in
+\f0\fs28 \cf2 \cb1  - an inbound message from a customer\
+
+\f1\fs24 \cf4 \cb8 out
+\f0\fs28 \cf2 \cb1  - an outbound message to a customer\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 from\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 From
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 To
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 Cc
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 bcc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 Bcc
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 Reply-To
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 subject\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 Subject
+\f0\fs28 \cf2 \cb1  header\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2980\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth1520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth10060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 more_body\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 contains signature if removed from body.\cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Additional fields for twitter reply messages:\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth5560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2440\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth6560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth2440\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth6560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 screen_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2440\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth6560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 tweet_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Twitter Status ID\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth2440\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth6560\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 direction\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 one of: 
+\f1\fs24 \cf4 \cb8 in
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 out
+\f0\fs28 \cf2 \cb1 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Additional fields for forward messages:\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth4580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth4780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth5200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth4580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth4580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth4780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth5200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth4580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 bcc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Listing messages\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Messages can be retrieved as embedded resources on a ticket.\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets/\cf7 ticket_id\cf4 ?embed=messages\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/tickets/513e9c?embed=messages\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 198\
+Rate-Limit-Used: 2\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "513e9c",\
+  "number": 224,\
+  "messages": [\
+    \{\
+      "id": "51f613",\
+      "type": "reply",\
+      "direction": "in",\
+      "from_name": "Chris Johnson",\
+      "body": "<p>I was trying to do something and it just didn't work.</p><p>Can you help?</p>",\
+      "htmlized": true,\
+      "from": "Chris Johnson <chris@example.com>",\
+      "to": "support@example.com",\
+      "cc": null,\
+      "bcc": null,\
+      "reply_to": null,\
+      "subject": "i need some help",\
+      "user_id": null,\
+      "attachments": [\
+      ],\
+      "created_at": "2013-07-29T07:03:10Z",\
+    \},\
+    \{\
+      "id": "51f677",\
+      "type": "reply",\
+      "direction": "out",\
+      "from_name": "Vinay Sahni",\
+      "body": "Hi Chris,<br><br>Ofcourse I can help!<br><br>Cheers,<br>Vinay",\
+      "htmlized": true,\
+      "user_id": "501efc",\
+      "from": null,\
+      "to": "chris@example.com",\
+      "cc": null,\
+      "bcc": null,\
+      "reply_to": null,\
+      "subject": null,\
+      "attachments": [\
+      ],\
+      "created_at": "2013-07-29T14:10:58Z",\
+    \}\
+  ],\
+  "user_id": "501efc",\
+  "state": "closed",\
+  "subject": "i need some help",\
+  "label_ids": [\
+  ],\
+  "customer_id": "51f613",\
+  "type": "email",\
+  "reply_to": "chris@example.com",\
+  "reply_cc": "",\
+  "group_id": "513210",\
+  "updated_at": "2013-07-29T14:10:59Z",\
+  "created_at": "2013-07-29T07:03:10Z",\
+  "spam": false,\
+  "trash": false,\
+  "summary": "I was trying to do something and it just didn't work. Can you help?"\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Creating a new note\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/tickets/\cf7 ticket_id\cf4 /messages\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to: 
+\f1\fs24 \cf4 \cb8 note
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 id of user to associate with the message.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 body\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 htmlized\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1  if the body is html\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 attachment_ids\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of strings\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 See \cf3 attachments\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Creating a new inbound email reply\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/tickets/\cf7 ticket_id\cf4 /messages\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to: 
+\f1\fs24 \cf4 \cb8 reply
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 direction\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to: 
+\f1\fs24 \cf4 \cb8 in
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 body\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 htmlized\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1  if the body is html\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 from\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 subject\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 reply_to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth3140\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2120\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth5040\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 attachment_ids\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of strings\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 See \cf3 attachments\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Creating a new outbound email reply\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/tickets/\cf7 ticket_id\cf4 /messages\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to: 
+\f1\fs24 \cf4 \cb8 reply
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 direction\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Must be set to: 
+\f1\fs24 \cf4 \cb8 out
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 body\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 htmlized\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 boolean\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs24 \cf4 \cb8 true
+\f0\fs28 \cf2 \cb1  if the body is html\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 user_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 id of user to associate with the message.\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 to\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Will default to reply_to from ticket\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 cc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Will default to reply_cc from ticket\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 bcc\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth2540\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth1700\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth6780\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 attachment_ids\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of strings\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 See \cf3 attachments\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample request to add a reply:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/tickets/513ecc/messages\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "direction": "out",\
+  "type": "reply",\
+  "body": "Hi Chris,<br><br>Ofcourse I can help!<br><br>Cheers,<br>Vinay",\
+  "htmlized": true,\
+  "user_id": "501efc"\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Attachments\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Attachments are associated with messages. After uploading an attachment, a message must be created using the attachment id. An attachment can only be associated with one message. Any unassociated attachments will be deleted.\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth3500\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth4200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth6860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3500\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth6860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3500\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth4200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth6860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 file name\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth3500\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth6860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 size\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 integer\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 size in bytes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth3500\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth4200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth6860\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 mime type\cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Getting an attachment\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/attachments/\cf7 attachment_id\cf4 \
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/attachments/54318c\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "54318c",\
+  "name": "MyFile.zip",\
+  "size": 134345,\
+  "type": "application/zip"\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Creating an attachment\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/attachments\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth1880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalb \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth3060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalb \clshdrawnil \clwWidth7360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth3060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth7360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 file name\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth1880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth3060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth7360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 mime type\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth1880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2160
+\clvertalt \clcbpat11 \clwWidth1920\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth3060\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx6480
+\clvertalt \clcbpat11 \clwWidth7360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 data\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Base64 encoded file data\cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample attachment, including message creation:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/attachments\
+Content-Type: application/json\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "name": "MyFile.zip",\
+  "type": "application/zip",\
+  "data": "UEsDBAoAAAAAAFmu/kLPx4wKGwAAABsAAAAKABwAcmVhZG1lLnR4dFVUCQAD\
+           OjX4UTo1+FF1eAsAAQToAwAABOgDAABNYXkgdGhlIGZvcmNlIGJlIHdpdGgg\
+           eW91LgpQSwECHgMKAAAAAABZrv5Cz8eMChsAAAAbAAAACgAYAAAAAAABAAAA\
+           tIEAAAAAcmVhZG1lLnR4dFVUBQADOjX4UXV4CwABBOgDAAAE6AMAAFBLBQYA\
+           AAAAAQABAFAAAABfAAAAAAA="\
+\}\
+\pard\pardeftab720
+\cf4 \cb9 201 Created\
+Location: https://\cf7 site\cf4 .supportfu.com/api/v1/attachments/5338df\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "5338df",\
+  "name": "MyFile.zip",\
+  "type": "application/zip",\
+  "size": 197\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Now, a message needs to be created using the attachment:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/tickets/513ecc/messages\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "type": "note",\
+  "body": "Attaching the file!",\
+  "htmlized": false,\
+  "user_id": "501efc",\
+  "attachment_ids": [\
+    "5338df"\
+  ]\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Users\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 first_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 last_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 email\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 access_level\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 user
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 admin
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 default_group_id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5260\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3720\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth5580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 group_ids\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of strings\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Listing users\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/users\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/users\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 [\
+  \{\
+    "id": "501efc",\
+    "first_name": "John",\
+    "last_name": "Smith",\
+    "email": "john@example.com",\
+    "access_level": "admin"\
+    "default_group_id": "331bac"\
+    "group_ids": [\
+      "331bac"\
+    ]\
+  \},\
+  \{\
+    "id": "501edd",\
+    "first_name": "Michael",\
+    "last_name": "Jones",\
+    "email": "michael@example.com",\
+    "access_level": "admin"\
+    "default_group_id": "331bac"\
+    "group_ids": [\
+      "331bac"\
+    ]\
+  \}\
+]\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Customers\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 first_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 last_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 summary\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth5340\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth6420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth2800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 contacts\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 array of \cf3 contacts\cf2 \cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Listing customers\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/customers\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalb \clshdrawnil \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Query Parameter\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 page\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Page number, starting from 1\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 per_page\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 Any integer between 0 and 100, inclusive\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 fields\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Field Filtering\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 count\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Counting\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth4680\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx4320
+\clvertalt \clcbpat11 \clwWidth10220\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 envelope\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 See \cf3 Enveloping\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/customers\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 [\
+  \{\
+    "id": "51f846",\
+    "first_name": "Ruby",\
+    "last_name": "Miller",\
+    "summary": null,\
+    "contacts": [\
+      \{\
+        "id": "51f8aa",\
+        "type": "email",\
+        "value": "ruby@example.com",\
+      \}\
+    ]\
+  \},\
+  \{\
+    "id": "51f7a7",\
+    "first_name": "Maggie",\
+    "last_name": "Miller",\
+    "summary": null,\
+    "contacts": [\
+      \{\
+        "id": "51f7a9",\
+        "type": "email",\
+        "value": "maggie@example.com",\
+      \}\
+    ]\
+  \}\
+]\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Get a single customer\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 GET /api/v1/customers/\cf7 customer_id\cf4 \
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb6 GET /api/v1/customers/51f7a7\
+\pard\pardeftab720
+\cf4 \cb9 200 OK\
+Rate-Limit-Limit: 200\
+Rate-Limit-Remaining: 199\
+Rate-Limit-Used: 1\
+Rate-Limit-Reset: 20\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "51f7a7",\
+  "first_name": "Maggie",\
+  "last_name": "Miller",\
+  "summary": null,\
+  "contacts": [\
+    \{\
+      "id": "51f7a9",\
+      "type": "email",\
+      "value": "maggie@example.com",\
+    \}\
+  ]\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Updating a customer\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 PATCH /api/v1/customers/\cf7 customer_id\cf4 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 first_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 last_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 summary\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Updating a customer's name:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 PATCH /api/v1/customers/51f7a7\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "first_name": "Maggy",\
+  "last_name": "Miller"\
+\}\
+\pard\pardeftab720\sa400
+
+\f0\fs36 \cf2 \cb1 Adding custom summary info:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 PATCH /api/v1/customers/51f7a7\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "summary": "VIP customer"\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs40 \cf5 \cb1 Creating a new customer\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/customers\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 first_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 last_name\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth6380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth4800\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth3380\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 summary\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 no\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/customers\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "first_name": "John",\
+  "last_name": "Smith"\
+\}\
+\pard\pardeftab720
+\cf4 \cb9 201 Created\
+Location: https://\cf7 site\cf4 .supportfu.com/api/v1/customers/51c3d1\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "51c3d1",\
+  "first_name": "John",\
+  "last_name": "Smith",\
+  "summary": null,\
+\}\
+\pard\pardeftab720\sa200
+
+\f0\b\fs50 \cf2 \cb1 Contacts\
+\pard\pardeftab720\sa400
+
+\b0\fs36 \cf2 Email addresses and twitter accounts are represented as contacts on a customer. They are automatically loaded with customer records\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth2840\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth2420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth9300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\b\fs28 \cf2 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Type\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2840\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth2420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth9300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 id\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2840\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth9300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 email
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 twitter
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2840\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth2420\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth9300\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 value\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 string\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa200
+
+\b\fs40 \cf5 Creating a contact\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf4 \cb6 POST /api/v1/customers/\cf7 customer_id\cf4 /contacts\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrt\brdrs\brdrw20\brdrcf10 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalb \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalb \clshdrawnil \clwWidth3460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalb \clshdrawnil \clwWidth8520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f0\b\fs28 \cf2 \cb1 Field\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Required\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 Notes\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clcbpat11 \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clcbpat11 \clwWidth3460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clcbpat11 \clwWidth8520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1\b0 \cf2 type\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 One of: 
+\f1\fs24 \cf4 \cb8 email
+\f0\fs28 \cf2 \cb1 , 
+\f1\fs24 \cf4 \cb8 twitter
+\f0\fs28 \cf2 \cb1 \cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \tamarb400 \trbrdrl\brdrnil \trbrdrb\brdrs\brdrw20\brdrcf10 \trbrdrr\brdrs\brdrw20\brdrcf10 
+\clvertalt \clshdrawnil \clwWidth2580\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth3460\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth8520\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf10 \clbrdrl\brdrs\brdrw20\brdrcf10 \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\f1 \cf2 value\cell 
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf2 yes\cell 
+\pard\intbl\itap1\pardeftab720
+\cf2 \cell \lastrow\row
+\pard\pardeftab720\sa400
+
+\fs36 \cf2 Sample Request:\
+\pard\pardeftab720
+
+\f1\fs26 \cf4 \cb9 POST /api/v1/customers/51f846\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "type": "email",\
+  "value": "john@example.com"\
+\}\
+\pard\pardeftab720
+\cf4 \cb9 201 Created\
+Location: https://\cf7 site\cf4 .supportfu.com/api/v1/customers/514846/contacts/5197cc\
+Content-Type: application/json\
+\pard\pardeftab720
+\cf4 \cb6 \{\
+  "id": "5197cc",\
+  "type": "email",\
+  "value": "john@example.com"\
+\}\
+}

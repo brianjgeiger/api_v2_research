@@ -1,0 +1,2387 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="7DE46F6D-1A62-449B-8009-99F7689844CA">
+    <Notes>
+        <Note ID="36" FontSize="12.0" Position="507.0,54.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>project/&lt;pid&gt;/</String>
+        </Note>
+        <Note ID="37" FontSize="12.0" Position="507.0,82.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>project/&lt;pid&gt;/</String>
+        </Note>
+        <Note ID="38" FontSize="12.0" Position="792.0,1279.0" Width="142.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;addon&gt;/settings/disable</String>
+        </Note>
+        <Note ID="40" FontSize="12.0" Position="548.0,250.0" Width="79.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>addtag/&lt;tag&gt;</String>
+        </Note>
+        <Note ID="41" FontSize="12.0" Position="1321.0,425.0" Width="86.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>beforeregister/</String>
+        </Note>
+        <Note ID="43" FontSize="12.0" Position="1089.0,658.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>oauth/</String>
+        </Note>
+        <Note ID="44" FontSize="12.0" Position="1116.0,686.0" Width="45.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>delete/</String>
+        </Note>
+        <Note ID="45" FontSize="12.0" Position="1089.0,714.0" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/</String>
+        </Note>
+        <Note ID="46" FontSize="12.0" Position="1062.0,602.0" Width="60.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>bitbucket/</String>
+        </Note>
+        <Note ID="47" FontSize="12.0" Position="1089.0,742.0" Width="45.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>tarball/</String>
+        </Note>
+        <Note ID="48" FontSize="12.0" Position="1089.0,770.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>user_auth/</String>
+        </Note>
+        <Note ID="49" FontSize="12.0" Position="1089.0,798.0" Width="46.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>zipball/</String>
+        </Note>
+        <Note ID="50" FontSize="12.0" Position="549.0,426.0" Width="56.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>collapse/</String>
+        </Note>
+        <Note ID="51" FontSize="12.0" Position="548.0,517.0" Width="61.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>comment/</String>
+        </Note>
+        <Note ID="52" FontSize="12.0" Position="570.0,543.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>&lt;cid&gt;/</String>
+        </Note>
+        <Note ID="53" FontSize="12.0" Position="570.0,571.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;cid&gt;/</String>
+        </Note>
+        <Note ID="55" FontSize="12.0" Position="603.0,596.0" Width="43.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>report/</String>
+        </Note>
+        <Note ID="56" FontSize="12.0" Position="603.0,624.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>undelete/</String>
+        </Note>
+        <Note ID="57" FontSize="12.0" Position="603.0,652.0" Width="57.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>unreport/</String>
+        </Note>
+        <Note ID="58" FontSize="12.0" Position="548.0,674.0" Width="67.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>comments/</String>
+        </Note>
+        <Note ID="59" FontSize="12.0" Position="570.0,700.0" Width="68.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>discussion/</String>
+        </Note>
+        <Note ID="62" FontSize="12.0" Position="548.0,745.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>contributors/</String>
+        </Note>
+        <Note ID="63" FontSize="12.0" Position="570.0,772.0" Width="55.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>manage/</String>
+        </Note>
+        <Note ID="64" FontSize="12.0" Position="548.0,799.0" Width="118.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>contributors_abbrev/</String>
+        </Note>
+        <Note ID="65" FontSize="12.0" Position="548.0,1040.0" Width="71.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>create_key/</String>
+        </Note>
+        <Note ID="66" FontSize="12.0" Position="1062.0,82.0" Width="100.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dataverse/config/</String>
+        </Note>
+        <Note ID="67" FontSize="12.0" Position="1062.0,110.0" Width="100.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>dataverse/config/</String>
+        </Note>
+        <Note ID="68" FontSize="12.0" Position="1089.0,138.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>get_studies/</String>
+        </Note>
+        <Note ID="69" FontSize="12.0" Position="1089.0,166.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>import-auth/</String>
+        </Note>
+        <Note ID="70" FontSize="12.0" Position="1089.0,194.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>deauthorize/</String>
+        </Note>
+        <Note ID="71" FontSize="12.0" Position="1062.0,223.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>dataverse/file/</String>
+        </Note>
+        <Note ID="72" FontSize="12.0" Position="1089.0,251.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="73" FontSize="12.0" Position="1089.0,279.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="74" FontSize="12.0" Position="1116.0,307.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>proxy/</String>
+        </Note>
+        <Note ID="75" FontSize="12.0" Position="1116.0,335.0" Width="47.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render/</String>
+        </Note>
+        <Note ID="76" FontSize="12.0" Position="1062.0,364.0" Width="179.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dataverse/files/&lt;path:path&gt;/info/</String>
+        </Note>
+        <Note ID="77" FontSize="12.0" Position="1062.0,392.0" Width="95.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dataverse/hgrid/</String>
+        </Note>
+        <Note ID="78" FontSize="12.0" Position="1089.0,420.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="79" FontSize="12.0" Position="1089.0,448.0" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>root/</String>
+        </Note>
+        <Note ID="80" FontSize="12.0" Position="1062.0,476.0" Width="107.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>dataverse/release/</String>
+        </Note>
+        <Note ID="81" FontSize="12.0" Position="1062.0,504.0" Width="84.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>dataverse/set/</String>
+        </Note>
+        <Note ID="82" FontSize="12.0" Position="1062.0,532.0" Width="103.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dataverse/widget/</String>
+        </Note>
+        <Note ID="83" FontSize="12.0" Position="1089.0,561.0" Width="57.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>contents/</String>
+        </Note>
+        <Note ID="85" FontSize="12.0" Position="591.0,54.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>project/&lt;pid&gt;/node/&lt;nid&gt;/</String>
+            <ConnectedNoteIDs>87</ConnectedNoteIDs>
+            <PointsToNoteIDs>87</PointsToNoteIDs>
+        </Note>
+        <Note ID="86" FontSize="12.0" Position="590.0,82.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>project/&lt;pid&gt;/node/&lt;nid&gt;/</String>
+        </Note>
+        <Note ID="87" FontSize="12.0" Position="771.0,54.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/</String>
+            <ConnectedNoteIDs>85</ConnectedNoteIDs>
+        </Note>
+        <Note ID="88" FontSize="12.0" Position="855.0,54.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/node/&lt;nid&gt;/</String>
+            <ConnectedNoteIDs>140</ConnectedNoteIDs>
+            <PointsToNoteIDs>140</PointsToNoteIDs>
+        </Note>
+        <Note ID="90" FontSize="12.0" Position="796.0,785.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dropbox/config/</String>
+        </Note>
+        <Note ID="91" FontSize="12.0" Position="796.0,813.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>dropbox/config/</String>
+        </Note>
+        <Note ID="92" FontSize="12.0" Position="796.0,841.0" Width="91.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>dropbox/config/</String>
+        </Note>
+        <Note ID="93" FontSize="12.0" Position="816.0,868.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>import-auth/</String>
+        </Note>
+        <Note ID="94" FontSize="12.0" Position="816.0,896.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>share</String>
+        </Note>
+        <Note ID="95" FontSize="12.0" Position="796.0,924.0" Width="80.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>dropbox/files/</String>
+        </Note>
+        <Note ID="96" FontSize="12.0" Position="816.0,951.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="97" FontSize="12.0" Position="816.0,979.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="98" FontSize="12.0" Position="839.0,1007.0" Width="47.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render/</String>
+        </Note>
+        <Note ID="99" FontSize="12.0" Position="838.0,1035.0" Width="59.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>revisions/</String>
+        </Note>
+        <Note ID="100" FontSize="12.0" Position="796.0,1062.0" Width="85.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dropbox/hgrid/</String>
+        </Note>
+        <Note ID="101" FontSize="12.0" Position="816.0,1090.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="102" FontSize="12.0" Position="796.0,1118.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dropbox/oauth/</String>
+        </Note>
+        <Note ID="104" FontSize="12.0" Position="548.0,223.0" Width="31.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>edit/</String>
+        </Note>
+        <Note ID="105" FontSize="12.0" Position="549.0,454.0" Width="51.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>expand/</String>
+        </Note>
+        <Note ID="106" FontSize="12.0" Position="549.0,482.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>expanded/</String>
+        </Note>
+        <Note ID="110" FontSize="12.0" Position="796.0,235.0" Width="55.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>figshare/</String>
+        </Note>
+        <Note ID="111" FontSize="12.0" Position="816.0,263.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;aid&gt;/</String>
+        </Note>
+        <Note ID="112" FontSize="12.0" Position="816.0,291.0" Width="126.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>article/&lt;aid&gt;/file/&lt;fid&gt;/</String>
+        </Note>
+        <Note ID="113" FontSize="12.0" Position="816.0,319.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>config/</String>
+        </Note>
+        <Note ID="114" FontSize="12.0" Position="816.0,347.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>config/</String>
+        </Note>
+        <Note ID="115" FontSize="12.0" Position="816.0,375.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>config/</String>
+        </Note>
+        <Note ID="116" FontSize="12.0" Position="839.0,404.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>import-auth/</String>
+        </Note>
+        <Note ID="117" FontSize="12.0" Position="816.0,433.0" Width="177.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>download/article/&lt;aid&gt;/file/&lt;fid&gt;</String>
+        </Note>
+        <Note ID="118" FontSize="12.0" Position="816.0,461.0" Width="35.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>hgrid</String>
+        </Note>
+        <Note ID="119" FontSize="12.0" Position="839.0,489.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;type&gt;/&lt;id&gt;/</String>
+        </Note>
+        <Note ID="120" FontSize="12.0" Position="839.0,517.0" Width="51.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>options/</String>
+        </Note>
+        <Note ID="121" FontSize="12.0" Position="816.0,546.0" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>new/fileset/</String>
+        </Note>
+        <Note ID="122" FontSize="12.0" Position="816.0,574.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>new/project/</String>
+        </Note>
+        <Note ID="123" FontSize="12.0" Position="816.0,602.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>oauth/</String>
+        </Note>
+        <Note ID="124" FontSize="12.0" Position="816.0,630.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>oauth/</String>
+        </Note>
+        <Note ID="125" FontSize="12.0" Position="816.0,658.0" Width="183.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>project/&lt;project_id&gt;/article/&lt;aid&gt;</String>
+        </Note>
+        <Note ID="126" FontSize="12.0" Position="816.0,686.0" Width="164.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render/article/&lt;aid&gt;/file/&lt;fid&gt;/</String>
+        </Note>
+        <Note ID="127" FontSize="12.0" Position="816.0,714.0" Width="62.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>user_auth</String>
+        </Note>
+        <Note ID="128" FontSize="12.0" Position="816.0,742.0" Width="43.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>widget</String>
+        </Note>
+        <Note ID="130" FontSize="12.0" Position="796.0,88.0" Width="63.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>file_paths/</String>
+        </Note>
+        <Note ID="131" FontSize="12.0" Position="796.0,116.0" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>files/</String>
+        </Note>
+        <Note ID="132" FontSize="12.0" Position="816.0,143.0" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>download/&lt;fid&gt;/</String>
+        </Note>
+        <Note ID="133" FontSize="12.0" Position="816.0,171.0" Width="165.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>download&lt;fid&gt;/version/&lt;vid&gt;/</String>
+        </Note>
+        <Note ID="134" FontSize="12.0" Position="816.0,199.0" Width="32.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>grid/</String>
+        </Note>
+        <Note ID="135" FontSize="12.0" Position="548.0,314.0" Width="32.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>fork/</String>
+        </Note>
+        <Note ID="136" FontSize="12.0" Position="571.0,338.0" Width="46.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>before/</String>
+        </Note>
+        <Note ID="137" FontSize="12.0" Position="548.0,365.0" Width="38.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forks/</String>
+        </Note>
+        <Note ID="140" FontSize="12.0" Position="1039.0,51.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/</String>
+            <ConnectedNoteIDs>88</ConnectedNoteIDs>
+        </Note>
+        <Note ID="141" FontSize="12.0" Position="1123.0,51.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/node/&lt;nid&gt;/</String>
+            <ConnectedNoteIDs>200</ConnectedNoteIDs>
+            <PointsToNoteIDs>200</PointsToNoteIDs>
+        </Note>
+        <Note ID="142" FontSize="12.0" Position="548.0,1108.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forward/config/</String>
+        </Note>
+        <Note ID="143" FontSize="12.0" Position="548.0,1136.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>forward/config/</String>
+        </Note>
+        <Note ID="144" FontSize="12.0" Position="548.0,1164.0" Width="90.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forward/widget/</String>
+        </Note>
+        <Note ID="145" FontSize="12.0" Position="548.0,1199.0" Width="77.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_children/</String>
+        </Note>
+        <Note ID="146" FontSize="12.0" Position="548.0,967.0" Width="98.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_contributors/</String>
+        </Note>
+        <Note ID="147" FontSize="12.0" Position="548.0,939.0" Width="169.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_contributors_from_parent/</String>
+        </Note>
+        <Note ID="148" FontSize="12.0" Position="548.0,1255.0" Width="126.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_editable_children/</String>
+        </Note>
+        <Note ID="149" FontSize="12.0" Position="1321.0,621.0" Width="115.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_folder_pointers/</String>
+            <ConnectedNoteIDs>189</ConnectedNoteIDs>
+        </Note>
+        <Note ID="150" FontSize="12.0" Position="548.0,393.0" Width="61.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_forks/</String>
+        </Note>
+        <Note ID="151" FontSize="12.0" Position="548.0,911.0" Width="187.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_recently_added_contributors/</String>
+        </Note>
+        <Note ID="152" FontSize="12.0" Position="1321.0,397.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_registrations/</String>
+        </Note>
+        <Note ID="153" FontSize="12.0" Position="548.0,139.0" Width="85.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>get_summary/</String>
+        </Note>
+        <Note ID="156" FontSize="12.0" Position="1062.0,840.0" Width="80.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>github/config/</String>
+        </Note>
+        <Note ID="157" FontSize="12.0" Position="1063.0,867.0" Width="63.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>github/file/</String>
+        </Note>
+        <Note ID="158" FontSize="12.0" Position="1089.0,893.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="159" FontSize="12.0" Position="1089.0,921.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="160" FontSize="12.0" Position="1116.0,947.0" Width="47.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render/</String>
+        </Note>
+        <Note ID="161" FontSize="12.0" Position="1062.0,973.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>github/hgrid/</String>
+        </Note>
+        <Note ID="162" FontSize="12.0" Position="1089.0,1000.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="163" FontSize="12.0" Position="1089.0,1028.0" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>root/</String>
+        </Note>
+        <Note ID="164" FontSize="12.0" Position="1062.0,1053.0" Width="74.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>github/hook/</String>
+        </Note>
+        <Note ID="165" FontSize="12.0" Position="1062.0,1081.0" Width="78.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>github/oauth/</String>
+        </Note>
+        <Note ID="166" FontSize="12.0" Position="1062.0,1109.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>github/oauth</String>
+        </Note>
+        <Note ID="167" FontSize="12.0" Position="1062.0,1137.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>github/settings/</String>
+        </Note>
+        <Note ID="168" FontSize="12.0" Position="1062.0,1165.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>github/tarball/</String>
+        </Note>
+        <Note ID="169" FontSize="12.0" Position="1062.0,1193.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>github/user_auth/</String>
+        </Note>
+        <Note ID="170" FontSize="12.0" Position="1062.0,1221.0" Width="82.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>github/zipball/</String>
+        </Note>
+        <Note ID="172" FontSize="12.0" Position="548.0,827.0" Width="100.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>invite_contributor</String>
+        </Note>
+        <Note ID="173" FontSize="12.0" Position="548.0,1014.0" Width="37.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>keys/</String>
+        </Note>
+        <Note ID="174" FontSize="12.0" Position="548.0,167.0" Width="28.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>log/</String>
+        </Note>
+        <Note ID="175" FontSize="12.0" Position="1089.0,630.0" Width="95.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>file/&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="192" FontSize="12.0" Position="894.0,17.0" Width="195.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1" Style="Jagged"></Border>
+            </Appearance>
+            <String>In project/&lt;pid&gt; but not node/&lt;nid&gt;</String>
+            <ConnectedNoteIDs>195</ConnectedNoteIDs>
+        </Note>
+        <Note ID="200" FontSize="12.0" Position="1299.0,52.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/</String>
+            <ConnectedNoteIDs>141</ConnectedNoteIDs>
+        </Note>
+        <Note ID="201" FontSize="12.0" Position="1383.0,52.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>project/&lt;pid&gt;/node/&lt;nid&gt;/</String>
+        </Note>
+        <Note ID="202" FontSize="12.0" Position="1321.0,85.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>osffiles/</String>
+            <ConnectedNoteIDs>267</ConnectedNoteIDs>
+        </Note>
+        <Note ID="203" FontSize="12.0" Position="1343.0,139.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;fid&gt;/</String>
+        </Note>
+        <Note ID="204" FontSize="12.0" Position="1343.0,167.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;fid&gt;/</String>
+        </Note>
+        <Note ID="205" FontSize="12.0" Position="1371.0,193.0" Width="28.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>info</String>
+        </Note>
+        <Note ID="206" FontSize="12.0" Position="1371.0,221.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>version/&lt;vid&gt;/</String>
+        </Note>
+        <Note ID="207" FontSize="12.0" Position="1398.0,248.0" Width="43.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render</String>
+        </Note>
+        <Note ID="208" FontSize="12.0" Position="1343.0,275.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>hgrid/</String>
+        </Note>
+        <Note ID="209" FontSize="12.0" Position="1343.0,303.0" Width="106.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>hgrid/&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="211" FontSize="12.0" Position="1321.0,459.0" Width="150.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>permissions/&lt;permissions/</String>
+        </Note>
+        <Note ID="212" FontSize="12.0" Position="1321.0,487.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>permissions/beforepublic/</String>
+        </Note>
+        <Note ID="213" FontSize="12.0" Position="1321.0,548.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>pointer/</String>
+        </Note>
+        <Note ID="214" FontSize="12.0" Position="1321.0,572.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>pointer/</String>
+        </Note>
+        <Note ID="215" FontSize="12.0" Position="1343.0,597.0" Width="32.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>fork/</String>
+        </Note>
+        <Note ID="216" FontSize="12.0" Position="796.0,1151.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>private_link/</String>
+        </Note>
+        <Note ID="217" FontSize="12.0" Position="796.0,1181.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>private_link/</String>
+        </Note>
+        <Note ID="218" FontSize="12.0" Position="796.0,1209.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>private_link/</String>
+        </Note>
+        <Note ID="219" FontSize="12.0" Position="816.0,1240.0" Width="28.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>edit</String>
+        </Note>
+        <Note ID="221" FontSize="12.0" Position="1321.0,341.0" Width="115.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>register/&lt;template&gt;/</String>
+        </Note>
+        <Note ID="222" FontSize="12.0" Position="1321.0,369.0" Width="108.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>register/&lt;template/</String>
+        </Note>
+        <Note ID="223" FontSize="12.0" Position="548.0,855.0" Width="149.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>beforeremovecontributors/</String>
+        </Note>
+        <Note ID="224" FontSize="12.0" Position="548.0,883.0" Width="115.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="3">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>removecontributors/</String>
+        </Note>
+        <Note ID="226" FontSize="12.0" Position="548.0,278.0" Width="99.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>removetag/&lt;tag&gt;</String>
+        </Note>
+        <Note ID="227" FontSize="12.0" Position="548.0,1068.0" Width="70.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>revoke_key</String>
+        </Note>
+        <Note ID="229" FontSize="12.0" Position="1321.0,668.0" Width="23.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>S3</String>
+        </Note>
+        <Note ID="230" FontSize="12.0" Position="1343.0,697.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="231" FontSize="12.0" Position="1371.0,726.0" Width="47.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>render/</String>
+        </Note>
+        <Note ID="232" FontSize="12.0" Position="1343.0,754.0" Width="61.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>authorize/</String>
+        </Note>
+        <Note ID="233" FontSize="12.0" Position="1343.0,782.0" Width="44.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>config/</String>
+        </Note>
+        <Note ID="234" FontSize="12.0" Position="1343.0,810.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>hgrid/</String>
+        </Note>
+        <Note ID="235" FontSize="12.0" Position="1371.0,840.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;path:path&gt;/</String>
+        </Note>
+        <Note ID="236" FontSize="12.0" Position="1371.0,868.0" Width="51.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dummy/</String>
+        </Note>
+        <Note ID="237" FontSize="12.0" Position="1343.0,898.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>import-auth/</String>
+        </Note>
+        <Note ID="238" FontSize="12.0" Position="1343.0,926.0" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>newbucket/</String>
+        </Note>
+        <Note ID="239" FontSize="12.0" Position="1343.0,954.0" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/</String>
+        </Note>
+        <Note ID="240" FontSize="12.0" Position="1343.0,982.0" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>settings/</String>
+        </Note>
+        <Note ID="241" FontSize="12.0" Position="794.0,1307.0" Width="96.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/addons/</String>
+        </Note>
+        <Note ID="242" FontSize="12.0" Position="794.0,1335.0" Width="112.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/comments/</String>
+        </Note>
+        <Note ID="244" FontSize="12.0" Position="548.0,195.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>statistics/</String>
+        </Note>
+        <Note ID="245" FontSize="12.0" Position="1321.0,1028.0" Width="76.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>togglewatch/</String>
+        </Note>
+        <Note ID="246" FontSize="12.0" Position="1321.0,1056.0" Width="57.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>unwatch/</String>
+        </Note>
+        <Note ID="247" FontSize="12.0" Position="1321.0,1084.0" Width="43.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>watch/</String>
+        </Note>
+        <Note ID="248" FontSize="12.0" Position="1321.0,1121.0" Width="67.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>wiki/&lt;wid&gt;/</String>
+        </Note>
+        <Note ID="249" FontSize="12.0" Position="1343.0,1150.0" Width="135.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>compare/&lt;compare_id&gt;</String>
+        </Note>
+        <Note ID="250" FontSize="12.0" Position="1343.0,1178.0" Width="31.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>edit/</String>
+        </Note>
+        <Note ID="251" FontSize="12.0" Position="1343.0,1206.0" Width="53.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>rename/</String>
+        </Note>
+        <Note ID="252" FontSize="12.0" Position="1343.0,1234.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>version/&lt;vid&gt;/</String>
+        </Note>
+        <Note ID="253" FontSize="12.0" Position="1321.0,1263.0" Width="110.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>wiki/content/&lt;wid&gt;/</String>
+        </Note>
+        <Note ID="254" FontSize="12.0" Position="1321.0,1291.0" Width="70.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>wiki/widget/</String>
+        </Note>
+        <Note ID="256" FontSize="12.0" Position="1321.0,523.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>pointer/</String>
+        </Note>
+        <Note ID="259" FontSize="12.0" Position="548.0,1227.0" Width="123.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>reorder_components/</String>
+            <ConnectedNoteIDs>260</ConnectedNoteIDs>
+        </Note>
+        <Note ID="265" FontSize="12.0" Position="1321.0,113.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>osffiles/</String>
+        </Note>
+        <Note ID="268" FontSize="12.0" Position="1062.0,1259.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>zotero/settings</String>
+        </Note>
+        <Note ID="269" FontSize="12.0" Position="1062.0,1287.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>zotero/widget/</String>
+        </Note>
+        <Note ID="332" FontSize="12.0" Position="74.0,907.0" Width="65.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>dashboard</String>
+        </Note>
+        <Note ID="333" FontSize="12.0" Position="74.0,985.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>folder</String>
+        </Note>
+        <Note ID="334" FontSize="12.0" Position="74.0,364.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>email/meeting</String>
+        </Note>
+        <Note ID="335" FontSize="12.0" Position="74.0,1109.0" Width="131.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forms/forgot_password</String>
+        </Note>
+        <Note ID="336" FontSize="12.0" Position="74.0,1137.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forms/registration</String>
+        </Note>
+        <Note ID="337" FontSize="12.0" Position="74.0,1165.0" Width="127.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forms/reset_password</String>
+        </Note>
+        <Note ID="338" FontSize="12.0" Position="74.0,1193.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>forms/signin</String>
+        </Note>
+        <Note ID="339" FontSize="12.0" Position="93.0,1007.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>&lt;pid&gt;</String>
+        </Note>
+        <Note ID="340" FontSize="12.0" Position="93.0,932.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;nid&gt;</String>
+        </Note>
+        <Note ID="341" FontSize="12.0" Position="113.0,1032.0" Width="119.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>/pointer/&lt;pointer_id&gt;</String>
+        </Note>
+        <Note ID="342" FontSize="12.0" Position="74.0,957.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>folder</String>
+        </Note>
+        <Note ID="343" FontSize="12.0" Position="84.0,72.0" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>GET</String>
+        </Note>
+        <Note ID="344" FontSize="12.0" Position="84.0,100.0" Width="32.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>PUT</String>
+        </Note>
+        <Note ID="345" FontSize="12.0" Position="84.0,128.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>POST</String>
+        </Note>
+        <Note ID="346" FontSize="12.0" Position="83.0,159.0" Width="55.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>DELETE</String>
+        </Note>
+        <Note ID="347" FontSize="12.0" Position="113.0,1060.0" Width="58.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>/pointers/</String>
+        </Note>
+        <Note ID="349" FontSize="12.0" Position="74.0,215.0" Width="77.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>log/&lt;log_id&gt;/</String>
+        </Note>
+        <Note ID="351" FontSize="12.0" Position="74.0,526.0" Width="49.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>pointer/</String>
+        </Note>
+        <Note ID="352" FontSize="12.0" Position="74.0,554.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>pointers/move/</String>
+        </Note>
+        <Note ID="354" FontSize="12.0" Position="74.0,595.0" Width="45.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>profile/</String>
+        </Note>
+        <Note ID="356" FontSize="12.0" Position="93.0,623.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="357" FontSize="12.0" Position="113.0,652.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;addon&gt;/settings</String>
+        </Note>
+        <Note ID="358" FontSize="12.0" Position="113.0,680.0" Width="31.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>edit/</String>
+        </Note>
+        <Note ID="359" FontSize="12.0" Position="113.0,708.0" Width="112.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>public_components</String>
+        </Note>
+        <Note ID="360" FontSize="12.0" Position="113.0,736.0" Width="89.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>public_projects</String>
+        </Note>
+        <Note ID="361" FontSize="12.0" Position="98.0,766.0" Width="115.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;user_id&gt;/summary</String>
+        </Note>
+        <Note ID="362" FontSize="12.0" Position="149.0,118.0" Width="84.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>POST 
+but should be 
+DELETE</String>
+        </Note>
+        <Note ID="363" FontSize="12.0" Position="74.0,818.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>project/new/</String>
+        </Note>
+        <Note ID="364" FontSize="12.0" Position="93.0,844.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;nid&gt;</String>
+        </Note>
+        <Note ID="365" FontSize="12.0" Position="74.0,334.0" Width="52.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>register/</String>
+        </Note>
+        <Note ID="367" FontSize="12.0" Position="74.0,406.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>search/</String>
+        </Note>
+        <Note ID="368" FontSize="12.0" Position="93.0,435.0" Width="39.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>node/</String>
+        </Note>
+        <Note ID="369" FontSize="12.0" Position="93.0,463.0" Width="54.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>projects/</String>
+        </Note>
+        <Note ID="370" FontSize="12.0" Position="74.0,243.0" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>tags/&lt;tag&gt;/</String>
+        </Note>
+        <Note ID="371" FontSize="12.0" Position="74.0,492.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>user/search/</String>
+        </Note>
+        <Note ID="372" FontSize="12.0" Position="74.0,274.0" Width="82.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="3">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>watched/logs/</String>
+        </Note>
+        <Note ID="373" FontSize="12.0" Position="74.0,304.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>github/repo/create/</String>
+        </Note>
+        <Note ID="378" FontSize="12.0" Position="272.0,89.0" Width="99.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>addons/bitbucket</String>
+        </Note>
+        <Note ID="379" FontSize="12.0" Position="272.0,145.0" Width="95.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>addons/dropbox</String>
+        </Note>
+        <Note ID="380" FontSize="12.0" Position="272.0,61.0" Width="94.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>addons/figshare</String>
+        </Note>
+        <Note ID="381" FontSize="12.0" Position="272.0,117.0" Width="84.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>addons/github</String>
+        </Note>
+        <Note ID="382" FontSize="12.0" Position="378.0,91.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>Various OAUTH 
+Callback Routes</String>
+        </Note>
+        <Note ID="384" FontSize="12.0" Position="272.0,189.0" Width="96.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/addons/</String>
+        </Note>
+        <Note ID="385" FontSize="12.0" Position="272.0,217.0" Width="138.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/bitbucket/oauth/</String>
+        </Note>
+        <Note ID="386" FontSize="12.0" Position="299.0,246.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>delete</String>
+        </Note>
+        <Note ID="387" FontSize="12.0" Position="272.0,275.0" Width="112.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/create_key</String>
+        </Note>
+        <Note ID="388" FontSize="12.0" Position="272.0,303.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/dataverse/</String>
+        </Note>
+        <Note ID="389" FontSize="12.0" Position="272.0,331.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/dataverse/</String>
+        </Note>
+        <Note ID="390" FontSize="12.0" Position="272.0,359.0" Width="109.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>settings/dataverse/</String>
+        </Note>
+        <Note ID="391" FontSize="12.0" Position="272.0,387.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/dropbox</String>
+        </Note>
+        <Note ID="392" FontSize="12.0" Position="299.0,418.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>oauth/</String>
+        </Note>
+        <Note ID="393" FontSize="12.0" Position="299.0,446.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>oauth/</String>
+        </Note>
+        <Note ID="394" FontSize="12.0" Position="272.0,475.0" Width="133.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/figshare/oauth/</String>
+        </Note>
+        <Note ID="395" FontSize="12.0" Position="272.0,503.0" Width="133.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>settings/figshare/oauth/</String>
+        </Note>
+        <Note ID="396" FontSize="12.0" Position="272.0,531.0" Width="123.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/github/oauth/</String>
+        </Note>
+        <Note ID="397" FontSize="12.0" Position="272.0,559.0" Width="123.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>settings/github/oauth/</String>
+        </Note>
+        <Note ID="398" FontSize="12.0" Position="272.0,587.0" Width="75.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/jobs</String>
+        </Note>
+        <Note ID="399" FontSize="12.0" Position="272.0,615.0" Width="79.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/jobs/</String>
+        </Note>
+        <Note ID="400" FontSize="12.0" Position="299.0,647.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="401" FontSize="12.0" Position="299.0,675.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="402" FontSize="12.0" Position="272.0,704.0" Width="150.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/key_history/&lt;kid&gt;/</String>
+        </Note>
+        <Note ID="403" FontSize="12.0" Position="272.0,732.0" Width="81.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/keys/</String>
+        </Note>
+        <Note ID="404" FontSize="12.0" Position="272.0,760.0" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/names/</String>
+        </Note>
+        <Note ID="405" FontSize="12.0" Position="272.0,788.0" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/names/</String>
+        </Note>
+        <Note ID="406" FontSize="12.0" Position="299.0,819.0" Width="48.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>impute/</String>
+        </Note>
+        <Note ID="407" FontSize="12.0" Position="272.0,848.0" Width="118.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/revoke_key/</String>
+        </Note>
+        <Note ID="408" FontSize="12.0" Position="272.0,876.0" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>settings/s3/</String>
+        </Note>
+        <Note ID="409" FontSize="12.0" Position="272.0,904.0" Width="69.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>settings/s3/</String>
+        </Note>
+        <Note ID="410" FontSize="12.0" Position="272.0,932.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/schools/</String>
+        </Note>
+        <Note ID="411" FontSize="12.0" Position="272.0,960.0" Width="97.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>settings/schools/</String>
+        </Note>
+        <Note ID="412" FontSize="12.0" Position="299.0,991.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="413" FontSize="12.0" Position="299.0,1019.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="414" FontSize="12.0" Position="272.0,1048.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>settings/social/</String>
+        </Note>
+        <Note ID="415" FontSize="12.0" Position="272.0,1076.0" Width="87.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>settings/social/</String>
+        </Note>
+        <Note ID="416" FontSize="12.0" Position="301.0,1105.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.477193 0.557066 0.76433</Border>
+                <Fill>0.840969 0.866828 0.925903</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="417" FontSize="12.0" Position="301.0,1133.0" Width="42.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.331867 0.609932 0.356197</Border>
+                <Fill>0.790123 0.882327 0.80198</Fill>
+            </Appearance>
+            <String>&lt;uid&gt;/</String>
+        </Note>
+        <Note ID="418" FontSize="12.0" Position="272.0,1163.0" Width="165.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>user/&lt;uid&gt;/&lt;pid&gt;/claim/email/</String>
+        </Note>
+        <Note ID="419" FontSize="12.0" Position="272.0,1191.0" Width="73.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.290055 0.1523 0.182215</Border>
+                <Fill>0.940019 0.892907 0.779716</Fill>
+            </Appearance>
+            <String>user/merge/</String>
+        </Note>
+    </Notes>
+    <BackgroundShapes>
+        <Shape ID="423" Sticky="Yes" Position="501.0,9.0" Width="1054.0" Height="1362.257812">
+            <Appearance>
+                <Border Weight="1" Style="Square"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="375" Sticky="Yes" Position="542.0,245.0" Width="198.0" Height="57.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="61" Sticky="Yes" Position="542.0,513.0" Width="197.0" Height="215.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="84" Sticky="Yes" Position="1057.0,77.0" Width="194.0" Height="509.746094">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="103" Sticky="Yes" Position="785.0,781.0" Width="228.0" Height="362.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="107" Sticky="Yes" Position="543.0,423.0" Width="199.0" Height="84.59375">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="108" Sticky="Yes" Position="1057.0,598.0" Width="196.0" Height="230.515625">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="109" Sticky="Yes" Position="542.0,741.0" Width="196.0" Height="248.941406">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="129" Sticky="Yes" Position="785.0,228.0" Width="225.0" Height="544.257812">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="138" Sticky="Yes" Position="785.0,80.0" Width="224.0" Height="144.6875">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="139" Sticky="Yes" Position="542.0,304.0" Width="197.0" Height="115.425781">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="328" Sticky="Yes" Position="542.0,1193.0" Width="201.0" Height="86.589844">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="154" Sticky="Yes" Position="542.0,1102.0" Width="199.0" Height="84.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="171" Sticky="Yes" Position="1057.0,835.0" Width="196.0" Height="410.101562">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="189" Sticky="No" Position="1522.0,615.0" Width="20.0" Height="30.59375">
+            <Appearance>
+                <Border Weight="1" Style="Square">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>149</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="195" Sticky="No" Position="1109.0,17.0" Width="20.0" Height="24.308594">
+            <Appearance>
+                <Border Weight="1" Style="Square">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>192</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="210" Sticky="Yes" Position="1312.0,78.0" Width="191.171875" Height="253.976562">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="220" Sticky="Yes" Position="785.0,1146.0" Width="231.0" Height="123.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="377" Sticky="Yes" Position="785.0,1274.0" Width="232.0" Height="90.085938">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="243" Sticky="Yes" Position="1312.0,658.0" Width="190.242188" Height="354.773438">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="255" Sticky="Yes" Position="1312.0,1116.0" Width="190.0" Height="203.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="260" Sticky="No" Position="760.0,1222.0" Width="20.0" Height="24.308594">
+            <Appearance>
+                <Border Weight="1" Style="Square">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>259</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="267" Sticky="No" Position="1525.0,84.0" Width="20.0" Height="24.308594">
+            <Appearance>
+                <Border Weight="1" Style="Square">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <ConnectedNoteIDs>202</ConnectedNoteIDs>
+        </Shape>
+        <Shape ID="270" Sticky="Yes" Position="1057.0,1254.0" Width="196.0" Height="58.214844">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="321" Sticky="Yes" Position="1312.0,517.0" Width="190.0" Height="132.792969">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="322" Sticky="Yes" Position="1312.0,457.0" Width="191.0" Height="58.214844">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="323" Sticky="Yes" Position="1312.0,335.0" Width="191.0" Height="116.191406">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="324" Sticky="Yes" Position="1312.0,1022.0" Width="191.0" Height="88.484375">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="326" Sticky="Yes" Position="542.0,1010.0" Width="197.0" Height="86.042969">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="348" Sticky="Yes" Position="72.0,61.0" Width="164.324219" Height="128.121094">
+            <Appearance>
+                <Border Weight="1" Style="Jagged"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="350" Sticky="Yes" Position="60.0,519.0" Width="194.0" Height="63.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="353" Sticky="Yes" Position="60.0,589.0" Width="194.0" Height="206.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="355" Sticky="Yes" Position="60.0,1102.0" Width="194.0" Height="120.675781">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="376" Sticky="Yes" Position="60.0,802.0" Width="196.0" Height="81.0">
+            <Appearance>
+                <Border Weight="1"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="366" Sticky="Yes" Position="60.0,398.0" Width="193.0" Height="118.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="374" Sticky="Yes" Position="60.0,892.0" Width="196.0" Height="200.0">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="383" Sticky="Yes" Position="268.0,51.0" Width="209.0" Height="128.753906">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+        <Shape ID="420" Sticky="Yes" Position="267.0,183.0" Width="210.0" Height="1035.609375">
+            <Appearance>
+                <Border Weight="3"></Border>
+            </Appearance>
+        </Shape>
+    </BackgroundShapes>
+    <Stacks>
+        <Stack>36-37</Stack>
+        <Stack>40, 226</Stack>
+        <Stack>45, 47-49</Stack>
+        <Stack>50, 105-106</Stack>
+        <Stack>52-53</Stack>
+        <Stack>55-57</Stack>
+        <Stack>64, 172, 223-224, 151, 147, 146</Stack>
+        <Stack>65, 227</Stack>
+        <Stack>66-67</Stack>
+        <Stack>68-70</Stack>
+        <Stack>72-73</Stack>
+        <Stack>74-75</Stack>
+        <Stack>76-77</Stack>
+        <Stack>78-79</Stack>
+        <Stack>80-82</Stack>
+        <Stack>90-92</Stack>
+        <Stack>93-94</Stack>
+        <Stack>96-97</Stack>
+        <Stack>111-115</Stack>
+        <Stack>117-118</Stack>
+        <Stack>119-120</Stack>
+        <Stack>121-128</Stack>
+        <Stack>130-131</Stack>
+        <Stack>132-134</Stack>
+        <Stack>137, 150</Stack>
+        <Stack>142-144</Stack>
+        <Stack>145, 259, 148</Stack>
+        <Stack>152, 41</Stack>
+        <Stack>153, 174, 244, 104</Stack>
+        <Stack>158-159</Stack>
+        <Stack>162-163</Stack>
+        <Stack>164-170</Stack>
+        <Stack>175, 43</Stack>
+        <Stack>202, 265</Stack>
+        <Stack>203-204</Stack>
+        <Stack>205-206</Stack>
+        <Stack>208-209</Stack>
+        <Stack>211-212</Stack>
+        <Stack>213-214</Stack>
+        <Stack>217-218</Stack>
+        <Stack>221-222</Stack>
+        <Stack>232-234</Stack>
+        <Stack>235-236</Stack>
+        <Stack>237-240</Stack>
+        <Stack>241-242</Stack>
+        <Stack>245-247</Stack>
+        <Stack>249-252</Stack>
+        <Stack>253-254</Stack>
+        <Stack>268-269</Stack>
+        <Stack>335-338</Stack>
+        <Stack>341, 347</Stack>
+        <Stack>342, 333</Stack>
+        <Stack>343-345</Stack>
+        <Stack>349, 370</Stack>
+        <Stack>351-352</Stack>
+        <Stack>357-360</Stack>
+        <Stack>368-369</Stack>
+        <Stack>378, 381, 379</Stack>
+        <Stack>384-385</Stack>
+        <Stack>387-391</Stack>
+        <Stack>392-393</Stack>
+        <Stack>394-399</Stack>
+        <Stack>400-401</Stack>
+        <Stack>402-405</Stack>
+        <Stack>407-411</Stack>
+        <Stack>412-413</Stack>
+        <Stack>414-415</Stack>
+        <Stack>416-417</Stack>
+        <Stack>418-419</Stack>
+    </Stacks>
+    <AutoFit>36-38, 40-41, 43-53, 55-59, 62-83, 85-88, 90-102, 104-106, 110-128, 130-137, 140-153, 156-170, 172-175, 192, 200-209, 211-219, 221-224, 226-227, 229-242, 244-254, 256, 259, 265, 268-269, 332-347, 349, 351-352, 354, 356-365, 367-373, 378-382, 384-419</AutoFit>
+    <NoteStyles>
+        <Style Name="Blue Bubble" ID="661CCE5C-F4C2-4AA0-8EFF-8E1D2EEE7AEC" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="EC9C770F-8224-434E-B19D-B52424058DBC" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.290055 0.1523 0.182215</BorderColor>
+            <FillColor>0.940019 0.892907 0.779716</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="3695E5B8-075E-4F8D-8015-E49A1F85DB78" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.331867 0.609932 0.356197</BorderColor>
+            <FillColor>0.790123 0.882327 0.80198</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="A65B9DE6-2604-4096-A488-99431C9C6787" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.747881 0.366532 0.542813</BorderColor>
+            <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="061D0E8B-8233-4E2E-B3C9-0AD82DF551B8" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="E9D0FE23-899C-4A0A-9AAD-D23CC6F981CF" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="572493BA-B868-45A9-981C-9887DDDE80E5" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999737 0.986332 0.931298</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="611.999972,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

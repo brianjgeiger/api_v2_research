@@ -1,0 +1,1 @@
+the developer over and above any other design principle. The developer is the customer for the Web API. The success of an API design is measured by how quickly developers can get up to speed and start enjoying success using your API.

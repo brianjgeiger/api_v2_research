@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="D958FD3F-3ED0-431C-A79C-B8A022259A16">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="167.0,76.0" Width="304.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>
+
+GET    /project/&lt;pid&gt;/comments/
+GET    /project/&lt;pid&gt;/node/&lt;nid&gt;/comments/
+GET    /project/&lt;pid&gt;/comments/discussion/
+GET    /project/&lt;pid&gt;/node/&lt;nid&gt;/comments/discussion/</String>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="40.0,327.0" Width="33.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>GET</String>
+        </Note>
+        <Note ID="2" FontSize="12.0" Position="337.0,327.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>POST</String>
+        </Note>
+        <Note ID="3" FontSize="12.0" Position="1139.0,327.0" Width="55.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>DELETE</String>
+        </Note>
+        <Note ID="4" FontSize="12.0" Position="689.042969,327.0" Width="32.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>PUT</String>
+        </Note>
+        <Note ID="5" FontSize="12.0" Position="42.0,348.0" Width="189.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>/dashboard/get_all_projects/
+/dashboard/get_all_registrations/
+/dashboard/get_dashboard/
+/dashboard/get_dashboard/&lt;nid&gt;/
+/dashboard/get_dashboard/&lt;nid&gt;
+/profile/&lt;uid&gt;/&lt;addon&gt;/settings/</String>
+        </Note>
+        <Note ID="6" FontSize="12.0" Position="333.0,357.042969" Width="307.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>/project/&lt;pid&gt;/&lt;addon&gt;/settings/disable/
+/project/&lt;pid&gt;/node/&lt;nid&gt;/&lt;addon&gt;/settings/disable/
+/project/&lt;pid&gt;/comment/
+/project/&lt;pid&gt;/node/&lt;nid&gt;/comment/</String>
+        </Note>
+    </Notes>
+    <BackgroundShapes></BackgroundShapes>
+    <AutoFit>0-5</AutoFit>
+    <NoteStyles>
+        <Style Name="Title Text" ID="89779F87-5718-4AF6-9247-63226AB785F4" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Red Text" ID="BBC1A0ED-09F1-4613-BD2C-69DC60F0C57C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="50C61B69-AE2F-45B9-8A40-EEF7CA4CFA2E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.290055 0.1523 0.182215</BorderColor>
+            <FillColor>0.940019 0.892907 0.779716</FillColor>
+        </Style>
+        <Style Name="Yellow Bubble" ID="63EEA7EB-1F23-422C-8617-53E800FD2096" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="081EA1BB-84A7-4D64-9155-E2F68371234C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.331867 0.609932 0.356197</BorderColor>
+            <FillColor>0.790123 0.882327 0.80198</FillColor>
+        </Style>
+        <Style Name="Blue Bubble" ID="EA2803A5-C080-4012-8B70-4E606C1309EE" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="BC286BAA-9877-4C00-B1AB-9F4327835911" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.747881 0.366532 0.542813</BorderColor>
+            <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999737 0.986332 0.931298</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>
