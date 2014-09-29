@@ -1103,7 +1103,7 @@
             </Appearance>
             <String>pointer/</String>
         </Note>
-        <Note ID="214" FontSize="12.0" Position="1321.0,572.0" Width="49.0">
+        <Note ID="214" FontSize="12.0" Position="1321.0,576.0" Width="49.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.290055 0.1523 0.182215</Border>
@@ -1678,7 +1678,7 @@ DELETE</String>
             </Appearance>
             <String>&lt;nid&gt;</String>
         </Note>
-        <Note ID="365" FontSize="12.0" Position="74.0,334.0" Width="52.0">
+        <Note ID="365" FontSize="10.0" Position="74.0,334.0" Width="45.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.290055 0.1523 0.182215</Border>
