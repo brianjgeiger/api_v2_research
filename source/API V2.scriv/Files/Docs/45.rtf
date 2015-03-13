@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Light;\f1\fnil\fcharset0 HelveticaNeue-Medium;}
+{\colortbl;\red255\green255\blue255;\red67\green67\blue67;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\deftab720
+\pard\pardeftab720\sa320\qj
+
+\f0\fs32 \cf2 http://bryanhelmig.com/your-api-consumers-arent-who-you-think-they-are/\
+The first thing they do is look at your docs just like any developer would, but then they suddenly feel one of two things: 
+\f1 empowered
+\f0  or 
+\f1 overwhelmed
+\f0 .\
+what are the goals of these non-coders? What features are they missing?\
+
+\f1 easier documentation\
+focus on the introduction\
+provide a wedge
+\f0  by spoon feeding some great \'93hello world!\'94 examples to the user as soon as possible\
+
+\f1 provide live data
+\f0  right in the docs.\
+
+\f1 multiple auth mechanisms
+\f0 .\
+example code snippets 
+\f1 live code\
+useful error messages - 
+\f0 what they should do to fix it. 
+\i 401: Could not authenticate this request. Try adding an API key to the URL like this: {\field{\*\fldinst{HYPERLINK "https://:current-url:?api_key=123abc"}}{\fldrslt \cf2 https://:current-url:?api_key=123abc}}\
+
+\i0 always 
+\f1 serialize your errors the same way
+\f0 .\
+I\'92ve seen these three errors more than I\'92d like to admit:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0\cf2 {\listtext	1.	}Sometimes a list of errors, sometimes a single string message.\
+{\listtext	2.	}No matching URL routes giving HTML 404s instead of JSON/XML.\
+{\listtext	3.	}500 errors giving HTML error pages instead of JSON/XML.\
+\pard\tx560\pardeftab720
+\cf2 \
+\pard\pardeftab720\sa320\qj
+
+\f1 \cf2 don\'92t do what I say, do what I mean
+\f0 . Basically, if you can write a sufficiently intelligent and prescriptive error message, you could have probably just done what the user had meant to do in the first place. You can only do this in some special cases\
+the more your API can abstract away, the more they can skip coding and continue playing.\
+provide a slew of query-string arguments that help a user only get at the data they want\
+they are a few nested for-loops away from attempting to make more API calls than there are atoms in the known universe\
+
+\f1 real time
+\f0  endpoints 
+\f1 webhooks
+\f0 \
+
+\f1 skip long-polling and websockets
+\f0  for now, they just add complexity and infrastructure on both sides\
+
+\f1 provide PATCH and upsert\
+Upsert
+\f0  removes the complexity around managing uniqueness in an API. It sort of wraps the whole 
+\i get or create
+\i0  pattern that is fairly common in ORMs: it will either insert or update a record based on some included unique field (often email).\
+\
+\
+}

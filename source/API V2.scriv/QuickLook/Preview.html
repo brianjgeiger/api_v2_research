@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<title>API V2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+	body {background-color: #bac0c7}
+    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
+    .page {border: 1px solid #727272; background: #fff}
+    hr {
+      border-top: 1px dashed #000;
+      border-bottom: 0px solid #fff;
+      color: #fff;
+      background-color: #fff;
+      height: 0px;
+  </style>
+</head>
+
+<body>
+
+<table border="0" width="100%" cellspacing="3">
+<tr>
+<td>
+
+<table class="page" width="100%" cellspacing="10" cellpadding="2">
+<tr>
+<td valign="top">
+
+<ul>
+<li>
+<p class="binderItem"><strong>Title Page</strong><br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<$projecttitle><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<$fullname><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Course Title<br/>
+Instructor’s Name<br/>
+<$longdate></p>
+</li>
+<li>
+<p class="binderItem"><strong>Main Content</strong></p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>Considerations</strong><br/> • Ease for new users<br/>
+ ⁃ Explore-able<br/>
+ ⁃ Curl<br/>
+ ⁃ Web browser<br/>
+ • Ability to do everything we need<br/>
+ ⁃ Dog food<br/>
+ • Ease of implementation<br/>
+ • Ease of maintenance<br/>
+ • Future-resistant<br/>
+ ⁃ Try to make generic enough to handle minor changes without breaking existing apps<br/>
+ ⁃ Use versions for big changes.<br/>
+ • Secure<br/>
+ ⁃ HTTPS only (return error if attempt to connect over HTTP)<br/>
+ • Auth<br/>
+ ⁃ Basic<br/>
+ ⁃ Oauth 2<br/>
+ ⁃ Same token for all<br/>
+ • Pretty print JSON by default<br/>
+ • GZip all data <br/>
+ ⁃ if we aren’t already<br/>
+ ⁃ We rea...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Format of data returned</strong></p>
+</li>
+</ul>
+<hr/>
+<li>
+<p class="binderItem"><strong>Notes</strong><br/>Notes<br/>
+Any footnotes you created in your paper will get inserted here upon Compile (this purple bubble will be removed automatically). If you don’t have any footnotes, you can deselect “Include in Compile” for this document in the Inspector or Compile settings, or just delete it completely.</p>
+</li>
+<li>
+<p class="binderItem"><strong>Works Cited</strong><br/>Works Cited<br/>
+<br/>
+Works cited should go here (this page is optional). See the Works Cited Format document for information on formatting citations.</p>
+</li>
+<li>
+<p class="binderItem"><strong>Reference Notes</strong><br/>These are the more significant things that I pulled out of the of research documents, plus some notes from playing around with various APIs.</p>
+</li>
+<hr/>
+<ul>
+<li>
+<p class="binderItem"><strong>REST API Design - Resource Modeling</strong><br/>http://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling<br/>
+<br/>
+let us consider an example where a customer in banking domain wants to change her address. There are two ways this can be done:<br/>
+<br/>
+In the first approach, a CRUD API built around the “Customer” resource can be used to directly update the address of the customer. That is, to update an existing customer’s address, a HTTP PUT request can be made to “Customer” resource (or “Address” resource if it exists).<br/>
+<br/>
+An alternate approa...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Thoughts on RESTful API Design</strong><br/>https://restful-api-design.readthedocs.org/en/latest/<br/>
+<br/>
+The easiest way to think about the application state, is to assume that it is is described by an application data model, which can be described by an Entity-Relationship diagram.<br/>
+<br/>
+When transforming objects from the application data model to RESTful resources, you may find it useful to define two utility functions:<br/>
+to_resource()<br/>
+This function is assumed to take an object from the application data model, and convert it into a resource.<br/>
+from_re...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Stop Designing Fragile Web APIs</strong><br/>https://mathieu.fenniak.net/stop-designing-fragile-web-apis/<br/>
+<br/>
+http://api.fbi.gov/wanted?<br/>
+  order_by=notoriety,desc&<br/>
+  limit=10&<br/>
+  page=1&<br/>
+  fields=name,aka,known_associates,<br/>
+  reward,description,last_seen<br/>
+Versus…<br/>
+http://api.fbi.gov/wanted/most<br/>
+<br/>
+Create multiple, specific API endpoints for specific intents, and use that intent to influence the design.<br/>
+An excellent example of this is GitHub’s commit status API,</p>
+</li>
+<li>
+<p class="binderItem"><strong>Best Practices for Designing a Pragmatic RESTful API</strong><br/>http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api<br/>
+<br/>
+keep the URL format consistent and always use a plural. <br/>
+<br/>
+ 1. Restructure the action to appear like a field of a resource. This works if the action doesn't take parameters. For example an activate action could be mapped to a boolean activated field and updated via a PATCH to the resource.<br/>
+ 2. Treat it like a sub-resource with RESTful principles. For example, GitHub's API lets you star a gist with PUT /gists/:id/star and unstar...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Your API Consumers Aren’t Who You Think They Are</strong><br/>http://bryanhelmig.com/your-api-consumers-arent-who-you-think-they-are/<br/>
+The first thing they do is look at your docs just like any developer would, but then they suddenly feel one of two things: empowered or overwhelmed.<br/>
+what are the goals of these non-coders? What features are they missing?<br/>
+easier documentation<br/>
+focus on the introduction<br/>
+provide a wedge by spoon feeding some great “hello world!” examples to the user as soon as possible<br/>
+provide live data right in the docs.<br/>
+multiple auth mechanism...</p>
+</li>
+<li>
+<p class="binderItem"><strong>API Design Ebook</strong><br/>http://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf<br/>
+<br/>
+Our view: approach API design from the ‘outside-in’ perspective. This means we start by asking - what are we trying to achieve with an API?<br/>
+<br/>
+But above all, avoid a mixed model in which you use singular for some resources, plural for others.<br/>
+<br/>
+An API that models everything at the highest level of abstraction - as /items or /assets in our example - loses the opportunity to paint a tangible picture for developers to know what the...</p>
+</li>
+<li>
+<p class="binderItem"><strong>SupportFu API Docs</strong><br/>Documentation all inline and with curl<br/>
+<br/>
+Returns all in JSON<br/>
+<br/>
+Can override methods for clients with minimal functionality<br/>
+<br/>
+Not HATEOAS<br/>
+<br/>
+Can filter all responses for minimal fields<br/>
+<br/>
+Can embed related data into response (important for their rate limiting, I suspect)<br/>
+<br/>
+Collections can just return count<br/>
+<br/>
+Can envelop data into JSON if your client has trouble reading status codes or headers<br/>
+<br/>
+Pagination is standardized<br/>
+<br/>
+Sorting is standardized<br/>
+<br/>
+Accessing something by ID is always included in the URL<br/>
+<br/>
+ver...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Stripe Test</strong><br/><br/>
+ curl https://api.stripe.com/v1/charges -u sk_test_1ppJtvCmyJ4OdUO0zXkqjh5B<br/>
+ Enter host password for user 'sk_test_1ppJtvCmyJ4OdUO0zXkqjh5B':<br/>
+ {<br/>
+   "object": "list",<br/>
+   "has_more": false,<br/>
+   "url": "/v1/charges",<br/>
+   "data": []<br/>
+ }<br/>
+ idris:~ bgeiger$ curl https://api.stripe.com/v1/charges -u sk_test_1ppJtvCmyJ4OdUO0zXkqjh5B -d amount=.05 -d currency=usd -d card=fjafodeoaggfdoafods -d "This never really happened"<br/>
+ Enter host password for user 'sk_test_1ppJtvCmyJ4OdUO0zXkqjh5B':<br/>
+ {<br/>
+   "error": {<br/>
+  "...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Github Test</strong><br/> Last login: Tue Aug 26 10:17:32 on ttys009<br/>
+ idris:~ bgeiger$ curl https://api.github.com/users/octocat/orgs<br/>
+ [<br/>
+<br/>
+ ]<br/>
+ idris:~ bgeiger$ curl -i https://api.github.com/users/octocat/orgs<br/>
+ HTTP/1.1 200 OK<br/>
+ Server: GitHub.com<br/>
+ Date: Tue, 26 Aug 2014 14:37:08 GMT<br/>
+ Content-Type: application/json; charset=utf-8<br/>
+ Status: 200 OK<br/>
+ X-RateLimit-Limit: 60<br/>
+ X-RateLimit-Remaining: 58<br/>
+ X-RateLimit-Reset: 1409067419<br/>
+ Cache-Control: public, max-age=60, s-maxage=60<br/>
+ ETag: "98f0c1b396a4e5d54f4d5fe561d54b44"<br/>
+ Vary: A...</p>
+</li>
+</ul>
+</ul>
+
+</td>
+<td width="8">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

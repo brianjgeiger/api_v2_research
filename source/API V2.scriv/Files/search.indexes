@@ -416,11 +416,8 @@ At a minimum, the API should standardize that all 400 series errors come with co
         <Document ID="14">
             <Title>Ideas</Title>
         </Document>
-        <Document ID="7">
-            <Title>Works Cited</Title>
-            <Text>Works Cited
-
-Works cited should go here (this page is optional). See the Works Cited Format document for information on formatting citations.</Text>
+        <Document ID="40">
+            <Title>Format of data returned</Title>
         </Document>
         <Document ID="23">
             <Title>Your API Consumers Aren’t Who You Think They Are</Title>
@@ -511,6 +508,12 @@ Upsert removes the complexity around managing uniqueness in an API. It sort of w
 
 
 </Notes>
+        </Document>
+        <Document ID="7">
+            <Title>Works Cited</Title>
+            <Text>Works Cited
+
+Works cited should go here (this page is optional). See the Works Cited Format document for information on formatting citations.</Text>
         </Document>
         <Document ID="32">
             <Title>api v2 route second pass</Title>
@@ -2888,7 +2891,48 @@ Add optional fields in a comma-delimited list
 
 pagination
 We recommend limit and offset. It is more common, well understood in leading databases, and easy for developers.
-/dogs?limit=25&amp;offset=50</Notes>
+/dogs?limit=25&amp;offset=50
+
+
+———
+
+Create a brown dog named Al 
+POST /dogs
+name=Al&amp;furColor=brown
+Response 
+200 OK 
+{"dog":{ "id": "1234", "name": "Al", "furColor": "brown" 
+} 
+Rename Al to Rover - Update 
+PUT /dogs/1234
+name=Rover
+Response 
+200 OK 
+{"dog":{ "id":"1234", "name": "Rover", "furColor": "brown" 
+} 
+Tell me about a particular dog 
+GET /dogs/1234
+Response 
+200 OK 
+{"dog":{ "id":"1234", "name": "Rover", "furColor": "brown" 
+} 
+Tell me about all the dogs 
+GET /dogs 
+Response 
+200 OK 
+{"dogs": [{"dog":{ "id":"1233", "name": "Fido", "furColor": "white"}}, {"dog":{ 
+"id":"1234",
+"name": "Rover",
+"furColor": "brown"}}]
+"_metadata":
+[{"totalCount":327,"limit":25,"offset":100}]
+}
+Delete Rover :-( 
+DELETE /dogs/1234
+Response 
+200 OK 
+
+</Notes>
         </Document>
         <Document ID="37">
             <Title>Stripe test</Title>

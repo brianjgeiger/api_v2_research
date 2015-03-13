@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.0" Creator="SCRMAC-2.5-25239" Modified="2014-09-19 11:09:55 -0400">
+<ScrivenerProject Version="1.0" Creator="SCRMAC-2.6-25480" Modified="2015-03-13 16:30:02 -0400">
     <Binder>
         <BinderItem ID="10" Type="Text" Created="2014-08-15 10:36:18 -0400" Modified="2014-08-15 10:36:18 -0400">
             <Title>About</Title>
@@ -21,19 +21,17 @@
                 <BinderItem ID="3" Type="Text" Created="2014-08-15 10:36:18 -0400" Modified="2014-08-15 10:36:18 -0400">
                     <Title>Title Page</Title>
                     <MetaData>
-                        <IncludeInCompile>Yes</IncludeInCompile>
                         <CompileAsIs>Yes</CompileAsIs>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>47,0</TextSelection>
+                        <TextSelection>14,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="8" Type="Folder" Created="2014-08-15 10:36:18 -0400" Modified="2014-08-15 10:36:18 -0400">
                     <Title>Main Content</Title>
                     <MetaData>
                         <PageBreakBefore>Yes</PageBreakBefore>
-                        <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                         <IconFileName>Notes (White Notepad).tiff</IconFileName>
                     </MetaData>
@@ -44,11 +42,19 @@
                         <BinderItem ID="34" Type="Text" Created="2014-08-25 16:10:56 -0400" Modified="2014-08-27 15:34:57 -0400">
                             <Title>Considerations</Title>
                             <MetaData>
-                                <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>1150,0</TextSelection>
+                                <TextSelection>274,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="40" Type="Text" Created="2015-01-19 09:21:09 -0500" Modified="2015-01-19 09:21:16 -0500">
+                            <Title>Format of data returned</Title>
+                            <MetaData>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -57,7 +63,6 @@
                     <Title>Notes</Title>
                     <MetaData>
                         <PageBreakBefore>Yes</PageBreakBefore>
-                        <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
@@ -68,13 +73,125 @@
                     <Title>Works Cited</Title>
                     <MetaData>
                         <PageBreakBefore>Yes</PageBreakBefore>
-                        <IncludeInCompile>Yes</IncludeInCompile>
                         <CompileAsIs>Yes</CompileAsIs>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>130,0</TextSelection>
                     </TextSettings>
+                </BinderItem>
+                <BinderItem ID="15" Type="Folder" Created="2014-08-15 10:36:18 -0400" Modified="2015-03-13 16:22:57 -0400">
+                    <Title>Reference Notes</Title>
+                    <MetaData>
+                        <PageBreakBefore>Yes</PageBreakBefore>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                        <IconFileName>Notes (Blue Notepad).tiff</IconFileName>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>3178,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem ID="41" Type="Text" Created="2015-03-13 15:16:53 -0400" Modified="2015-03-13 15:17:22 -0400">
+                            <Title>REST API Design - Resource Modeling</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>721,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="42" Type="Text" Created="2015-03-13 15:17:30 -0400" Modified="2015-03-13 15:17:42 -0400">
+                            <Title>Thoughts on RESTful API Design</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>7393,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="43" Type="Text" Created="2015-03-13 15:17:57 -0400" Modified="2015-03-13 15:18:09 -0400">
+                            <Title>Stop Designing Fragile Web APIs</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>411,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="44" Type="Text" Created="2015-03-13 15:18:29 -0400" Modified="2015-03-13 15:18:42 -0400">
+                            <Title>Best Practices for Designing a Pragmatic RESTful API</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>3737,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="45" Type="Text" Created="2015-03-13 15:18:57 -0400" Modified="2015-03-13 15:19:19 -0400">
+                            <Title>Your API Consumers Aren’t Who You Think They Are</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1951,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="46" Type="Text" Created="2015-03-13 15:19:17 -0400" Modified="2015-03-13 16:29:48 -0400">
+                            <Title>API Design Ebook</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>2513,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="47" Type="Text" Created="2015-03-13 15:20:50 -0400" Modified="2015-03-13 15:21:03 -0400">
+                            <Title>SupportFu API Docs</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>512,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="48" Type="Text" Created="2015-03-13 15:21:17 -0400" Modified="2015-03-13 16:27:09 -0400">
+                            <Title>Stripe Test</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1784,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="49" Type="Text" Created="2015-03-13 15:21:33 -0400" Modified="2015-03-13 16:27:56 -0400">
+                            <Title>Github Test</Title>
+                            <MetaData>
+                                <PageBreakBefore>Yes</PageBreakBefore>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                                <NotesTextSelection>0,0</NotesTextSelection>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>101984,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
                 </BinderItem>
             </Children>
         </BinderItem>
@@ -88,7 +205,7 @@
                     <Title>REST API Design - Resource Modeling</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>2055,0</NotesTextSelection>
+                        <NotesTextSelection>0,3174</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>25512,0</TextSelection>
@@ -98,7 +215,7 @@
                     <Title>Thoughts on RESTful API Design</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>4793,0</NotesTextSelection>
+                        <NotesTextSelection>0,7393</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>1829,0</TextSelection>
@@ -109,7 +226,7 @@
                     <MetaData>
                         <LabelID>2</LabelID>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>0,60</NotesTextSelection>
+                        <NotesTextSelection>0,411</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>77,0</TextSelection>
@@ -123,7 +240,7 @@
                         <NotesTextSelection>0,3737</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>53,753</TextSelection>
+                        <TextSelection>0,52</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="23" Type="Text" Created="2014-08-15 10:47:06 -0400" Modified="2014-08-25 16:01:21 -0400">
@@ -131,21 +248,21 @@
                     <MetaData>
                         <LabelID>2</LabelID>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>1949,0</NotesTextSelection>
+                        <NotesTextSelection>0,1951</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>1098,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="28" Type="PDF" Created="2014-08-15 14:29:42 -0400" Modified="2014-08-26 12:45:18 -0400">
+                <BinderItem ID="28" Type="PDF" Created="2014-08-15 14:29:42 -0400" Modified="2015-01-19 09:28:16 -0500">
                     <Title>api-design-ebook-2012-03</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <FileExtension>pdf</FileExtension>
-                        <NotesTextSelection>603,0</NotesTextSelection>
+                        <NotesTextSelection>0,2513</NotesTextSelection>
                     </MetaData>
                     <MediaSettings>
-                        <CurrentPDFPage>2</CurrentPDFPage>
+                        <CurrentPDFPage>6</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
                 <BinderItem ID="26" Type="Other" Created="2014-08-15 10:58:58 -0400" Modified="2014-08-15 10:58:07 -0400">
@@ -257,7 +374,7 @@
                     <Title>SupportFu API Docs</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>512,0</NotesTextSelection>
+                        <NotesTextSelection>0,512</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
                         <TextSelection>583,0</TextSelection>
@@ -267,20 +384,20 @@
                     <Title>Stripe test</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>448,0</NotesTextSelection>
+                        <NotesTextSelection>0,448</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>42,32</TextSelection>
+                        <TextSelection>0,1771</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="38" Type="Text" Created="2014-08-26 10:36:15 -0400" Modified="2014-08-26 11:29:16 -0400">
                     <Title>Github test</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
-                        <NotesTextSelection>727,0</NotesTextSelection>
+                        <NotesTextSelection>0,727</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>87317,0</TextSelection>
+                        <TextSelection>0,105263</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="39" Type="Text" Created="2014-09-02 15:39:23 -0400" Modified="2014-09-02 15:39:52 -0400">
@@ -290,21 +407,10 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>24,0</TextSelection>
+                        <TextSelection>25,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
-        </BinderItem>
-        <BinderItem ID="15" Type="Folder" Created="2014-08-15 10:36:18 -0400" Modified="2014-08-15 10:36:18 -0400">
-            <Title>Notes</Title>
-            <MetaData>
-                <IncludeInCompile>Yes</IncludeInCompile>
-                <NotesTextSelection>0,0</NotesTextSelection>
-                <IconFileName>Notes (Blue Notepad).tiff</IconFileName>
-            </MetaData>
-            <TextSettings>
-                <TextSelection>0,0</TextSelection>
-            </TextSettings>
         </BinderItem>
         <BinderItem ID="14" Type="Folder" Created="2014-08-15 10:36:18 -0400" Modified="2014-08-15 10:36:18 -0400">
             <Title>Ideas</Title>
@@ -392,6 +498,16 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+                <BinderItem ID="50" Type="Text" Created="2015-03-13 16:18:04 -0400" Modified="2015-03-13 16:18:04 -0400">
+                    <Title>Untitled</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
             </Children>
         </BinderItem>
     </Binder>
@@ -426,16 +542,16 @@
         </StatusItems>
     </StatusSettings>
     <ProjectProperties>
-        <ProjectTitle></ProjectTitle>
+        <ProjectTitle>API V2 Research</ProjectTitle>
         <AbbreviatedTitle></AbbreviatedTitle>
-        <FullName></FullName>
+        <FullName>Brian J. Geiger</FullName>
         <LastName></LastName>
         <FirstName></FirstName>
     </ProjectProperties>
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="Yes" Deadline="2011-07-07 07:25:49 -0400" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="0" Characters="0" Date="2014-09-19 11:09:53 -0400"></PreviousSession>
+        <PreviousSession Words="9337" Characters="100916" Date="2015-03-13 15:15:46 -0400"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api"}}{\fldrslt 
+\f0\fs24 \cf0 http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api}}
+\f0\fs24 \
+\
+keep the URL format consistent and always use a plural. \
+\
+	1.	Restructure the action to appear like a field of a resource. This works if the action doesn't take parameters. For example an activate action could be mapped to a boolean activated field and updated via a PATCH to the resource.\
+	2.	Treat it like a sub-resource with RESTful principles. For example, GitHub's API lets you star a gist with PUT /gists/:id/star and unstar with DELETE /gists/:id/star.\
+	3.	Sometimes you really have no way to map the action to a sensible RESTful structure. For example, a multi-resource search doesn't really make sense to be applied to a specific resource's endpoint. In this case, /search would make the most sense even though it isn't a resource. This is OK - just do what's right from the perspective of the API consumer and make sure it's documented clearly to avoid confusion.\
+\
+One thing to watch out for is non-SSL access to API URLs. Do not redirect these to their SSL counterparts. Throw a hard error instead! \
+\
+docs should show examples of complete request/response cycles\
+Preferably, the requests should be pastable examples\
+\
+Always version your API.\
+the URL has a major version number (v1), but the API has date based sub-versions which can be chosen using a custom HTTP request header\
+An API is never going to be completely stable.\
+\
+It's best to keep the base resource URLs as lean as possible.\
+consider packaging up sets of conditions into easily accessible RESTful paths\
+\
+To prevent an API consumer from having to hit the API again for an updated representation, have the API return the updated (or created) representation as part of the response.\
+\
+I don't think we're ready for HATEOAS on APIs just yet.\
+\
+It's time to leave XML behind in APIs.\
+\
+snake_case is 20% easier to read than camelCase\
+\
+an API that pretty prints by default is much more approachable\
+\
+the whitespace increased the output size by 8.5% when gzip is not in play and 2.6% when gzip is in play. On the other hand, the act of gzipping in itself provided over 60% in bandwidth savings.\
+\
+If the API is simple, URL encoding may suffice. However, complex APIs should stick to JSON for their API input. Either way, pick one and be consistent throughout the API.\
+\
+An API that uses the Link header can return a set of ready-made links so the API consumer doesn't have to construct links themselves. This is especially important when pagination is cursor based. Here is an example of a Link header used properly, grabbed from GitHub's documentation:\
+\
+Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next", <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"\
+\
+Some HTTP clients can only work with simple GET and POST requests. [\'85] the popular convention is to accept a request header X-HTTP-Method-Override with a string value containing one of PUT, PATCH or DELETE\
+\
+However, this token-over-basic-auth method of authentication is only acceptable in cases where it's practical to have the user copy a token from an administration interface to the API consumer environment. In cases where this isn't possible, OAuth 2 should be used to provide secure token transfer to a third party. OAuth 2 uses Bearer tokens & also depends on SSL for its underlying transport encryption.\
+\
+all three methods above are just ways to transport the token across the API boundary. The actual underlying token itself could be identical.\
+\
+At a minimum, the API should standardize that all 400 series errors come with consumable JSON error representation. If possible (i.e. if load balancers & reverse proxies can create custom error bodies), this should extend to 500 series status codes.}
